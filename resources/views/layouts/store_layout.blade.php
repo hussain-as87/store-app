@@ -22,9 +22,7 @@
     <meta name="description" content="Default keyword">
     <title>@yield('title')</title>
     <!-- Fonts-->
-    <link
-        href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/ps-icon/style.css') }}">
     <!-- CSS Library-->
@@ -42,10 +40,8 @@
     @livewireStyles
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Custom-->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -63,7 +59,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.rtl.min.css" integrity="sha384-trxYGD5BY4TyBTvU5H23FalSCYwpLA0vWEvXXGm5eytyztxb+97WzzY+IWDOSbav" crossorigin="anonymous">
 
-@endif --}}
+    @endif --}}
 </head>
 <!--[if IE 7]>
 <body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
@@ -83,76 +79,57 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
                         <div class="header__actions">
-                            <div class="btn-group ps-dropdown bg-danger">
+                            <div class="btn-group ps-dropdown " style="background-color: #ffd0d4!important">
                                 @auth
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                                                              document.getElementById('logout-form').submit();">
-                                        {{ __('logout') }}
-                                    </a>
+                                    {{ __('logout') }}
+                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                                 @endauth
                             </div>
                             <div class="btn-group ps-dropdown">
                                 <!-- Authentication Links -->
                                 @guest
-                                    @if (Route::has('login'))
-                                        <a class="nav-link bg-info" href="{{ route('login') }}">{{ __('login') }}</a>
-                                    @endif
-                                    @if (Route::has('register'))
-                                        <a class="btn btn-outline-info"
-                                            href="{{ route('register') }}">{{ __('Sign up') }}</a>
-                                    @endif
+                                @if (Route::has('login'))
+                                <a class="nav-link " style="background-color: #b8dee4!important;" href="{{ route('login') }}">{{ __('login') }}</a>
+                                @endif
+                                @if (Route::has('register'))
+                                <a class="btn btn-outline-info" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                @endif
 
                                 @else
-                                    <a class="nav-link">
-                                        {{ Auth::user()->name }}
-                                    </a>
+                                <a class="nav-link">
+                                    {{ Auth::user()->name }}
+                                </a>
                                 @endguest
                             </div>
                             <div class="btn-group ps-dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" id="languagesDropdown"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    {{ __(config('locales.languages')[app()->getLocale()]['name']) }} <span
-                                        class="caret"></span><i
-                                        class="flag-icon flag-icon-{{ __(config('locales.languages')[app()->getLocale()]['icon']) }} mt-1"
-                                        title="us"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="languagesDropdown">
-                                    <ul>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            @if ($key != app()->getLocale())
-                                                <li>
-                                                    <a href="{{ route('change.language', __($key)) }}">{{ __($val['name']) }}
-                                                        <i class="flag-icon flag-icon-{{ __($val['icon']) }}"
-                                                            title="{{ $key }}"
-                                                            id="{{ $key }}"></i></a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-
+                                @foreach (config('locales.languages') as $key => $val)
+                                @if ($key != app()->getLocale())
+                                <a href="{{ route('change.language', __($key)) }}">{{ __($val['name']) }}
+                                    <i class="flag-icon flag-icon-{{ __($val['icon']) }}" title="{{ $key }}" id="{{ $key }}"></i></a>
+                                @endif
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
         <nav class="navigation">
             <div class="container-fluid">
                 <div class="navigation__column left">
-                    <div class="header__logo"><a class="ps-logo" href="{{ route('store.home') }}"><img
-                                src="{{ asset('images/logo.png') }}" alt=""></a></div>
+                    <div class="header__logo"><a class="ps-logo" href="{{ route('store.home') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a></div>
                 </div>
                 <div class="navigation__column center">
                     <ul class="main-menu menu">
-                        <li class="menu-item menu-item-has-children dropdown"><a
-                                href="{{ route('store.home') }}">{{ __('Home') }}</a>
+                        <li class="menu-item menu-item-has-children dropdown"><a href="{{ route('store.home') }}">{{ __('Home') }}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item"><a href="{{ route('store.home') }}">Homepage #1</a></li>
                                 <li class="menu-item"><a href="{{ route('store.home') }}">Homepage #2</a></li>
@@ -161,29 +138,28 @@
                         </li>
                         <?php $categories = \App\Models\Admin\Category::with('subcategories')->get(); ?>
                         @foreach ($categories as $category)
-                            <li class="menu-item menu-item-has-children has-mega-menu"><a
-                                    href="#">{{ $category->name }}</a>
-                                <div class="mega-menu">
-                                    <div class="mega-wrap">
-                                        @if ($category->subcategories)
-                                            @foreach ($category->subcategories as $sub)
-                                                <div class="mega-column">
-                                                    <ul class="mega-item mega-features">
-                                                        <li><a href="product-listing.html">NEW RELEASES</a></li>
-                                                        <li><a href="product-listing.html">FEATURES SHOES</a></li>
-                                                        <li><a href="product-listing.html">BEST SELLERS</a></li>
-                                                        <li><a href="product-listing.html">NOW TRENDING</a></li>
-                                                        <li><a href="product-listing.html">SUMMER ESSENTIALS</a></li>
-                                                        <li><a href="product-listing.html">MOTHER'S DAY COLLECTION</a>
-                                                        </li>
-                                                        <li><a href="product-listing.html">FAN GEAR</a></li>
-                                                    </ul>
-                                                </div>
-                                            @endforeach
-                                        @endif
+                        <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">{{ $category->name }}</a>
+                            <div class="mega-menu">
+                                <div class="mega-wrap">
+                                    @if ($category->subcategories)
+                                    @foreach ($category->subcategories as $sub)
+                                    <div class="mega-column">
+                                        <ul class="mega-item mega-features">
+                                            <li><a href="product-listing.html">NEW RELEASES</a></li>
+                                            <li><a href="product-listing.html">FEATURES SHOES</a></li>
+                                            <li><a href="product-listing.html">BEST SELLERS</a></li>
+                                            <li><a href="product-listing.html">NOW TRENDING</a></li>
+                                            <li><a href="product-listing.html">SUMMER ESSENTIALS</a></li>
+                                            <li><a href="product-listing.html">MOTHER'S DAY COLLECTION</a>
+                                            </li>
+                                            <li><a href="product-listing.html">FAN GEAR</a></li>
+                                        </ul>
                                     </div>
+                                    @endforeach
+                                    @endif
                                 </div>
-                            </li>
+                            </div>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -192,54 +168,47 @@
                         <input class="form-control" type="text" placeholder="Search Product…">
                         <button><i class="ps-icon-search"></i></button>
                     </form>
-                    <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>20</i></span><i
-                                class="ps-icon-shopping-cart"></i></a>
-                        <div class="ps-cart__listing">
-                            <div class="ps-cart__content">
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img
-                                            src="{{ asset('images/cart-preview/1.jpg') }}" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title"
-                                            href="product-detail.html">Amazin’ Glazin’</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+
+                    @php
+                    $total=0;
+                    @endphp
+
+                    <form action="{{route('checkout.store')}}" method="post">
+                        @csrf
+                        <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>{{ $item_count }}</i></span><i class="ps-icon-shopping-cart"></i></a>
+                            <div class="ps-cart__listing">
+                                <div class="ps-cart__content">
+                                    @foreach ($cart as $item)
+                                    <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                                        <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="{{ asset('images/cart-preview/1.jpg') }}" alt=""></div>
+                                        <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">{{$item->product->name}}</a>
+                                            <p><span>Quantity:<i>{{$item['quantity']}}</i></span><span>T otal:<i>£{{$item['price'] * $item['quantity']}}</i></span></p>
+                                        </div>
                                     </div>
+                                    @php
+                                    $total += $item['price'] *$item['quantity']
+                                    @endphp
+                                    @endforeach
                                 </div>
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img
-                                            src="{{ asset('images/cart-preview/2.jpg') }}" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title"
-                                            href="product-detail.html">The Crusty
-                                            Croissant</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                                    </div>
+                                <div class="ps-cart__total">
+                                    <p>Number of items:<span>{{ $item_count }}</span></p>
+                                    <p>Item Total:<span>£{{ $total }}</span></p>
                                 </div>
-                                <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img
-                                            src="{{ asset('images/cart-preview/3.jpg') }}" alt=""></div>
-                                    <div class="ps-cart-item__content"><a class="ps-cart-item__title"
-                                            href="product-detail.html">The Rolling Pin</a>
-                                        <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                                    </div>
-                                </div>
+                                <div class="ps-cart__footer"><button class="ps-btn" href="cart.html" type="submit">{{ __('Check out') }}<i class="ps-icon-arrow-left"></i></button></div>
+
                             </div>
-                            <div class="ps-cart__total">
-                                <p>Number of items:<span>36</span></p>
-                                <p>Item Total:<span>£528.00</span></p>
-                            </div>
-                            <div class="ps-cart__footer"><a class="ps-btn" href="cart.html">Check out<i
-                                        class="ps-icon-arrow-left"></i></a></div>
                         </div>
-                    </div>
+
+
+                    </form>
+
                     <div class="menu-toggle"><span></span></div>
                 </div>
             </div>
         </nav>
     </header>
     <div class="header-services">
-        <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000"
-            data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1"
-            data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000"
-            data-owl-mousedrag="on">
+        <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
             <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard
                 delivery
                 on every order with Sky Store</p>
@@ -279,8 +248,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                             <aside class="ps-widget--footer ps-widget--info">
-                                <header><a class="ps-logo" href="{{ route('store.home') }}"><img
-                                            src="{{ asset('images/logo-white.png') }}" alt=""></a>
+                                <header><a class="ps-logo" href="{{ route('store.home') }}"><img src="{{ asset('images/logo-white.png') }}" alt=""></a>
                                     <h3 class="ps-widget__title">{{ __('Address Office 1') }}</h3>
                                 </header>
                                 <footer>
@@ -393,37 +361,36 @@
     <script type="text/javascript" src="{{ asset('plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}">
     </script>
     <script type="text/javascript" src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
     <script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="{{ asset('plugins/revolution/js/jquery.themepunch.revolution.min.js') }}">
     </script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.video.min.js') }}">
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.video.min.js') }}">
     </script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
     <!-- Custom scripts-->
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-        var userid = {{ auth()->id() }}
+        var userid = {
+            {
+                auth() - > id()
+            }
+        }
+
     </script>
     <script>
         function scrollDown() {
             document.getElementById('chat_box').scrollTop = document.getElementById('chat_box').scrollHeight
         }
         setInterval(scrollDown, 1000000)
+
     </script>
 
 </body>

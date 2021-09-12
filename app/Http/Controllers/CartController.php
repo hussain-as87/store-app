@@ -25,7 +25,9 @@ class CartController extends Controller
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-        return view('cart.index', compact('cart'));
+            $item_count=$cart->count();
+
+        return view('cart.index', compact('cart','item_count'));
     }
 
     /**
