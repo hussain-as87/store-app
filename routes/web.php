@@ -102,7 +102,8 @@ Route::get('/cookie-send', function () {
 /**if i want to delete cookie select time on the past*/
 Route::get('/cookie-delete', function () {
     return response('hello there i delete cookie in here !')
-        ->cookie(Cookie::make('cart', 'product two', -10));/*if i want to return response*/
+        ->cookie(Cookie::make('cart', 'product two', -10));
+        /*if i want to return response*/
 });
 /**cookies routes ---end---*/
 
@@ -152,7 +153,7 @@ Route::get('social/login', [SocialLoginController::class, 'login'])->name('socia
 Route::get('social/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
 Route::get('social/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
 
-/* 
+/*
 Route::get('/custom/reset-password/request', [RequestResetPasswordController::class, 'index'])->name('request.password');
 Route::post('/custom/reset-password/request', [RequestResetPasswordController::class, 'store']);
 Route::get('/custom/reset-password/code', [RequestResetPasswordController::class, 'code'])->name('request.password.code');

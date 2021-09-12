@@ -20,8 +20,7 @@ class CartController extends Controller
     public function index()
     {
         $user = Auth::id();
-        $cart = Cart::with('product')->
-        where('id', $this->getCartId())
+        $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
@@ -36,7 +35,6 @@ class CartController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -56,7 +54,8 @@ class CartController extends Controller
         $quantity = $request->post('quantity', 1);
 
         /*       if ($cart) {
-                    $cart->increment('quantity', $request->post('quantity', 1));*/ /**updated quantity plus number for */
+                    $cart->increment('quantity', $request->post('quantity', 1));*/
+        /**updated quantity plus number for */
         /*} else {
             Cart::create([
                 'id'=>$this->getCartId(),
@@ -65,12 +64,17 @@ class CartController extends Controller
                 'price' => $product->price,
                 'quantity' => $request->post('quantity', 1)]);
         }*/
-        Cart::updateOrCreate([
-            'id' => $this->getCartId(),
-            'product_id' => $product->id],
-            [ 'user_id' => auth()->id(),
+        Cart::updateOrCreate(
+            [
+                'id' => $this->getCartId(),
+                'product_id' => $product->id
+            ],
+            [
+                'user_id' => auth()->id(),
                 'price' => $product->price,
-                'quantity' => DB::raw("quantity + $quantity")]);
+                'quantity' => DB::raw("quantity + $quantity")
+            ]
+        );
 
         toast('the product ' . $product->name . ' added', 'success');
         return redirect()->route('cart.index');
@@ -118,7 +122,8 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::where('product_id',$id)->delete();
+        return redirect()->back();
     }
 
     public function checkout()

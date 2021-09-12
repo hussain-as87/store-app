@@ -24,18 +24,16 @@
                         <td>${{$item['price']}}</td>
                         <td>
                             <div class="form-group--number">
-                                <button class="minus" wire:click="minus"><span>-</span></button>
-                                <input class="form-control" type="text" value="{{ $item['quantity']}}">
-
-
-                                <button class="plus" wire:click="plus"><span>+</span></button>
+                                <button class="minus" wire:click="minus({{ $item->product_id  }})"><span>-</span></button>
+                                <input class="form-control" type="text" value="{{ $item->quantity}}">
+                                <button class="plus" wire:click="plus({{ $item->product_id  }})"><span>+</span></button>
                             </div>
                         </td>
                         <td>${{$item['price'] * $item['quantity'] }}</td>
 
 
                         <td>
-                            <div class="ps-remove"></div>
+                            <a wire:click="destroy({{ $item->product_id }})"><i class="ps-remove"></i></a>
                         </td>
                     </tr>
 
@@ -60,8 +58,8 @@
                             <table class="table ps-checkout__products">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase" style="color: white">Product</th>
-                                        <th class="text-uppercase" style="color: white">Total</th>
+                                        <th class="text-uppercase" style="color: white">{{ __('products') }}</th>
+                                        <th class="text-uppercase" style="color: white">{{ __('total') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +75,6 @@
                                     @endphp
                                     @endforeach
                                     <tr>
-
                                         <td style="color: white">{{__('Order Total')}}</td>
                                         <td style="color: white">${{$total}}</td>
                                     </tr>

@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 
 class Counter extends Component
 {
@@ -15,17 +16,15 @@ class Counter extends Component
     public $quantity = 0;
     public $cart = [];
     protected $listeners = ['cartUpdated' => 'onCartUpdate'];
-    public function plus()
+    public function plus($id)
     {
         $this->quantity++;
-        Cart::with('product')->where('id', $this->getCartId())
-            ->when(auth()->id(), function ($query, $user) {
-                $query->where('user_id', $user)->orWhereNull('user_id');
-            });
+        DB::update('update carts set quantity = quantity+1 where product_id = ?', [$id]);
     }
-    public function minus()
+    public function minus($id)
     {
         $this->quantity--;
+        DB::update('update carts set quantity = quantity-1 where product_id = ?', [$id]);
     }
     public function mount()
     {
@@ -61,5 +60,10 @@ class Counter extends Component
             Cookie::queue(Cookie::make('cart_id', $id, 43800));
         }/*get cart id from cookie*/
         return $id;
+    }
+    public function destroy($id)
+    {
+        Cart::where('product_id', $id)->delete();
+        return redirect()->back();
     }
 }
