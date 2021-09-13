@@ -63,11 +63,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <tr>
+                                        <div class="form-group mx-sm-1 mb-4">
+                                            <input type="text" name="code_cupon" class="form-control text-center" id="inputPassword2" placeholder="{{ __('cupon code') }}">
+                                            <button type="button" wire:click="coupon_index()" class="btn btn-success col-md">Confirm</button>
+                                        </div>
+                                    </tr>
                                     @foreach ($cart as $item)
                                     <tr>
                                         <td style="color: white">{{$item->product->name}}</td>
-                                        <td style="color: white">{{$item['price'] * $item['quantity']}}</td>
+                                        <td style="color: white">{{$item['price'] * $item['quantity']}} $</td>
 
                                     </tr>
                                     @php
@@ -75,8 +80,17 @@
                                     @endphp
                                     @endforeach
                                     <tr>
+
+                                        <td style="color: white">{{__('discount')}}</td>
+
+                                        <td style="color: white">{{$total}} $</td>
+
+                                    </tr>
+                                    <tr>
                                         <td style="color: white">{{__('Order Total')}}</td>
-                                        <td style="color: white">${{$total}}</td>
+
+                                        <td style="color: white">{{$total}} $</td>
+
                                     </tr>
                                 </tbody>
                             </table>

@@ -151,12 +151,29 @@ $product = new \App\Models\Admin\Product();
                     <span>{{ __('roles') }}</span>
                 </a>
                 <div id="role" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded"> @can('role-edit')
+                    <div class="bg-white py-2 collapse-inner rounded"> @can('role-list')
                         <a class="collapse-item" href="{{ route('roles.index') }}">{{ __('all') }}</a>@endcan
                         @can('role-create')
                         <a class="collapse-item" href="{{ route('roles.create') }}">{{ __('create') }}</a>@endcan
 
                         {{-- <a class="collapse-item" href="{{ route('roles.trash') }}">{{ __('trash') }}</a> --}}
+                    </div>
+                </div>
+            </li>
+            @endcan
+            @can('coupon-list')
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#coupon" data-toggle="collapse" data-target="#coupon" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>{{ __('coupon') }}</span>
+                </a>
+                <div id="coupon" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded"> @can('coupon-list')
+                        <a class="collapse-item" href="{{ route('coupons.index') }}">{{ __('all') }}</a>@endcan
+                        @can('coupon-create')
+                        <a class="collapse-item" href="{{ route('coupons.create') }}">{{ __('create') }}</a>@endcan
                     </div>
                 </div>
             </li>

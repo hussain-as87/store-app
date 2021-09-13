@@ -1,20 +1,26 @@
 <?php
 
-use App\Exports\UsersExport;
+use App\Models\User;
 use App\Models\Order;
+use App\Exports\UsersExport;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cookie;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Http\Controllers\CartController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SocialLoginController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportsController;
@@ -24,11 +30,6 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\admin\CustomLoginController;
 use App\Http\Controllers\Admin\RequestResetPasswordController;
-use App\Http\Controllers\ExcelController;
-use App\Models\User;
-use Maatwebsite\Excel\Facades\Excel;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/trash/subcategories', [SubCategoryController::class, 'trash'])->name('subcategories.trash');
     Route::get('/subcategories/{id}/restore', [SubCategoryController::class, 'restore'])->name('subcategories.restore');
     Route::get('/subcategories/{id}/force-delete', [SubCategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
+
+
+    Route::get('coupons',[CouponController::class,'index'])->name('coupons.index');
+    Route::get('coupons/create',[CouponController::class,'create'])->name('coupons.create');
+    Route::post('coupons/store',[CouponController::class,'store'])->name('coupons.store');
+    Route::get('coupons/{id}',[CouponController::class,'destroy'])->name('coupons.destroy');
 });
 
 Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 'update');
