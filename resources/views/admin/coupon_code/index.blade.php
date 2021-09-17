@@ -31,7 +31,7 @@
                 <th scope="row">{{ $key + 1 }}</th>
                 <td>{{ $c->code }}</td>
                 <td>{{ $c->discount_value }}</td>
-                <td>{{ $c->is_active ? __('inactive') : __('active') }} $</td>
+                <td>{{ $c->is_active ? __('inactive') : __('active') }}</td>
                 <td>{{ $c->created_at->diffForHumans() }}</td>
                 <td>{{ $c->updated_at->diffForHumans() }}</td>
                 @can('coupon-delete')

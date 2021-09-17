@@ -38,53 +38,59 @@
                     </tr>
 
                     @endforeach
+
                 </tbody>
             </table>
         </div>
-        <div class="col-md-4">
-            <form class="ps-checkout__form" action="{{route('checkout.store')}}" method="post">
-                @csrf
 
-                <div class=" " {{-- style="position: relative;
+        <div class="col-md-4">
+
+
+            <div class=" " {{-- style="position: relative;
                               right: -318px;" --}}>
 
-                    <div class="ps-checkout__order" {{--  style="width: 500px;text-align: center;" --}}>
+                <div class="ps-checkout__order" {{--  style="width: 500px;text-align: center;" --}}>
 
 
-                        <header>
-                            <h3>Your Order</h3>
-                        </header>
-                        <div class="content">
-                            <table class="table ps-checkout__products">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase" style="color: white">{{ __('products') }}</th>
-                                        <th class="text-uppercase" style="color: white">{{ __('total') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <div class="form-group mx-sm-1 mb-4">
-                                            <input type="text" name="code_cupon" class="form-control text-center" id="inputPassword2" placeholder="{{ __('cupon code') }}">
-                                            <button type="button" wire:click="coupon_index()" class="btn btn-success col-md">Confirm</button>
-                                        </div>
-                                    </tr>
+                    <header>
+                        <h3>Your Order</h3>
+                    </header>
+                    <div class="content">
+                        <table class="table ps-checkout__products">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase" style="color: white">{{ __('products') }}</th>
+                                    <th class="text-uppercase" style="color: white">{{ __('total') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div class="form-group mx-sm-1 mb-4">
+                                        <form action="{{ route('coupons.check') }}" method="POST">
+                                            @csrf
+                                            <input type="text" name="code" class="form-control text-center" placeholder="{{ __('cupon code') }}">
+                                            <button wire:click="coupon_check()" name="confirm_code" class="btn btn-success col-md">{{ __('Confirm') }}</button>
+                                        </form>
+                                    </div>
+                                </tr>
+                                <form class="ps-checkout__form" action="{{route('checkout.store')}}" method="post">
+                                    @csrf
                                     @foreach ($cart as $item)
                                     <tr>
                                         <td style="color: white">{{$item->product->name}}</td>
                                         <td style="color: white">{{$item['price'] * $item['quantity']}} $</td>
-
                                     </tr>
                                     @php
                                     $total += $item['price'] *$item['quantity']
                                     @endphp
                                     @endforeach
                                     <tr>
-
                                         <td style="color: white">{{__('discount')}}</td>
-
-                                        <td style="color: white">{{$total}} $</td>
-
+                                        <td style="color: white">
+                                            @if($coupon)
+                                            {{$coupon->discount_value }} %
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="color: white">{{__('Order Total')}}</td>
@@ -92,37 +98,37 @@
                                         <td style="color: white">{{$total}} $</td>
 
                                     </tr>
-                                </tbody>
-                            </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer>
+                        <h3>Payment Method</h3>
+                        <div class="form-group cheque">
+                            <div class="ps-radio">
+                                <input class="form-control" type="radio" id="rdo01" name="payment" checked>
+                                <label for="rdo01">Cheque Payment</label>
+                                <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                            </div>
                         </div>
-                        <footer>
-                            <h3>Payment Method</h3>
-                            <div class="form-group cheque">
-                                <div class="ps-radio">
-                                    <input class="form-control" type="radio" id="rdo01" name="payment" checked>
-                                    <label for="rdo01">Cheque Payment</label>
-                                    <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                </div>
+                        <div class="form-group paypal">
+                            <div class="ps-radio ps-radio--inline">
+                                <input class="form-control" type="radio" name="payment" id="rdo02">
+                                <label for="rdo02">Paypal</label>
                             </div>
-                            <div class="form-group paypal">
-                                <div class="ps-radio ps-radio--inline">
-                                    <input class="form-control" type="radio" name="payment" id="rdo02">
-                                    <label for="rdo02">Paypal</label>
-                                </div>
-                                <ul class="ps-payment-method">
-                                    <li><a href="#"><img src="images/payment/1.png" alt=""></a></li>
-                                    <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
-                                    <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
-                                </ul>
-                                <button class="ps-btn ps-btn--fullwidth" type="submit">{{__('Place Order')}}<i class="ps-icon-next"></i></button>
-                            </div>
-                        </footer>
-                    </div>
-                    <div class="ps-shipping">
-                        <h3>FREE SHIPPING</h3>
-                        <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
-                    </div>
+                            <ul class="ps-payment-method">
+                                <li><a href="#"><img src="images/payment/1.png" alt=""></a></li>
+                                <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
+                                <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
+                            </ul>
+                            <button class="ps-btn ps-btn--fullwidth" type="submit">{{__('Place Order')}}<i class="ps-icon-next"></i></button>
+                        </div>
+                    </footer>
                 </div>
+                <div class="ps-shipping">
+                    <h3>FREE SHIPPING</h3>
+                    <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
+                </div>
+            </div>
 
             </form>
         </div>

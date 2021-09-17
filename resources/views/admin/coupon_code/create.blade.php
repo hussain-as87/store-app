@@ -1,9 +1,9 @@
 @extends('layouts.admin_layout')
 @section('header_page')
-{{__('create product')}}
+{{__('create coupon')}}
 @endsection
 @section('title')
-{{__('create product')}}
+{{__('create coupon')}}
 @endsection
 @section('name'){{ __('all') }}@endsection
 @section('href'){{ route('coupons.index') }}@endsection
@@ -22,14 +22,20 @@
         </div>
         @endif
         @csrf
-        <div class="form-group">
-            <label for="discount_value">{{ __('discount value') }}</label>
-            <input type="text" name="discount_value" class="form-control @error('discount_value') is-invalid alert-danger @enderror" id="discount_value" value="{{ old('discount_value') }}" placeholder="@error('discount_value'){{ $message }} @enderror">
-        </div>
-        <div class="form-group">
-            <label for="code">{{ __('code') }}</label>
-            <select name="is_active" id="is_active" class="form-control">
-                <option value="0">{{ __('active') }}</option>
+
+        <div class="col-auto">
+            <label class="sr-only" or="discount_value">{{ __('discount value') }}</label>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <div class="input-group-text">%</div>
+              </div>
+              <input type="number" name="discount_value" class="form-control @error('discount_value') is-invalid alert-danger @enderror" id="discount_value" value="{{ old('discount_value') }}" placeholder="{{ __('enter discount value') }}">
+            </div>
+          </div>
+        <div class="col-auto">
+            <select name="is_active" id="is_active" class="form-control mb-4 @error('discount_value')  alert-danger @enderror">
+                <option value="">{{ __('choose option') }}</option>
+                <option value="0" >{{ __('active') }}</option>
                 <option value="1">{{ __('inactive') }}</option>
             </select> </div>
 

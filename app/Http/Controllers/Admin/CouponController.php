@@ -11,7 +11,7 @@ class CouponController extends BaseController
 {
     public function index()
     {
-        $coupon = Coupon::orderByDesc('updated_at','desc')->paginate(20);
+        $coupon = Coupon::orderByDesc('updated_at', 'desc')->paginate(20);
         return view('admin.coupon_code.index', compact('coupon'));
     }
     public function create()
@@ -21,12 +21,16 @@ class CouponController extends BaseController
     }
     public function store(Request $request)
     {
-        $coupon = Coupon::create([
-            'code'=> Str::random(8),
-            'discount_value'=>$request->discount_value,
-            'is_active'=> $request->is_active
+        $request->validate([
+            'discount_value' => 'required',
+            'is_active' => 'required|max:1|min:1'
         ]);
-        if($coupon){
+        $coupon = Coupon::create([
+            'code' => Str::random(8),
+            'discount_value' => $request->discount_value,
+            'is_active' => $request->is_active
+        ]);
+        if ($coupon) {
             toast('Successfully', 'success');
             return redirect()->back();
         } else {
@@ -36,9 +40,22 @@ class CouponController extends BaseController
     }
     public function destroy($id)
     {
-        $coupon= Coupon::findOrFail($id)->delete();
-        if($coupon){
+        $coupon = Coupon::findOrFail($id)->delete();
+        if ($coupon) {
             toast('Deleted !!', 'error');
+            return redirect()->back();
+        }
+    }
+
+    public function coupon_check()
+    {
+        $coupon = Coupon::where('code', request()->post('code'))->first();
+
+        if (isset($coupon) || !empty($coupon)) {
+            toast('Successfully !!!','success');
+            return redirect()->back()->with('coupon');
+        }else{
+            toast('Not Found !!!','error');
             return redirect()->back();
         }
     }

@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\admin\CustomLoginController;
 use App\Http\Controllers\Admin\RequestResetPasswordController;
+use App\Http\Livewire\Counter;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('coupons/create',[CouponController::class,'create'])->name('coupons.create');
     Route::post('coupons/store',[CouponController::class,'store'])->name('coupons.store');
     Route::get('coupons/{id}',[CouponController::class,'destroy'])->name('coupons.destroy');
+    Route::post('coupons/check',[Counter::class,'coupon_check'])->name('coupons.check');
 });
 
 Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 'update');

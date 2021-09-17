@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class Counter extends Component
 {
-
+    public $dataOfText, $code;
     public $quantity = 0;
     public $cart = [];
     protected $listeners = ['cartUpdated' => 'onCartUpdate'];
@@ -51,8 +51,8 @@ class Counter extends Component
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-
-        return view('livewire.counter', compact('cart'));
+        $coupon = Coupon::where('code', $request->code)->first();
+        return view('livewire.counter', compact('cart', 'coupon'));
     }
     protected function getCartId()
     {
@@ -70,10 +70,17 @@ class Counter extends Component
         return redirect()->back();
     }
 
-    public function coupon_index(Request $request)
+    public function coupon_check()
     {
-        $coupon=Coupon::where('code',$request->code_cupon)->first();
-        return redirect()->back();
+        $coupon = Coupon::where('code', request('code'))->first();
 
+        if (isset($coupon) || !empty($coupon)) {
+            toast('Successfully !!!', 'success');
+            
+            return redirect()->back()->with(['coupon'=>$coupon]);
+        } else {
+            toast('Not Found !!!', 'error');
+            return redirect()->back();
+        }
     }
 }
