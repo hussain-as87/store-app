@@ -72,11 +72,10 @@ class Counter extends Component
 
     public function coupon_check()
     {
-        $coupon = Coupon::where('code', request('code'))->first();
+        $coupon = Coupon::where('code', request()->post('code'))->first();
 
         if (isset($coupon) || !empty($coupon)) {
             toast('Successfully !!!', 'success');
-            
             return redirect()->back()->with(['coupon'=>$coupon]);
         } else {
             toast('Not Found !!!', 'error');
