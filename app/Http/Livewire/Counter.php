@@ -76,7 +76,7 @@ class Counter extends Component
 
         if (isset($coupon) || !empty($coupon)) {
             toast('Successfully !!!', 'success');
-            return redirect()->back()->with(['coupon'=>$coupon]);
+            return redirect()->back()->with(session()->put('coupon_value',$coupon->discount_value));
         } else {
             toast('Not Found !!!', 'error');
             return redirect()->back();

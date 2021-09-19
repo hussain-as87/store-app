@@ -69,7 +69,7 @@
                                         <form action="{{ route('coupons.check') }}" method="POST">
                                             @csrf
                                             <input type="text" name="code" class="form-control text-center" placeholder="{{ __('cupon code') }}">
-                                            <button wire:click="coupon_check()" name="confirm_code" class="btn btn-success col-md">{{ __('Confirm') }}</button>
+                                            <button name="confirm_code" class="btn btn-success col-md">{{ __('Confirm') }}</button>
                                         </form>
                                     </div>
                                 </tr>
@@ -81,22 +81,28 @@
                                         <td style="color: white">{{$item['price'] * $item['quantity']}} $</td>
                                     </tr>
                                     @php
-                                    $total += $item['price'] *$item['quantity']
+                                    $total += $item['price'] *$item['quantity'];
                                     @endphp
                                     @endforeach
                                     <tr>
                                         <td style="color: white">{{__('discount')}}</td>
                                         <td style="color: white">
-                                            @if($coupon)
-                                            {{$coupon->discount_value }} %
+                                           @if(session('coupon_value'))
+                                           {{session('coupon_value') }}
+                                             %
                                             @endif
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="color: white">{{__('Order Total')}}</td>
-
+                                        @if(session('coupon_value'))
+                                        @php
+                                        $final_total = $total*session('coupon_value')/100
+                                        @endphp
+                                        <td style="color: white">{{$final_total}} $</td>
+                                        @else
                                         <td style="color: white">{{$total}} $</td>
-
+                                        @endif
                                     </tr>
                             </tbody>
                         </table>
