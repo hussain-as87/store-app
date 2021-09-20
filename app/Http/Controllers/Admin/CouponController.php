@@ -27,7 +27,7 @@ class CouponController extends BaseController
         ]);
         $coupon = Coupon::create([
             'code' => Str::random(8),
-            'discount_value' => $request->discount_value,
+            'discount_value' => '0.'.$request->discount_value,
             'is_active' => $request->is_active
         ]);
         if ($coupon) {

@@ -57,7 +57,9 @@ class CheckoutController extends Controller
                  ]);*/
                 $total += $item->price * $item->quantity;
             }
+            Order::where('user_id',auth()->id())->delete();
             $user->carts()->delete();
+
             Cookie::queue(Cookie::make('cart_id', '', -60));
             // Cart::where('user_id', auth()->id())->delete();
             DB::commit();

@@ -178,6 +178,7 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 
 
 Route::view('map', 'maps');
+ 
 
 
 

@@ -87,17 +87,20 @@
                                     <tr>
                                         <td style="color: white">{{__('discount')}}</td>
                                         <td style="color: white">
+                                            @php
+                                            $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
+                                            @endphp
                                            @if(session('coupon_value'))
-                                           {{session('coupon_value') }}
-                                             %
+                                           {{$formatter->format(session('coupon_value')) }}
                                             @endif
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="color: white">{{__('Order Total')}}</td>
                                         @if(session('coupon_value'))
-                                        @php
-                                        $final_total = $total*session('coupon_value')/100
+                                        @php                        
+                                        $total2 = session('coupon_value')*$total;
+                                        $final_total=$total-$total2;
                                         @endphp
                                         <td style="color: white">{{$final_total}} $</td>
                                         @else
