@@ -19,7 +19,7 @@
 @endsection
 @section('content')
 
-    <div class="row">
+    {{--  <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  --}}
     <!-- Area Chart -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

@@ -98,7 +98,7 @@
                                     <tr>
                                         <td style="color: white">{{__('Order Total')}}</td>
                                         @if(session('coupon_value'))
-                                        @php                        
+                                        @php
                                         $total2 = session('coupon_value')*$total;
                                         $final_total=$total-$total2;
                                         @endphp

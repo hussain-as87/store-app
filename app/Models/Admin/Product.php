@@ -21,7 +21,7 @@ class Product extends Model
     protected $guarded = [];
     //const CREATED_AT = 'created_on';
     //const UPDATED_AT = 'updated_at';
-    
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -102,4 +102,8 @@ class Product extends Model
            $query->has('orders');
         });
     }*/
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

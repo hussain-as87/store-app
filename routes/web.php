@@ -49,7 +49,7 @@ Auth::routes([
     'verify' => true
 ]);
 
-Route::get('/home', [ReportsController::class, 'sale'])->name('home')->middleware('auth');
+Route::get('/home', [CategoriesController::class, 'index'])->name('home')->middleware('auth');
 
 
 /*the categories route*/
@@ -178,7 +178,7 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 
 
 Route::view('map', 'maps');
- 
+
 
 
 

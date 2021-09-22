@@ -136,4 +136,9 @@ class User extends Authenticatable
             ->where('permission', $name)
             ->count();
     } */
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

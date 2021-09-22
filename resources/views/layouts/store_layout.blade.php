@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/revolution/css/navigation.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     @livewireStyles
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -45,12 +46,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Custom-->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
-    <!--WARNING: Respond.js doesn't work if you view the page via file://-->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+    svg:hover{
+        color: #ffb100;
+    }
+</style>
     {{-- @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
 
 
@@ -62,11 +66,14 @@
     @endif --}}
 </head>
 <!--[if IE 7]>
-<body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<body class="ie7 lt-ie8 lt-ie9 lt-ie10">
+    <![endif]-->
 <!--[if IE 8]>
-<body class="ie8 lt-ie9 lt-ie10"><![endif]-->
+    <body class="ie8 lt-ie9 lt-ie10">
+        <![endif]-->
 <!--[if IE 9]>
-<body class="ie9 lt-ie10"><![endif]-->
+        <body class="ie9 lt-ie10">
+            <![endif]-->
 
 <body class="ps-loading">
     <div class="header--sidebar"></div>
@@ -150,7 +157,7 @@
                                             <li><a href="product-listing.html">BEST SELLERS</a></li>
                                             <li><a href="product-listing.html">NOW TRENDING</a></li>
                                             <li><a href="product-listing.html">SUMMER ESSENTIALS</a></li>
-                                            <li><a href="product-listing.html">MOTHER'S DAY COLLECTION</a>
+                                            <li><a href="product-listing.html">MOTHERS DAY COLLECTION</a>
                                             </li>
                                             <li><a href="product-listing.html">FAN GEAR</a></li>
                                         </ul>

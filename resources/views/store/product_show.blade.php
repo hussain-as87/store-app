@@ -29,7 +29,6 @@
                             @foreach ($product->product_images as $image)
                             <div class="item"><img class="zoom" src="{{asset('storage/'.$image->path)}}" alt="" data-zoom-image="{{asset('storage/'.$image->path)}}"></div>
                             @endforeach
-
                         </div>
                     </div>
                     <div class="ps-product__thumbnail--mobile">
@@ -37,15 +36,9 @@
                         <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img src="{{asset('storage/products/'.$product->image)}}" alt=""><img src="{{asset('storage/products/'.$product->image)}}" alt=""><img src="{{asset('storage/products/'.$product->image)}}{{asset('storage/products/'.$product->image)}}" alt=""></div>
                     </div>
                     <div class="ps-product__info">
-                        <div class="ps-product__rating">
-                            <select class="ps-rating">
-                                <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="2">5</option>
-                            </select><a href="#">(Read all 8 reviews)</a>
-                        </div>
+
+                        <livewire:rating-products :product="$product" :key="$product->id">
+
                         <h1>{{$product->name}}</h1>
                         <p class="ps-product__category"><a href="#">{{$product->category->name}}</a>,<a href="#">
                                 Nike</a>,<a href="#"> Jordan</a></p>
