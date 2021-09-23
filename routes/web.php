@@ -98,6 +98,7 @@ Route::post('change-password', [ProfileController::class, 'reset_password'])->na
 Route::get('/', [StoreController::class, 'index'])->name('store.home');
 Route::get('store/{store}', [StoreController::class, 'index'])->name('store.index');
 Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
+Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
 /*home pages (store app) routes ---end---*/
 
 

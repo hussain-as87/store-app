@@ -3,20 +3,39 @@
 namespace App\Models\Admin;
 
 
-use App\Models\Comment;
-use App\Models\Order;
-use App\Models\OrderProduct;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Order;
+use App\Models\Comment;
+use App\Models\OrderProduct;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory, HasTranslations, SoftDeletes;
+    use HasFactory, HasTranslations, SoftDeletes ,SearchableTrait;
 
+
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'products.name' => 10,
+            'products.description' => 10,
+        ] ,
+          'joins' => [
+              'categories' => ['categories.id','products.category_id'],
+              'users' => ['users.id','products.category_id'],
+          ],
+    ];
     public $translatable = ['name', 'description'];
     protected $guarded = [];
     //const CREATED_AT = 'created_on';

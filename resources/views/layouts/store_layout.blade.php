@@ -171,11 +171,11 @@
                     </ul>
                 </div>
                 <div class="navigation__column right">
-                    <form class="ps-search--header" action="do_action" method="post">
-                        <input class="form-control" type="text" placeholder="Search Product…">
-                        <button><i class="ps-icon-search"></i></button>
+                    <form class="ps-search--header" action="{{ route('store.product.search') }}" method="POST">
+                        @csrf
+                        <input class="form-control" type="text" placeholder="{{ __('search') }}" name="search_value">
+                        <button type="submit"><i class="ps-icon-search"></i></button>
                     </form>
-
                     @php
                     $total=0;
                     @endphp

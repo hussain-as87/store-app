@@ -122,4 +122,33 @@ class StoreController extends Controller
         }/*get cart id from cookie*/
         return $id;
     }
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search_value' => 'required'
+        ]);
+
+        $user = Auth::id();
+        $value=$request->search_value;
+        $cart = Cart::with('product')->where('id', $this->getCartId())
+            ->when($user, function ($query, $user) {
+                $query->where('user_id', $user)->orWhereNull('user_id');
+            })
+            ->get();
+            $item_count=$cart->count();
+
+        /** if i want to bring a relation in another relation With('user.store,gallery') */
+        $categories = Category::all();
+        $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
+        //$expensive_sales=Product::highPrice(120,500)->get();
+        $products = Product::with('category.subcategories', 'product_images', 'user')->search($value)
+        ->orderByDesc('updated_at')->paginate(10);
+
+        if (count($products) > 0) {
+            return view('store.search', compact( 'products', 'categories', 'top_sales', 'cart','item_count'));
+        } else {
+            return view('store.search', compact( 'products', 'categories', 'top_sales', 'cart','item_count'));
+            toast('NO RESULT !', 'error');
+        }
+    }
 }

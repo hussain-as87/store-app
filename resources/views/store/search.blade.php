@@ -1,6 +1,6 @@
 @extends('layouts.store_layout')
 @section('title')
-    {{__('home')}}
+    {{__('search')}}
 @endsection
 @section('content')
     <div class="ps-banner">
@@ -240,10 +240,13 @@
                                                 <img src="{{asset('storage/'.$g->path)}}" alt="">
                                             @endforeach
                                         </div>
-                                        @if(!empty($ra))
-                                        <b class="p-2">( {{ $ra->rating }}<svg class="bg-outline-warning cursor-pointer block w-8 h-8 @if($rating >= 5 ) text-warning @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15" height="15">
-                                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg> )</b>
-                                        @endif
+                                        <select class="ps-rating ps-shoe__rating">
+                                            <option value="1">1</option>
+                                            <option value="1">2</option>
+                                            <option value="1">3</option>
+                                            <option value="1">4</option>
+                                            <option value="2">5</option>
+                                        </select>
                                     </div>
                                     <div class="ps-shoe__detail"><a class="ps-shoe__name"
                                                                     href="{{route('store.product.show',$pro->id)}}">{{$pro->name}}</a>

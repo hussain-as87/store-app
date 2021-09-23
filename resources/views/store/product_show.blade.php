@@ -37,58 +37,60 @@
                     </div>
                     <div class="ps-product__info">
 
-                        <livewire:rating-products :product="$product" :key="$product->id">
+                        <livewire:rating-products :product="$product" :key="$product->id"  :rat="$rate_count->rating">
 
-                        <h1>{{$product->name}}</h1>
-                        <p class="ps-product__category"><a href="#">{{$product->category->name}}</a>,<a href="#">
-                                Nike</a>,<a href="#"> Jordan</a></p>
-                        <h3 class="ps-product__price">£ {{$product->price}}
-                            <del>£ 330</del>
-                        </h3>
-                        <div class="ps-product__block ps-product__quickview">
 
-                        </div>
-                        <div class="ps-product__block ps-product__style">
-                            <h4>CHOOSE YOUR STYLE</h4>
-                            <ul>
-                                <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/1.jpg" alt=""></a>
-                                </li>
-                                <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/2.jpg" alt=""></a>
-                                </li>
-                                <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/3.jpg" alt=""></a>
-                                </li>
-                                <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/2.jpg" alt=""></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <form action="{{route('cart.store')}}" method="post" id="appCart">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{$product->id}}">
-                            <div class="ps-product__block ps-product__size">
-                                <h4>CHOOSE SIZE<a href="#">Size chart</a></h4>
-                                <select class="ps-select selectpicker">
-                                    <option value="1">Select Size</option>
-                                    <option value="2">4</option>
-                                    <option value="3">4.5</option>
-                                    <option value="3">5</option>
-                                    <option value="3">6</option>
-                                    <option value="3">6.5</option>
-                                    <option value="3">7</option>
-                                    <option value="3">7.5</option>
-                                    <option value="3">8</option>
-                                    <option value="3">8.5</option>
-                                    <option value="3">9</option>
-                                    <option value="3">9.5</option>
-                                    <option value="3">10</option>
-                                </select>
-                                <div class="form-group">
-                                    <input class="form-control" type="number" name="quantity" value="1">
-                                </div>
+
+                            <h1>{{$product->name}}</h1>
+                            <p class="ps-product__category"><a href="#">{{$product->category->name}}</a>,<a href="#">
+                                    Nike</a>,<a href="#"> Jordan</a></p>
+                            <h3 class="ps-product__price">£ {{$product->price}}
+                                <del>£ 330</del>
+                            </h3>
+                            <div class="ps-product__block ps-product__quickview">
+
                             </div>
-                        </form>
-                        <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="document.getElementById('appCart').submit()">Add to cart<i class="ps-icon-next"></i></a>
-                            <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
-                        </div>
+                            <div class="ps-product__block ps-product__style">
+                                <h4>CHOOSE YOUR STYLE</h4>
+                                <ul>
+                                    <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/1.jpg" alt=""></a>
+                                    </li>
+                                    <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/2.jpg" alt=""></a>
+                                    </li>
+                                    <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/3.jpg" alt=""></a>
+                                    </li>
+                                    <li><a href="{{route('store.product.show',$product->id)}}"><img src="images/shoe/sidebar/2.jpg" alt=""></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <form action="{{route('cart.store')}}" method="post" id="appCart">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <div class="ps-product__block ps-product__size">
+                                    <h4>CHOOSE SIZE<a href="#">Size chart</a></h4>
+                                    <select class="ps-select selectpicker">
+                                        <option value="1">Select Size</option>
+                                        <option value="2">4</option>
+                                        <option value="3">4.5</option>
+                                        <option value="3">5</option>
+                                        <option value="3">6</option>
+                                        <option value="3">6.5</option>
+                                        <option value="3">7</option>
+                                        <option value="3">7.5</option>
+                                        <option value="3">8</option>
+                                        <option value="3">8.5</option>
+                                        <option value="3">9</option>
+                                        <option value="3">9.5</option>
+                                        <option value="3">10</option>
+                                    </select>
+                                    <div class="form-group">
+                                        <input class="form-control" type="number" name="quantity" value="1">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="document.getElementById('appCart').submit()">Add to cart<i class="ps-icon-next"></i></a>
+                                <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="ps-product__content mt-50">

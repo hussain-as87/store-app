@@ -72,8 +72,6 @@ class RatingProducts extends Component
                 throw $th;
             }
             $this->hideForm = true;
-
-
         }
 
     }
