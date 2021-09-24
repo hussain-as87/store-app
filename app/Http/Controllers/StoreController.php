@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Admin\Category;
+use App\Models\PriceDiscount;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -29,7 +30,7 @@ class StoreController extends Controller
             $item_count=$cart->count();
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
-        $categories = Category::all();
+        $categories = Category::paginate(8);
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('updated_at')->paginate(10);
@@ -109,8 +110,9 @@ class StoreController extends Controller
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
+            $new_price= PriceDiscount::where('product_id',$product->id)->first();
             $item_count=$cart->count();
-        return view('store.product_show', compact('product', 'cart','item_count'));
+        return view('store.product_show', compact('product', 'cart','item_count' , 'new_price'));
     }
     protected function getCartId()
     {

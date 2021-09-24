@@ -31,6 +31,7 @@ class ProductRequest extends FormRequest
             'price' => 'required|max:1000000000',
             'category_id' => 'required',
             'gallery' => 'sometimes|max:1000000000',
+            'percentage' => 'sometimes|max:1000000000',
         ];
     }
 

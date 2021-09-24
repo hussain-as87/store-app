@@ -37,16 +37,22 @@
                     </div>
                     <div class="ps-product__info">
 
-                        <livewire:rating-products :product="$product" :key="$product->id"  :rat="$rate_count->rating">
+                        <livewire:rating-products :product="$product" :key="$product->id">
 
 
 
                             <h1>{{$product->name}}</h1>
                             <p class="ps-product__category"><a href="#">{{$product->category->name}}</a>,<a href="#">
                                     Nike</a>,<a href="#"> Jordan</a></p>
-                            <h3 class="ps-product__price">£ {{$product->price}}
-                                <del>£ 330</del>
+                            @if ($new_price !== null)
+                            <h3 class="ps-product__price">£ {{$new_price->price}}
+                                <del>£ {{$product->price}}</del>
                             </h3>
+                            @else
+                            <h3 class="ps-product__price">£ {{$product->price}}
+                            </h3>
+                            @endif
+
                             <div class="ps-product__block ps-product__quickview">
 
                             </div>

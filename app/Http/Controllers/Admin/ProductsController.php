@@ -8,6 +8,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductImage;
 use App\Models\Admin\Tag;
+use App\Models\PriceDiscount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -62,6 +63,16 @@ class ProductsController extends BaseController
         ///////
         if ($request->hasFile('gallery')) {
             $this->gallery($request, $product);
+        } ////////for discount
+        if ($request->post('percentage')) {
+            $per = '0.' . request()->percentage;
+            $old_price = $per * $request->price;
+            $new_price  = $request->price - $old_price;
+            $dis = new PriceDiscount();
+            $dis->percentage = $per;
+            $dis->price = $new_price;
+            $dis->product_id = $product->id;
+            $dis->save();
         }
         /////
         $this->SaveTag($request, $product);
@@ -100,7 +111,25 @@ class ProductsController extends BaseController
         }
         $this->SaveTag($request, $product);
 
+        if ($request->post('percentage')) {
+            $per = '0.' . request()->percentage;
+            $old_price = $per * $request->price;
+            $new_price  = $request->price - $old_price;
+            $dis = PriceDiscount::where('product_id', $product->id)->first();
 
+            if ($dis != null) {
+                $dis->percentage = $per;
+                $dis->price = $new_price;
+                $dis->product_id = $product->id;
+                $dis->update();
+            } else {
+                $dis = new PriceDiscount();
+                $dis->percentage = $per;
+                $dis->price = $new_price;
+                $dis->product_id = $product->id;
+                $dis->save();
+            }
+        }
         if ($product) {
             toast('Successfully', 'success');
             return redirect()->back();

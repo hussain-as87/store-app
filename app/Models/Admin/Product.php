@@ -125,4 +125,9 @@ class Product extends Model
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function priceDiscount()
+    {
+        return $this->hasOne(Product::class);
+    }
 }

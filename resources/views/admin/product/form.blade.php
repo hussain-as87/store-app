@@ -109,4 +109,14 @@
             placeholder="@error('tags'){{ $message }} @enderror">
     </div>
 
+    <div class="form-group">
+        <label class="sr-only" or="discount_value">{{ __('discount value') }}</label>
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <div class="input-group-text">%</div>
+          </div>
+          <input type="number" name="percentage" class="form-control @error('percentage') is-invalid alert-danger @enderror" id="percentage" value="{{ old('percentage') }}" placeholder="{{ __('enter discount value') }}">
+        </div>
+      </div>
+
 </div>
