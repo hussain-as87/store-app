@@ -7,8 +7,9 @@ use App\Models\Store;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
-use App\Models\Admin\Category;
 use App\Models\PriceDiscount;
+use App\Models\Admin\Category;
+use App\Models\favoriteProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -30,77 +31,28 @@ class StoreController extends Controller
             $item_count=$cart->count();
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
-        $categories = Category::paginate(8);
+        $categories = Category::paginate(6);
+
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('updated_at')->paginate(10);
         return view('store.home', compact('product', 'products', 'categories', 'top_sales', 'cart','item_count'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function favorite_store($id)
     {
-        //
-    }
+        $fav = favoriteProduct::where('product_id', $id)->where('user_id', auth()->id())->first();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if ($fav === null) {
+            favoriteProduct::create([
+                'product_id' => $id,
+                'user_id' => auth()->id()
+            ]);
+            return redirect()->back();
+        } else {
+            $fav->delete();
+            return redirect()->back();
+        }
     }
 
     public function productShow(Product $product)
@@ -112,8 +64,13 @@ class StoreController extends Controller
             ->get();
             $new_price= PriceDiscount::where('product_id',$product->id)->first();
             $item_count=$cart->count();
-        return view('store.product_show', compact('product', 'cart','item_count' , 'new_price'));
+$propducts_cate = Product::where('category_id',$product->category_id)->orderByDesc('updated_at')->get();
+            $favorite= favoriteProduct::where('product_id',$product->id)->where('user_id',auth()->id())->first();
+
+        return view('store.product_show', compact('propducts_cate','product', 'cart','item_count' , 'new_price','favorite'));
     }
+
+
     protected function getCartId()
     {
         $id = \request()->cookie('cart_id');
@@ -124,6 +81,8 @@ class StoreController extends Controller
         }/*get cart id from cookie*/
         return $id;
     }
+
+
     public function search(Request $request)
     {
         $request->validate([

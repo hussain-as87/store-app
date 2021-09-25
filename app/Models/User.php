@@ -141,4 +141,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(favoriteProduct::class);
+    }
 }

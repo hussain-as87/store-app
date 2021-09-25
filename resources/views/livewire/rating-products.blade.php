@@ -1,9 +1,9 @@
 <div wire:poll.750ms>
-
     @if($hideForm != true)
-    <form wire:click="rate()">
-        <div class="ps-product__rating">
-            <div class="block max-w-3xl px-1 py-2 mx-auto ps-rating">
+
+    <div class="ps-product__rating">
+        <div class="block max-w-3xl px-1 py-2 mx-auto ps-rating">
+            <form wire:click="rate()">
                 <div class="flex space-x-1 rating">
                     <label for="star1">
                         <input hidden wire:model="rating" type="radio" id="star1" name="rating" value="1" />
@@ -31,12 +31,14 @@
                             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
                     </label>
                 </div>
-            </div>
-            @if(!empty($ra))
-            <b class="p-2">( {{ $ra->rating }} <svg class="bg-outline-warning cursor-pointer block w-8 h-8 text-warning" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15" height="15">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg> )</b>
-            @endif
+            </form>
         </div>
-    </form>
+
+        @if(!empty($ra))
+        <b class="p-2">( {{ $ra->rating }} <svg class="bg-outline-warning cursor-pointer block w-8 h-8 text-warning" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15" height="15">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg> )</b>
+        @endif
+    </div>
+
     @endif
 </div>

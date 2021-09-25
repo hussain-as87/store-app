@@ -130,4 +130,9 @@ class Product extends Model
     {
         return $this->hasOne(Product::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(favoriteProduct::class);
+    }
 }

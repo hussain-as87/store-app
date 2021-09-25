@@ -57,6 +57,8 @@
                     @php
                     $new_price= App\Models\PriceDiscount::where('product_id',$pro->id)->first();
                     $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
+                    $favo= App\Models\favoriteProduct::where('product_id',$pro->id)->where('user_id',auth()->id())->first();
+
                     @endphp
                     <div class="grid-item {{$pro->category->name}}">
                         <div class="grid-item__content-wrapper">
@@ -68,7 +70,13 @@
                                     @if ($new_price!==null)
                                     <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-{{ $formatter->format($new_price->percentage) }}</span></div>
                                     @endif
-                                    <a class="ps-shoe__favorite" href="{{route('store.product.show',$pro->id)}}"><i class="ps-icon-heart"></i></a>
+                                    <form action="{{ route('store.fav.product',$pro->id) }}" method="post">
+                                        @csrf
+                                        <button style="border: none; background: transparent;">
+                                            <a class="ps-shoe__favorite @if($favo !== null)
+                                                      bg-danger
+                                       @endif"><i class="ps-icon-heart"></i></a></button>
+                                    </form>
                                     <img src="{{asset('storage/products/'.$pro->image)}}" alt=""><a class="ps-shoe__overlay" href="{{ route('store.product.show',$pro->id) }}"></a>
                                 </div>
                                 <div class="ps-shoe__content">
@@ -184,7 +192,15 @@
                             <div class="ps-badge"><span>{{__('new')}}</span></div>
                             @endif
                             <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div>
-                            <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="{{asset('storage/products/'.$pro->image)}}" alt=""><a class="ps-shoe__overlay" href="{{ route('store.product.show',$pro->id) }}"></a>
+                            <form action="{{ route('store.fav.product',$pro->id) }}" method="post">
+                                @csrf
+                                <button style="border: none; background: transparent;">
+                                    <a class="ps-shoe__favorite @if($favo !== null)
+                                              bg-danger
+                               @endif"><i class="ps-icon-heart"></i></a></button>
+                            </form>
+                            <img src="{{asset('storage/products/'.$pro->image)}}" alt=""><a class="ps-shoe__overlay" href="{{ route('store.product.show',$pro->id) }}"></a>
+
                         </div>
                         <div class="ps-shoe__content">
                             <div class="ps-shoe__variants">
