@@ -97,6 +97,7 @@ Route::post('change-password', [ProfileController::class, 'reset_password'])->na
 /*home pages (store app) routes ---start---*/
 Route::get('/', [StoreController::class, 'index'])->name('store.home');
 Route::get('store/{store}', [StoreController::class, 'index'])->name('store.index');
+Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
 Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
 Route::post('favorite/{id}', [StoreController::class, 'favorite_store'])->name('store.fav.product')->middleware('auth');
 Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');

@@ -113,9 +113,13 @@
         <label class="sr-only" or="discount_value">{{ __('discount value') }}</label>
         <div class="input-group mb-4">
           <div class="input-group-prepend">
-            <div class="input-group-text">%</div>
+            @php
+            $d = App\Models\PriceDiscount::where('product_id',$product->id)->first();
+            $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
+        @endphp
+            <div class="input-group-text">{{ $formatter->format($d->percentage) }}</div>
           </div>
-          <input type="number" name="percentage" class="form-control @error('percentage') is-invalid alert-danger @enderror" id="percentage" value="{{ old('percentage') }}" placeholder="{{ __('enter discount value') }}">
+          <input  type="number" name="percentage" class="form-control @error('percentage') is-invalid alert-danger @enderror" id="percentage" value="{{ old('percentage') }}" placeholder="{{ __('enter discount value') }}">
         </div>
       </div>
 

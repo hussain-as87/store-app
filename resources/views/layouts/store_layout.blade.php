@@ -140,7 +140,7 @@
                             </li>
                             <?php $categories = \App\Models\Admin\Category::with('subcategories')->get(); ?>
                             @foreach ($categories as $category)
-                            <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">{{ $category->name }}</a>
+                            <li class="menu-item menu-item-has-children has-mega-menu"><a href="{{ route('grid.category',$category->id) }}">{{ $category->name }}</a>
                                 <div class="mega-menu">
                                     <div class="mega-wrap">
                                         @if ($category->subcategories)

@@ -28,7 +28,7 @@ class StoreController extends Controller
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-            $item_count=$cart->count();
+        $item_count = $cart->count();
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::paginate(6);
@@ -36,7 +36,7 @@ class StoreController extends Controller
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('updated_at')->paginate(10);
-        return view('store.home', compact('product', 'products', 'categories', 'top_sales', 'cart','item_count'));
+        return view('store.home', compact('product', 'products', 'categories', 'top_sales', 'cart', 'item_count'));
     }
 
     public function favorite_store($id)
@@ -56,18 +56,19 @@ class StoreController extends Controller
     }
 
     public function productShow(Product $product)
-    {$user = Auth::id();
+    {
+        $user = Auth::id();
         $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-            $new_price= PriceDiscount::where('product_id',$product->id)->first();
-            $item_count=$cart->count();
-$propducts_cate = Product::where('category_id',$product->category_id)->orderByDesc('updated_at')->get();
-            $favorite= favoriteProduct::where('product_id',$product->id)->where('user_id',auth()->id())->first();
+        $new_price = PriceDiscount::where('product_id', $product->id)->first();
+        $item_count = $cart->count();
+        $propducts_cate = Product::where('category_id', $product->category_id)->orderByDesc('updated_at')->get();
+        $favorite = favoriteProduct::where('product_id', $product->id)->where('user_id', auth()->id())->first();
 
-        return view('store.product_show', compact('propducts_cate','product', 'cart','item_count' , 'new_price','favorite'));
+        return view('store.product_show', compact('propducts_cate', 'product', 'cart', 'item_count', 'new_price', 'favorite'));
     }
 
 
@@ -90,26 +91,42 @@ $propducts_cate = Product::where('category_id',$product->category_id)->orderByDe
         ]);
 
         $user = Auth::id();
-        $value=$request->search_value;
+        $value = $request->search_value;
         $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-            $item_count=$cart->count();
+        $item_count = $cart->count();
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::all();
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->search($value)
-        ->orderByDesc('updated_at')->paginate(10);
+            ->orderByDesc('updated_at')->paginate(10);
 
         if (count($products) > 0) {
-            return view('store.search', compact( 'products', 'categories', 'top_sales', 'cart','item_count'));
+            return view('store.search', compact('products', 'categories', 'top_sales', 'cart', 'item_count'));
         } else {
-            return view('store.search', compact( 'products', 'categories', 'top_sales', 'cart','item_count'));
+            return view('store.search', compact('products', 'categories', 'top_sales', 'cart', 'item_count'));
             toast('NO RESULT !', 'error');
         }
+    }
+
+
+    public function gridCategory(Category $category)
+    {
+        $user = Auth::id();
+
+        $cart = Cart::with('product')->where('id', $this->getCartId())
+            ->when($user, function ($query, $user) {
+                $query->where('user_id', $user)->orWhereNull('user_id');
+            })
+            ->get();
+        $item_count = $cart->count();
+
+        $products = Product::with('category','user')->where('category_id', $category->id)->orderByDesc('updated_at')->paginate(9);
+        return view('store.category_products', compact('products', 'category', 'item_count','cart'));
     }
 }

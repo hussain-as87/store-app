@@ -54,7 +54,7 @@
                         <livewire:rating-products :product="$product" :key="$product->id">
 
                             <h1>{{$product->name}}</h1>
-                            <p class="ps-product__category"><a href="#"> Men shoes</a>,<a href="#"> {{$product->category->name}}</a>,<a href="#"> Jordan</a></p>
+                            <p class="ps-product__category"><a href="{{ route('grid.category',$product->category->id) }}"> {{$product->category->name}}</a>,<a href="#"> Jordan</a></p>
                             <h3 class="ps-product__price">@if ($new_price !== null)
                                 <h3 class="ps-product__price">£ {{$new_price->price}}
                                     <del>£ {{$product->price}}</del>
@@ -233,7 +233,7 @@
                                         @endforeach</div>
                                 </div>
                                 <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route('store.product.show',$product->id)}}">{{ $pro_c->name }}</a>
-                                    <p class="ps-shoe__categories"><a href="#">{{ $pro_c->category->name }}</a>,<a href="#">
+                                    <p class="ps-shoe__categories"><a href="{{ route('grid.category',$pro_c->category->id) }}">{{ $pro_c->category->name }}</a>,<a href="#">
                                             Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £
                                         @if ($new_p !== null)
                                         {{$new_p->price}}

@@ -44,7 +44,7 @@
             <ul class="ps-masonry__filter">
                 <li class="current"><a href="#" data-filter="*">{{__('all')}} <sup>8</sup></a></li>
                 @foreach ($categories as $cat)
-                <li><a href="#" data-filter=".{{$cat->name}}">{{$cat->name}} <sup>1</sup></a></li>
+                <li><a href="{{ route('grid.category',$cat->id) }}" data-filter=".{{$cat->name}}">{{$cat->name}} <sup>1</sup></a></li>
                 @endforeach
             </ul>
         </div>
@@ -90,7 +90,7 @@
 
                                     </div>
                                     <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$pro->name}}</a>
-                                        <p class="ps-shoe__categories"><a href="#">{{$pro->user->name}}</a>,<a href="#">
+                                        <p class="ps-shoe__categories"><a href="#">{{$pro->user->name}}</a>,<a href="{{ route('grid.category',$pro->category->id) }}">
                                                 {{$pro->category->name}}</a>,<a href="#"> Jordan</a></p>
                                         @if ($new_price !== null)
                                         <span class="ps-shoe__price">
@@ -215,7 +215,7 @@
                                 @endif
                             </div>
                             <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route('store.product.show',$pro->id)}}">{{$pro->name}}</a>
-                                <p class="ps-shoe__categories"><a href="#">{{$pro->category->name}}</a>,<a href="#">
+                                <p class="ps-shoe__categories"><a href="{{ route('grid.category',$pro->category->id) }}">{{$pro->category->name}}</a>,<a href="#">
                                         @if ($pro->category->subcategories)
                                         {{implode(', ',$pro->category->subcategories->pluck('name')->toArray())}}
                                         @endif
