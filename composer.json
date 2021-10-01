@@ -41,7 +41,8 @@
         "spatie/laravel-permission": "^4.2",
         "spatie/laravel-translatable": "^5.0",
         "symfony/http-client": "^5.3",
-        "vonage/client": "^2.4"
+        "vonage/client": "^2.4",
+      "ext-intl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -44,6 +44,7 @@
         </div>
     </div>
 </div>
+@endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('plugins/jquery/dist/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -70,4 +71,4 @@
 <!-- Custom scripts-->
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 @endsection
-@endsection
+

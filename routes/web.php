@@ -84,23 +84,25 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/subcategories/{id}/force-delete', [SubCategoryController::class, 'forceDelete'])->name('subcategories.forceDelete');
 
 
-    Route::get('coupons',[CouponController::class,'index'])->name('coupons.index');
-    Route::get('coupons/create',[CouponController::class,'create'])->name('coupons.create');
-    Route::post('coupons/store',[CouponController::class,'store'])->name('coupons.store');
-    Route::get('coupons/{id}',[CouponController::class,'destroy'])->name('coupons.destroy');
-    Route::post('coupons/check',[Counter::class,'coupon_check'])->name('coupons.check');
+    Route::get('coupons', [CouponController::class, 'index'])->name('coupons.index');
+    Route::get('coupons/create', [CouponController::class, 'create'])->name('coupons.create');
+    Route::post('coupons/store', [CouponController::class, 'store'])->name('coupons.store');
+    Route::get('coupons/{id}', [CouponController::class, 'destroy'])->name('coupons.destroy');
+    Route::post('coupons/check', [Counter::class, 'coupon_check'])->name('coupons.check');
 });
 
 Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 'update');
 Route::get('change-password', [ProfileController::class, 'change_password'])->name('change.password');
 Route::post('change-password', [ProfileController::class, 'reset_password'])->name('reset.password');
 /*home pages (store app) routes ---start---*/
-Route::get('/', [StoreController::class, 'index'])->name('store.home');
-Route::get('store/{store}', [StoreController::class, 'index'])->name('store.index');
-Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
-Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
-Route::post('favorite/{id}', [StoreController::class, 'favorite_store'])->name('store.fav.product')->middleware('auth');
-Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [StoreController::class, 'index'])->name('store.home');
+    Route::get('store/{store}', [StoreController::class, 'index'])->name('store.index');
+    Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
+    Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
+    Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
+});
+
 /*home pages (store app) routes ---end---*/
 
 
@@ -115,7 +117,7 @@ Route::get('/cookie-send', function () {
 Route::get('/cookie-delete', function () {
     return response('hello there i delete cookie in here !')
         ->cookie(Cookie::make('cart', 'product two', -10));
-        /*if i want to return response*/
+    /*if i want to return response*/
 });
 /**cookies routes ---end---*/
 
@@ -155,10 +157,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::apiResource('chat/messages', MessagesController::class)->middleware('auth');
 
 
-
 Route::get('/payment/checkout', [OrderController::class, 'checkout'])->name('payment.checkout');
 Route::get('/payment/callback', [OrderController::class, 'callback'])->name('payment.callback');
-
 
 
 Route::get('social/login', [SocialLoginController::class, 'login'])->name('social.login');
@@ -179,15 +179,11 @@ Route::get('reset-password', [ForgotPasswordController::class, 'showResetPasswor
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
-
 Route::view('map', 'maps');
-
-
 
 
 Route::get('/users/export', [ExcelController::class, 'export'])->name('export.users');
 Route::get('/users/import', [ExcelController::class, 'import'])->name('export.users');
 
 
-
-Route::view('test/vue','showvue');
+Route::view('test/vue', 'showvue');
