@@ -117,7 +117,9 @@
             $d = App\Models\PriceDiscount::where('product_id',$product->id)->first();
             $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
         @endphp
+              @if($d)
             <div class="input-group-text">{{ $formatter->format($d->percentage) }}</div>
+              @endif
           </div>
           <input  type="number" name="percentage" class="form-control @error('percentage') is-invalid alert-danger @enderror" id="percentage" value="{{ old('percentage') }}" placeholder="{{ __('enter discount value') }}">
         </div>

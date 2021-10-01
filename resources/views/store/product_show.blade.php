@@ -191,8 +191,8 @@
                                             @if ( $pro_c->updated_at->format('d') == date('d'))
                                                 <div class="ps-badge"><span>{{__('New')}}</span></div>
                                             @endif
-                                            @if ($new_price!==null)
-                                                <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-{{ $formatter->format($new_price->percentage) }}</span></div>
+                                            @if ($new_p!==null)
+                                                <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-{{ $formatter->format($new_p->percentage) }}</span></div>
                                             @endif
                                             <livewire:favorite-product-home :product="$pro_c"><img src="{{asset('storage/products/'.$pro_c->image)}}" alt="" width="200"><a class="ps-shoe__overlay" href="{{route('store.product.show',$product->id)}}"></a>
                                         </div>
