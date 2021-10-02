@@ -1,17 +1,7 @@
 @extends('layouts.store_layout')
-@section('title')
-    {{$product->name}}
-@endsection
 @section('content')
+
     <main class="ps-main">
-        <div class="test">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="ps-product--detail pt-60">
             <div class="ps-container">
                 <div class="row">
@@ -22,17 +12,43 @@
                                     @foreach ($product->product_images as $image)
                                         <div class="item"><img src="{{asset('storage/'.$image->path)}}" alt=""></div>
                                     @endforeach
-                                </div><a class="popup-youtube ps-product__video" href="http://www.youtube.com/watch?v=0O2aH4XLbto"><img src="images/shoe-detail/1.jpg" alt=""><i class="fa fa-play"></i></a>
+                                    <div class="item"><img src="{{asset('storage/products/'.$product->image)}}" alt="">
+                                    </div>
+
+                                </div>
+                                <a class="popup-youtube ps-product__video"
+                                   href="http://www.youtube.com/watch?v=0O2aH4XLbto"><img
+                                        src="{{asset('images/shoe-detail/1.jpg')}}"
+                                        alt=""><i
+                                        class="fa fa-play"></i></a>
                             </div>
                             <div class="ps-product__image">
-                                <div class="item"><img class="zoom" src="{{asset('storage/products/'.$product->image)}}" alt="" data-zoom-image="{{asset('storage/products/'.$product->image)}}"></div>
+                                @foreach ($product->product_images as $image)
+
+                                    <div class="item"><img class="zoom" src="{{asset('storage/'.$image->path)}}" alt=""
+                                                           data-zoom-image="{{asset('storage/'.$image->path)}}"></div>
+                                @endforeach
+                                <div class="item"><img class="zoom" src="{{asset('storage/products/'.$product->image)}}"
+                                                       alt=""
+                                                       data-zoom-image="{{asset('storage/products/'.$product->image)}}">
+                                </div>
                             </div>
                         </div>
                         <div class="ps-product__thumbnail--mobile">
-                            <div class="ps-product__main-img"><img src="{{asset('storage/products/'.$product->image)}}" alt=""></div>
-                            <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img src="images/shoe-detail/1.jpg" alt=""><img src="images/shoe-detail/2.jpg" alt=""><img src="images/shoe-detail/3.jpg" alt=""></div>
+                            <div class="ps-product__main-img"><img src="{{asset('images/shoe-detail/1.jpg')}}" alt="">
+                            </div>
+                            <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true"
+                                 data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false"
+                                 data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3"
+                                 data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img
+                                    src="{{asset('storage/products/'.$product->image)}}" alt=""><img
+                                    src="{{asset('storage/products/'.$product->image)}}"
+                                    alt=""><img
+                                    src="{{asset('storage/products/'.$product->image)}}" alt=""></div>
                         </div>
                         <div class="ps-product__info">
+
+
                             <livewire:rating-products :product="$product" :key="$product->id">
 
                                 <h1>{{$product->name}}</h1>
@@ -49,17 +65,7 @@
                                     <h4>QUICK REVIEW</h4>
                                     <p>The Nike Free RN 2017 Mens Running Sky weighs less than previous versions and features an updated knit material…</p>
                                 </div>
-                                <div class="ps-product__block ps-product__style">
-                                    <h4>CHOOSE YOUR STYLE</h4>
-                                    <ul>
-                                        @foreach ($product->product_images as $image)
-                                            <li><a href=""><img src="{{asset('storage/'.$image->path)}}" alt=""></a>
-                                            </li>
-                                        @endforeach
 
-
-                                    </ul>
-                                </div>
                                 <form action="{{route('cart.store')}}" method="post" id="appCart">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -172,12 +178,16 @@
                             <h3 class="ps-section__title" data-mask="Related item">- YOU MIGHT ALSO LIKE</h3>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                            <div class="ps-owl-actions"><a class="ps-prev" href="#"><i class="ps-icon-arrow-right"></i>Prev</a><a class="ps-next" href="#">Next<i class="ps-icon-arrow-left"></i></a></div>
+                            <div class="ps-owl-actions"><a class="ps-prev" href="#"><i class="ps-icon-arrow-right"></i>Prev</a><a
+                                    class="ps-next" href="#">Next<i class="ps-icon-arrow-left"></i></a></div>
                         </div>
                     </div>
                 </div>
                 <div class="ps-section__content">
-                    <div class="ps-owl--colection owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
+                    <div class="ps-owl--colection owl-slider" data-owl-auto="true" data-owl-loop="true"
+                         data-owl-speed="5000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false"
+                         data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3"
+                         data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
                         @foreach($propducts_cate as $key => $pro_c)
                             @if ($pro_c->id !== $product->id)
                                 @php
@@ -185,26 +195,37 @@
                                     $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
                                     $favo= App\Models\favoriteProduct::where('product_id',$pro_c->id)->where('user_id',auth()->id())->first();
                                 @endphp
-                                <div class="ps-shoes--carousel" style="    width: 290px;">
+                                <div class="ps-shoes--carousel">
                                     <div class="ps-shoe">
                                         <div class="ps-shoe__thumbnail">
                                             @if ( $pro_c->updated_at->format('d') == date('d'))
                                                 <div class="ps-badge"><span>{{__('New')}}</span></div>
                                             @endif
                                             @if ($new_p!==null)
-                                                <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-{{ $formatter->format($new_p->percentage) }}</span></div>
+                                                <div class="ps-badge ps-badge--sale ps-badge--2nd">
+                                                    <span>-{{ $formatter->format($new_p->percentage) }}</span></div>
                                             @endif
-                                            <livewire:favorite-product-home :product="$pro_c"><img src="{{asset('storage/products/'.$pro_c->image)}}" alt="" width="200"><a class="ps-shoe__overlay" href="{{route('store.product.show',$product->id)}}"></a>
+                                            <livewire:favorite-product-home :product="$pro_c"/>
+                                            <img
+                                                src="{{asset('storage/products/'.$pro_c->image)}}" alt=""
+                                                width="200"><a class="ps-shoe__overlay"
+                                                               href="{{route('store.product.show',$product->id)}}"></a>
                                         </div>
                                         <div class="ps-shoe__content">
                                             <div class="ps-shoe__variants">
-                                                <div class="ps-shoe__variant normal">@foreach ($pro_c->product_images as $image)
-                                                        <div class="item"><img src="{{asset('storage/'.$image->path)}}" alt=""></div>
+                                                <div
+                                                    class="ps-shoe__variant normal">@foreach ($pro_c->product_images as $image)
+                                                        <div class="item"><img src="{{asset('storage/'.$image->path)}}"
+                                                                               alt=""></div>
                                                     @endforeach</div>
                                             </div>
-                                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route('store.product.show',$product->id)}}">{{ $pro_c->name }}</a>
-                                                <p class="ps-shoe__categories"><a href="{{ route('grid.category',$pro_c->category->id) }}">{{ $pro_c->category->name }}</a>,<a href="#">
-                                                        Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £
+                                            <div class="ps-shoe__detail"><a class="ps-shoe__name"
+                                                                            href="{{route('store.product.show',$product->id)}}">{{ $pro_c->name }}</a>
+                                                <p class="ps-shoe__categories"><a
+                                                        href="{{ route('grid.category',$pro_c->category->id) }}">{{ $pro_c->category->name }}</a>,<a
+                                                        href="#">
+                                                        Nike</a>,<a href="#"> Jordan</a></p><span
+                                                    class="ps-shoe__price"> £
                                         @if ($new_p !== null)
                                                         {{$new_p->price}}
                                                         <del>£ {{$pro_c->price}}</del>
@@ -223,6 +244,4 @@
                 </div>
             </div>
         </div>
-    </main>
-
 @endsection
