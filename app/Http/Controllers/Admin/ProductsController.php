@@ -30,8 +30,7 @@ class ProductsController extends BaseController
 
     public function index()
     {
-        $product = Product::with('user.store', 'category')->orderByDesc('id')->paginate(10);
-        return view('admin.product.index', compact('product'));
+        return view('admin.product.index');
     }
 
     public function show(Product $product)
@@ -67,7 +66,7 @@ class ProductsController extends BaseController
         if ($request->post('percentage')) {
             $per = '0.' . request()->percentage;
             $old_price = $per * $request->price;
-            $new_price  = $request->price - $old_price;
+            $new_price = $request->price - $old_price;
             $dis = new PriceDiscount();
             $dis->percentage = $per;
             $dis->price = $new_price;
@@ -114,7 +113,7 @@ class ProductsController extends BaseController
         if ($request->post('percentage')) {
             $per = '0.' . request()->percentage;
             $old_price = $per * $request->price;
-            $new_price  = $request->price - $old_price;
+            $new_price = $request->price - $old_price;
             $dis = PriceDiscount::where('product_id', $product->id)->first();
 
             if ($dis != null) {
@@ -224,7 +223,7 @@ class ProductsController extends BaseController
 
     protected function getValidation(Request $request)
     {
-        return  $request->validate([
+        return $request->validate([
             'name.*' => 'required|max:200',
             'description.*' => 'sometimes|max:2000',
             'image' => 'sometimes|file|image',

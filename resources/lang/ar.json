@@ -60,7 +60,7 @@
     "Popular": "الاكتر شهرة",
     "Enter your email address and we will send you a link to reset your password": "ادخل البريد الالكتروني , نحن سوف نرسل لك الرابط لتستعيد كلمة المرور ",
     "enter what you needed": "ادخل ماذا تحتاج",
-    "search": "ابحث",
+    "search": "البحث",
     "world": "العالم",
     "community": "المحلي",
     "contact": "التواصل",
@@ -338,5 +338,10 @@
     "product-delete": "حذف منتج",
     "Free delivery": "توصيل مجاني",
     "Get free standard delivery on every order with": "احصل على توصيل قياسي مجاني لكل طلب من",
-    "product-trash": "التعامل مع المنتجات المحذوفة"
+    "product-trash": "التعامل مع المنتجات المحذوفة",
+    "order by": "فرز حسب",
+    "id": "الرقم",
+    "sort type": "نوع الفرز",
+    "Ascending": "تصاعديا",
+    "Descending": "تنازليا"
 }

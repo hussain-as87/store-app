@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resource('products', ProductsController::class)->except('destroy');
     Route::get('products/{product}/delete', [ProductsController::class, 'destroy'])->name('products.destroy');
+    Route::get('product/search', [ProductsController::class, 'search'])->name('products.search');
     Route::get('gallery/{gallery}/delete', [ProductsController::class, 'destroy_gallery'])->name('gallery.destroy');
     Route::get('/trash/products', [ProductsController::class, 'trash'])->name('products.trash');
     Route::get('/products/{id}/restore', [ProductsController::class, 'restore'])->name('products.restore');
@@ -72,7 +73,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/{category}/edit', [CategoriesController::class, 'edit'])->name('edit');
         Route::put('/{category}/update', [CategoriesController::class, 'update'])->name('update');
         Route::get('/{category}/destroy', [CategoriesController::class, 'destroy'])->name('destroy');
-        Route::post('/search', [CategoriesController::class, 'search'])->name('search');
         Route::get('/trash/categories', [CategoriesController::class, 'trash'])->name('trash');
         Route::get('force-delete/{id}', [CategoriesController::class, 'forceDelete'])->name('forceDelete');
         Route::get('restore/{id}', [CategoriesController::class, 'restore'])->name('restore');

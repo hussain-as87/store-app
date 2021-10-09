@@ -25,6 +25,7 @@ class Category extends Model
          * @var array
          */
         'columns' => [
+            'categories.id' => 10,
             'categories.name' => 10,
         ]
         //  ,

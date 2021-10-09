@@ -14,6 +14,7 @@ use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Passport\HasApiTokens;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -28,6 +29,26 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use SearchableTrait;
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'users.name' => 10,
+            'users.email' => 10,
+            'users.id' => 10,
+        ]
+        //  ,
+        //  'joins' => [
+        //      'products' => ['categories.id','products.category_id'],
+        //      'sub_categories' => ['categories.id','sub_categories.category_id'],
+        //  ],
+    ];
     /**
      * The attributes that are mass assignable.
      *

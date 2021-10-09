@@ -290,5 +290,11 @@
     "product-delete": "Delete Product",
     "Free delivery": "Free delivery",
     "Get free standard delivery on every order with Sky Store": "Get free standard delivery on every order with",
-    "product-trash": "Dealing with deleted Products"
+    "product-trash": "Dealing with deleted Products",
+    "show": "Show",
+    "order by": "Order By",
+    "id": "id",
+    "sort type": "Sort",
+    "Ascending": "Ascending",
+    "Descending": "Descending"
 }

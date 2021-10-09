@@ -20,8 +20,8 @@ class CategoriesController extends BaseController
     }
     public function index(Category $category)
     {
-        $categories = Category::withCount('products', 'subcategories')->orderByDesc('id')->paginate(5);
-        return view('admin.category.index', compact('category', 'categories'));
+
+        return view('admin.category.index', compact('category'));
     }
 
     public function show(Category $category)
@@ -122,21 +122,4 @@ class CategoriesController extends BaseController
         return redirect()->back();
     }
 
-
-    public function search(Request $request, Category $category)
-    {
-        $request->validate([
-            'search' => 'required'
-        ]);
-
-
-        $categories = Category::search($request->search)->paginate(10);
-
-        if (count($categories) > 0) {
-            return view('admin.category.search', compact('category', 'categories'));
-        } else {
-            return view('admin.category.search', compact('category', 'categories'));
-            toast('NO RESULT !', 'error');
-        }
-    }
 }

@@ -28,6 +28,7 @@ class Product extends Model
          * @var array
          */
         'columns' => [
+            'products.id' => 10,
             'products.name' => 10,
             'products.description' => 10,
         ] ,
