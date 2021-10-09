@@ -10,6 +10,7 @@ class FavoriteProductHome extends Component
 {
     public $product;
 
+
     public function mount(Product $product)
     {
         $this->product = $product;
@@ -24,15 +25,21 @@ class FavoriteProductHome extends Component
 
     public function store()
     {
-        $fav = favoriteProduct::where('product_id', $this->product->id)->where('user_id', auth()->id())->first();
 
-        if ($fav === null) {
-            favoriteProduct::create([
-                'product_id' => $this->product->id,
-                'user_id' => auth()->id()
-            ]);
+        if (auth()->id() != null) {
+            $fav = favoriteProduct::where('product_id', $this->product->id)->where('user_id', auth()->id())->first();
+
+            if ($fav === null) {
+                favoriteProduct::create([
+                    'product_id' => $this->product->id,
+                    'user_id' => auth()->id()
+                ]);
+            } else {
+                $fav->delete();
+            }
         } else {
-            $fav->delete();
+            $this->redirect(route('login'));
         }
+
     }
 }

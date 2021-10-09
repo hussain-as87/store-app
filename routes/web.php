@@ -95,13 +95,12 @@ Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 
 Route::get('change-password', [ProfileController::class, 'change_password'])->name('change.password');
 Route::post('change-password', [ProfileController::class, 'reset_password'])->name('reset.password');
 /*home pages (store app) routes ---start---*/
-Route::group(['middleware' => 'auth'], function () {
+
     Route::get('/', [StoreController::class, 'index'])->name('store.home');
-    Route::get('store/{store}', [StoreController::class, 'index'])->name('store.index');
     Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
     Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
     Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
-});
+
 
 /*home pages (store app) routes ---end---*/
 

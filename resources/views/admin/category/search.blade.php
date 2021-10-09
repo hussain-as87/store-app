@@ -35,7 +35,7 @@
                     @foreach ($categories as $key => $cat)
                         <tr>
                             <th scope="row">{{ $key + 1 }}</th>
-                            <td><a href="{{ route('category.show', $cat->id) }}">{{ $cat->name }}</a></td>
+                            <td><a href="{{--  {{ route('category.show', $cat->id) }}  --}}">{{ $cat->name }}</a></td>
                             <td>{{ $cat->created_at->diffForHumans() }}</td>
                             <td>{{ $cat->updated_at->diffForHumans() }}</td>
                             <td>{{ $cat->products->count() }}</td>
