@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\User;
-use Laravel\Passport\Passport;
-use Illuminate\Auth\Access\Response;
+/* use Laravel\Passport\Passport;
+ */use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -41,8 +41,8 @@ class AuthServiceProvider extends ServiceProvider
         /*    return $user->hasPermission($name);
             });
         } */
-        if (!$this->app->routesAreCached()) {
+       /*  if (!$this->app->routesAreCached()) {
             Passport::routes();
-        }
+        } */
     }
 }

@@ -11,13 +11,13 @@ use App\Models\Message;
 use App\Models\Admin\Product;
 use App\Models\Admin\Profile;
 use App\Models\Admin\Category;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Passport\HasApiTokens;
-use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-intl": "*",
         "ext-json": "*",
         "cornford/googlmapper": "^3.3",
         "epmnzava/paypal-laravel": "^1.5",
@@ -19,8 +20,7 @@
         "laravel/framework": "^8.40",
         "laravel/jetstream": "^2.3",
         "laravel/nexmo-notification-channel": "^2.5",
-        "laravel/passport": "^10.1",
-        "laravel/sanctum": "^2.6",
+        "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2",
         "laravel/telescope": "^4.6",
         "laravel/tinker": "^2.5",
@@ -41,8 +41,7 @@
         "spatie/laravel-permission": "^4.2",
         "spatie/laravel-translatable": "^5.0",
         "symfony/http-client": "^5.3",
-        "vonage/client": "^2.4",
-      "ext-intl": "*"
+        "vonage/client": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
