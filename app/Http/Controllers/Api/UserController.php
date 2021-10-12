@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Profile;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class UserController extends Controller
     }
     function login(Request $request)
     {
-        $user= User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
         // print_r($data);
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response([
@@ -50,7 +51,7 @@ class UserController extends Controller
     public function index()
     {
         auth()->user()->currentAccessToken()->tokenable->id;
-        $user = User::paginate(10);
+        $user = User::with('profile')->paginate(10);
         if ($user) {
             return new JsonResponse([
                 'status' => '201',
@@ -82,7 +83,7 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password'=>$request->password
+            'password' => $request->password
         ]);
         if ($user) {
             return new JsonResponse([
@@ -106,7 +107,7 @@ class UserController extends Controller
     public function show(Request $request)
     {
         \auth()->user()->currentAccessToken()->tokenable->id;
-        $user = User::where('id', $request->id)->first();
+        $user = User::with('profile')->where('id', $request->id)->first();
         if ($user) {
             return new JsonResponse([
                 'status' => '201',
@@ -131,7 +132,7 @@ class UserController extends Controller
     {
         $user = \auth()->user()->currentAccessToken()->tokenable->id;
         $request->validate([
-           'name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'password' => 'required|min:8',
         ]);
@@ -139,7 +140,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password'=>$request->password
+            'password' => $request->password
         ]);
         if ($user) {
             return new JsonResponse([
@@ -162,7 +163,7 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
-         auth()->user()->currentAccessToken()->tokenable->id;
+        auth()->user()->currentAccessToken()->tokenable->id;
         $user = User::where('id', $request->id)->first()->delete();
         if (!$user) {
             return new JsonResponse([
@@ -174,5 +175,37 @@ class UserController extends Controller
             'status' => '201',
             'message' => __('user is deleted !')
         ]);
+    }
+    public function editProfile(Request $request)
+    {
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
+        $profile = Profile::where('user_id', $user)->first();
+        if ($profile != null) {
+            $request->validate([
+                'first_name'=>'sometimes',
+                'last_name'=>'sometimes',
+                'avatar'=>'sometimes|file|image',
+                'address'=>'sometimes',
+                'phone'=>'sometimes',
+                'country'=>'sometimes',
+            ]);
+            $profile->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'avatar' => $request->avatar,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'country' => $request->country,
+            ]);
+            return new JsonResponse([
+                'status' => '201',
+                'message' => $profile
+            ]);
+        } else {
+            return new JsonResponse([
+                'status' => '201',
+                'message' => 'failed update !'
+            ]);
+        }
     }
 }

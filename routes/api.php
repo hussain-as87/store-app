@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('users/show', [UserController::class, 'show'])->name('api.users.show');
     Route::put('users/update', [UserController::class, 'update'])->name('api.users.update');
     Route::delete('users/destroy', [UserController::class, 'destroy'])->name('api.users.destroy');
+    Route::put('users/profile', [UserController::class, 'editProfile'])->name('api.users.profile');
 
 
     Route::post('favorite_product',[FavoriteProductControoler::class, 'store'])->name('api.favorite.store');

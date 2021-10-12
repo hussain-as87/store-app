@@ -530,18 +530,24 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "hhh",
+									"value": "ghgh",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "adda44mad@gmail.com",
+									"value": "adda45mad@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "22444488",
 									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": [],
+									"disabled": true
 								}
 							]
 						},
@@ -656,7 +662,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{$url}}/api/users/update?id=2&name=h2&email=adda4mad@outlook.com&password=22444488",
+							"raw": "{{$url}}/api/users/update?id=4&name=h2&email=adda4mad@outlook.com&password=22444488",
 							"host": [
 								"{{$url}}"
 							],
@@ -668,7 +674,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "4"
 								},
 								{
 									"key": "name",
@@ -681,6 +687,91 @@
 								{
 									"key": "password",
 									"value": "22444488"
+								},
+								{
+									"key": "first_name",
+									"value": "asdsa",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "asdsadas",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "970566170044",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "sdsdf",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|RsY4TaunCnYaWOg2OndtPquF1TT4rBGrj6HKWT2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "husein",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$url}}/api/users/profile?first_name=hussein&last_name=sim",
+							"host": [
+								"{{$url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "hussein"
+								},
+								{
+									"key": "last_name",
+									"value": "sim"
+								},
+								{
+									"key": "avatar",
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -1028,6 +1119,153 @@
 							"path": [
 								"api",
 								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order products",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|RsY4TaunCnYaWOg2OndtPquF1TT4rBGrj6HKWT2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{$url}}/api/order_products",
+							"host": [
+								"{{$url}}"
+							],
+							"path": [
+								"api",
+								"order_products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|RsY4TaunCnYaWOg2OndtPquF1TT4rBGrj6HKWT2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "order_id",
+									"value": "40",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "33",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$url}}/api/order_products",
+							"host": [
+								"{{$url}}"
+							],
+							"path": [
+								"api",
+								"order_products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|RsY4TaunCnYaWOg2OndtPquF1TT4rBGrj6HKWT2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{$url}}/api/order_products?order_id=40&product_id=6",
+							"host": [
+								"{{$url}}"
+							],
+							"path": [
+								"api",
+								"order_products"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "40"
+								},
+								{
+									"key": "product_id",
+									"value": "6"
+								}
 							]
 						}
 					},
