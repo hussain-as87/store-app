@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FavoriteProductControoler;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\RatingProductControoler;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,4 +50,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('users/update', [UserController::class, 'update'])->name('api.users.update');
     Route::delete('users/destroy', [UserController::class, 'destroy'])->name('api.users.destroy');
 
+
+    Route::post('favorite_product',[FavoriteProductControoler::class, 'store'])->name('api.favorite.store');
+    Route::delete('favorite_product',[FavoriteProductControoler::class, 'destroy'])->name('api.favorite.destroy');
+
+    Route::post('rating_product',[RatingProductControoler::class, 'store'])->name('api.rating.store');
+    Route::delete('rating_product',[RatingProductControoler::class, 'destroy'])->name('api.rating.destroy');
+
+    Route::get('cart',[CartController::class, 'index'])->name('api.rating.index');
+    Route::post('cart',[CartController::class, 'store'])->name('api.rating.store');
+    Route::delete('cart',[CartController::class, 'destroy'])->name('api.rating.destroy');
 });
