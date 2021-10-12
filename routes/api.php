@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login', [UserController::class, 'index']);
+Route::post('/login', [UserController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::apiResource('category', CategoryController::class)->names([
@@ -38,5 +38,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('product/show', [ProductController::class, 'show'])->name('api.product.show');
     Route::put('product/update', [ProductController::class, 'update'])->name('api.product.update');
     Route::delete('product/destroy', [ProductController::class, 'destroy'])->name('api.product.destroy');
+
+ Route::apiResource('users', UserController::class)->names([
+        'index' => 'api.users.index',
+        'store' => 'api.users.store',
+    ])->except('show', 'update', 'destroy');
+    Route::get('users/show', [UserController::class, 'show'])->name('api.users.show');
+    Route::put('users/update', [UserController::class, 'update'])->name('api.users.update');
+    Route::delete('users/destroy', [UserController::class, 'destroy'])->name('api.users.destroy');
 
 });
