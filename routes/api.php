@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FavoriteProductControoler;
+use App\Http\Controllers\Api\OrderProductController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RatingProductControoler;
 use App\Http\Controllers\Api\UserController;
@@ -57,7 +58,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('rating_product',[RatingProductControoler::class, 'store'])->name('api.rating.store');
     Route::delete('rating_product',[RatingProductControoler::class, 'destroy'])->name('api.rating.destroy');
 
-    Route::get('cart',[CartController::class, 'index'])->name('api.rating.index');
-    Route::post('cart',[CartController::class, 'store'])->name('api.rating.store');
-    Route::delete('cart',[CartController::class, 'destroy'])->name('api.rating.destroy');
+    Route::get('cart',[CartController::class, 'index'])->name('api.cart.index');
+    Route::post('cart',[CartController::class, 'store'])->name('api.cart.store');
+    Route::delete('cart',[CartController::class, 'destroy'])->name('api.cart.destroy');
+
+    Route::get('order_products',[OrderProductController::class, 'index'])->name('api.order_products.index');
+    Route::post('order_products',[OrderProductController::class, 'store'])->name('api.order_products.store');
+    Route::delete('order_products',[OrderProductController::class, 'destroy'])->name('api.order_products.destroy');
 });
