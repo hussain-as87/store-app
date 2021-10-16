@@ -63,16 +63,6 @@ class ProductsController extends BaseController
         if ($request->hasFile('gallery')) {
             $this->gallery($request, $product);
         } ////////for discount
-        if ($request->post('percentage')) {
-            $per = '0.' . request()->percentage;
-            $old_price = $per * $request->price;
-            $new_price = $request->price - $old_price;
-            $dis = new PriceDiscount();
-            $dis->percentage = $per;
-            $dis->price = $new_price;
-            $dis->product_id = $product->id;
-            $dis->save();
-        }
         /////
         $this->SaveTag($request, $product);
         if ($product) {
@@ -92,24 +82,7 @@ class ProductsController extends BaseController
     }
 
     public function update(ProductRequest $request, Product $product)
-    {
-        $product->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'category_id' => $request->category_id,
-            'user_id' => auth()->id(),
-        ]);
-        if ($request->hasFile('image')) {
-            $image = ImageUpload::upload_image($request->image, $this->product_path);
-            $product->update(['image' => $image]);
-        }
-
-        if ($request->hasFile('gallery')) {
-            $this->gallery($request, $product);
-        }
-        $this->SaveTag($request, $product);
-
+    {$new_price=null;
         if ($request->post('percentage')) {
             $per = '0.' . request()->percentage;
             $old_price = $per * $request->price;
@@ -129,6 +102,24 @@ class ProductsController extends BaseController
                 $dis->save();
             }
         }
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->post('percentage') ? $new_price : $request->price,
+            'category_id' => $request->category_id,
+            'user_id' => auth()->id(),
+        ]);
+        if ($request->hasFile('image')) {
+            $image = ImageUpload::upload_image($request->image, $this->product_path);
+            $product->update(['image' => $image]);
+        }
+
+        if ($request->hasFile('gallery')) {
+            $this->gallery($request, $product);
+        }
+        $this->SaveTag($request, $product);
+
+
         if ($product) {
             toast('Successfully', 'success');
             return redirect()->back();
@@ -226,7 +217,7 @@ class ProductsController extends BaseController
         return $request->validate([
             'name.*' => 'required|max:200',
             'description.*' => 'sometimes|max:2000',
-            'image' => 'sometimes|file|image',
+            'image' => 'sometimes|file|image|mimes:png,jpg,jepg',
             'gallery.*' => 'sometimes|file|image',
             'price' => 'required|max:1000000000',
             'category_id' => 'required',
