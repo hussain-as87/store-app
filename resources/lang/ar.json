@@ -327,6 +327,9 @@
     "role-create": "انشاء شرط",
     "role-edit": "تعديل شرط",
     "role-delete": "حذف شرط",
+    "coupon-list": "عرض اكواد الخصم",
+    "coupon-create": "انشاء كود خصم",
+    "coupon-delete": "حذف كود خصم",
     "category-list": "عرض الاقسام",
     "category-create": "انشاء قسم",
     "category-edit": "تعديل قسم",
@@ -343,5 +346,10 @@
     "id": "الرقم",
     "sort type": "نوع الفرز",
     "Ascending": "تصاعديا",
+    "create coupon": "انشاء كود خصم",
+    "discount value": "قيمة الخصم",
+    "enter discount value":" ادخل قيمة الخصم ",
+    "choose option": "اختر الحالة",
+    "coupon": "كود الخصم",
     "Descending": "تنازليا"
 }

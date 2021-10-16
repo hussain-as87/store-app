@@ -296,5 +296,6 @@
     "id": "id",
     "sort type": "Sort",
     "Ascending": "Ascending",
-    "Descending": "Descending"
+    "Descending": "Descending",
+    "coupon":"Coupon"
 }

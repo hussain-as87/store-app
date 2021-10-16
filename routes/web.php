@@ -49,7 +49,7 @@ Auth::routes([
     'verify' => true
 ]);
 
-Route::get('/home', [CategoriesController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard/home', [CategoriesController::class, 'index'])->name('home')->middleware('auth');
 
 
 /*the categories route*/
