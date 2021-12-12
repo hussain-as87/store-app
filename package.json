@@ -7,7 +7,9 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "build": "babel src -d lib",
+        "test": "jest"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
@@ -28,6 +30,9 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "tailwindcss": "^2.0.2",
+        "vue": "^2.6.12",
+        "vue-loader": "15.9.7",
+        "vue-template-compiler": "^2.6.12",
         "webpack": "^5.41.1"
     },
     "dependencies": {
@@ -36,6 +41,8 @@
         "ckeditor": "^4.12.1",
         "flag-icon-css": "^3.5.0",
         "tinymce": "^5.8.1",
-        "trumbowyg": "^2.24.0"
+        "trumbowyg": "^2.24.0",
+        "vue-axios": "^3.4.0",
+        "vue-router": "^3.5.3"
     }
 }

@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\admin\CustomLoginController;
 use App\Http\Controllers\Admin\RequestResetPasswordController;
+use App\Http\Controllers\AdvertsController;
 use App\Http\Livewire\Counter;
 
 /*
@@ -77,6 +78,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('force-delete/{id}', [CategoriesController::class, 'forceDelete'])->name('forceDelete');
         Route::get('restore/{id}', [CategoriesController::class, 'restore'])->name('restore');
     });
+    Route::group(['prefix' => 'advertisement', 'as' => 'adv.'], function () {
+        Route::get('/', [AdvertsController::class, 'index'])->name('index');
+        Route::get('/create', [AdvertsController::class, 'create'])->name('create');
+        Route::post('/store', [AdvertsController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [AdvertsController::class, 'edit'])->name('edit');
+        Route::put('/{id}/update', [AdvertsController::class, 'update'])->name('update');
+        Route::get('/{id}/destroy', [AdvertsController::class, 'destroy'])->name('destroy');
+    });
 
     Route::resource('subcategories', SubCategoryController::class)->except('index', 'show');
     Route::get('/trash/subcategories', [SubCategoryController::class, 'trash'])->name('subcategories.trash');
@@ -88,8 +97,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('coupons/create', [CouponController::class, 'create'])->name('coupons.create');
     Route::post('coupons/store', [CouponController::class, 'store'])->name('coupons.store');
     Route::get('coupons/{id}', [CouponController::class, 'destroy'])->name('coupons.destroy');
-    Route::post('coupons/check', [Counter::class, 'coupon_check'])->name('coupons.check');
-});
+ });
 
 Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 'update');
 Route::get('change-password', [ProfileController::class, 'change_password'])->name('change.password');
@@ -97,6 +105,10 @@ Route::post('change-password', [ProfileController::class, 'reset_password'])->na
 /*home pages (store app) routes ---start---*/
 
     Route::get('/', [StoreController::class, 'index'])->name('store.home');
+    Route::get('/shop', [StoreController::class, 'shop'])->name('store.shop');
+    Route::get('/blog', [StoreController::class, 'blog'])->name('store.blog');
+    Route::get('/contact', [StoreController::class, 'contact'])->name('store.contact');
+    Route::view('/about',"store.about" )->name('store.about');
     Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
     Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
     Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');

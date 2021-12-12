@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Category;
-use App\Models\Admin\Product;
-use App\Models\Admin\SubCategory;
+use App\ImageUpload;
 use Illuminate\Http\Request;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
+use App\Models\Admin\SubCategory;
 
 class CategoriesController extends BaseController
 {
@@ -41,10 +42,17 @@ class CategoriesController extends BaseController
     {
 
         $this->getValidate($request);
-        $category = Category::create([
-            'name' => $request->name,
-            'show' => $request->show
-        ]);
+
+        $data['name'] =  $request->name;
+        $data['content'] = $request->content;
+        $data['show'] = $request->show;
+
+        if ($request->hasFile('photo')) {
+            $photo = ImageUpload::upload_image($request->photo, 'public/category');
+            $data['photo'] = $photo;
+        }
+        $category = Category::create($data);
+
         toast()->success('Successfully', 'done');
         if ($category) {
             toast('Successfully', 'success');
@@ -65,11 +73,17 @@ class CategoriesController extends BaseController
 
         $this->getValidate($request);
 
-        $category->update([
-            'name' => $request->name,
-            'show' => $request->show
-        ]);
-        if ($category) {
+        $data['name'] =  $request->name;
+        $data['content'] = $request->content;
+        $data['show'] = $request->show;
+
+        if ($request->hasFile('photo')) {
+            $photo = ImageUpload::upload_image($request->photo, 'public/category');
+            $data['photo'] = $photo;
+        }
+        $cate = $category->update($data);
+
+        if ($cate) {
             toast('Successfully', 'success');
             return redirect()->route('categories.index');
         } else {
@@ -89,7 +103,9 @@ class CategoriesController extends BaseController
     {
         return $validtor = $request->validate([
             'name.*' => 'required|max:200',
-            'show' => 'required|max:1'
+            'show' => 'required|max:1',
+            'content' => 'sometimes|max:150',
+            'photo' => 'sometimes|file|image|mimes:png,jpg,jepg'
         ]/*,[
             'name.required'=>'the name valid',
             'show.required'=>'the show valid'
@@ -121,5 +137,4 @@ class CategoriesController extends BaseController
         toast(__('deleted !'), 'error');
         return redirect()->back();
     }
-
 }

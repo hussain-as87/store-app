@@ -11,7 +11,7 @@
 @section('href2'){{ route('categories.index') }}@endsection
 @section('content')
     <div class="container">
-        <form action="{{route('categories.update',['category'=>$category->id])}}" method="post">
+        <form action="{{route('categories.update',['category'=>$category->id])}}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @include('admin.category.form')
             <a class="btn badge-warning" href="{{route('categories.index')}}">{{__('Go Back')}}</a>

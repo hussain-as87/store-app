@@ -1,168 +1,338 @@
 @extends('layouts.store_layout')
+@section('title')
+    {{$product->name}}
+@endsection
 @section('content')
+<br />
+<br />
+<!-- breadcrumb -->
+<div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a href="{{route('store.home')}}" class="stext-109 cl8 hov-cl1 trans-04">
+            {{ __('Home') }}
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
 
-    <main class="ps-main">
-        <div class="ps-product--detail pt-60">
-            <div class="ps-container">
-                <div class="row">
-                    <div class="col-lg-10 col-md-12 col-lg-offset-1">
-                        <div class="ps-product__thumbnail">
-                            <div class="ps-product__preview">
-                                <div class="ps-product__variants">
-                                    @foreach ($product->product_images as $image)
-                                        <div class="item"><img src="{{asset('storage/'.$image->path)}}" alt=""></div>
-                                    @endforeach
-                                    <div class="item"><img src="{{asset('storage/products/'.$product->image)}}" alt="">
+        <a href="{{ route('store.shop') }}" class="stext-109 cl8 hov-cl1 trans-04">
+            {{ $product->category->name }}
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <span class="stext-109 cl4">
+           {{$product->name}}
+        </span>
+    </div>
+</div>
+
+
+<!-- Product Detail -->
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-7 p-b-30">
+                <div class="p-l-25 p-r-30 p-lr-0-lg">
+                    <div class="wrap-slick3 flex-sb flex-w">
+                        <div class="wrap-slick3-dots"></div>
+                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+                        <div class="slick3 gallery-lb">
+                            <div class="item-slick3" data-thumb="{{asset('storage/products/'.$product->image)}}">
+                                <div class="wrap-pic-w pos-relative">
+                                    <img src="{{asset('storage/products/'.$product->image)}}" alt="IMG-PRODUCT">
+
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="#">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            @foreach ($product->product_images as $image)
+                            <div class="item-slick3" data-thumb="{{asset('storage/'.$image->path)}}">
+                                <div class="wrap-pic-w pos-relative">
+                                    <img src="{{asset('storage/'.$image->path)}}" alt="IMG-PRODUCT">
+
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="#">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5 p-b-30">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        {{$product->name}}
+                    </h4>
+
+                    <span class="mtext-106 cl2">
+                        ${{$product->price}}
+                    </span>
+
+                    <p class="stext-102 cl3 p-t-23">
+                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                    </p>
+                    <form action="{{route('cart.store')}}" method="post" id="appCart">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+
+                        <!--  -->
+                        <div class="p-t-33">
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Size
+                                </div>
+
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="size">
+                                            <option>Choose an option</option>
+                                            <option value="s">{{ __('size') }} S</option>
+                                            <option value="m">{{ __('size') }} M</option>
+                                            <option value="l">{{ __('size') }} L</option>
+                                            <option value="xl">{{ __('size') }} XL</option>
+                                            <option value="xxl">{{ __('size') }} XXL</option>
+                                            <option value="xxxl">{{ __('size') }} XXXL</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
                                     </div>
-
-                                </div>
-                                <a class="popup-youtube ps-product__video"
-                                   href="http://www.youtube.com/watch?v=0O2aH4XLbto"><img
-                                        src="{{asset('images/shoe-detail/1.jpg')}}"
-                                        alt=""><i
-                                        class="fa fa-play"></i></a>
-                            </div>
-                            <div class="ps-product__image">
-                                @foreach ($product->product_images as $image)
-
-                                    <div class="item"><img class="zoom" src="{{asset('storage/'.$image->path)}}" alt=""
-                                                           data-zoom-image="{{asset('storage/'.$image->path)}}"></div>
-                                @endforeach
-                                <div class="item"><img class="zoom" src="{{asset('storage/products/'.$product->image)}}"
-                                                       alt=""
-                                                       data-zoom-image="{{asset('storage/products/'.$product->image)}}">
                                 </div>
                             </div>
-                        </div>
-                        <div class="ps-product__thumbnail--mobile">
-                            <div class="ps-product__main-img"><img src="{{asset('images/shoe-detail/1.jpg')}}" alt="">
-                            </div>
-                            <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true"
-                                 data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false"
-                                 data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3"
-                                 data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img
-                                    src="{{asset('storage/products/'.$product->image)}}" alt=""><img
-                                    src="{{asset('storage/products/'.$product->image)}}"
-                                    alt=""><img
-                                    src="{{asset('storage/products/'.$product->image)}}" alt=""></div>
-                        </div>
-                        <div class="ps-product__info">
 
-
-                            <livewire:rating-products :product="$product" :key="$product->id">
-
-                                <h1>{{$product->name}}</h1>
-                                <p class="ps-product__category"><a href="{{ route('grid.category',$product->category->id) }}"> {{$product->category->name}}</a>,<a href="#"> Jordan</a></p>
-                                <h3 class="ps-product__price">@if ($new_price !== null)
-                                        <h3 class="ps-product__price">£ {{$new_price->price}}
-                                            <del>£ {{$product->price}}</del>
-                                        </h3>
-                                    @else
-                                        <h3 class="ps-product__price">£ {{$product->price}}
-                                        </h3>
-                                    @endif</h3>
-                                <div class="ps-product__block ps-product__quickview">
-                                    <h4>QUICK REVIEW</h4>
-                                    <p>The Nike Free RN 2017 Mens Running Sky weighs less than previous versions and features an updated knit material…</p>
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Color
                                 </div>
 
-                                <form action="{{route('cart.store')}}" method="post" id="appCart">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <div class="ps-product__block ps-product__size">
-                                        <h4>CHOOSE SIZE<a href="#">Size chart</a></h4>
-                                        <div class="form-group">
-                                            <input class="form-control" type="number" name="quantity" value="1">
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="color">
+                                            <option>Choose an option</option>
+                                            <option value="red">Red</option>
+                                            <option value="yellow">Yellow</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="white">White</option>
+                                            <option value="grey">Grey</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                        </div>
+
+                                        <input class="mtext-104 cl3 txt-center num-product" name="quantity" type="number" value="1">
+
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
-                                </form>
-                                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="#" onclick="document.getElementById('appCart').submit()">Add to cart<i class="ps-icon-next"></i></a>
-                                    <div class="ps-product__actions">
-                                        <livewire:favorite-product-show :product="$product">
-                                    </div>
+
+                                    <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        {{ __('Add to cart') }}
+                                    </button>
                                 </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="ps-product__content mt-50">
-                            <ul class="tab-list" role="tablist">
-                                <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">Overview</a></li>
-                                <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">Review</a></li>
-                                <li><a href="#tab_03" aria-controls="tab_03" role="tab" data-toggle="tab">PRODUCT TAG</a></li>
-                                <li><a href="#tab_04" aria-controls="tab_04" role="tab" data-toggle="tab">ADDITIONAL</a></li>
-                            </ul>
-                        </div>
-                        <div class="tab-content mb-60">
-                            <div class="tab-pane active" role="tabpanel" id="tab_01">
-                                {!! $product->description !!}
                             </div>
-                            <div class="tab-pane" role="tabpanel" id="tab_02">
-                                <p class="mb-20">1 review for <strong>Shoes Air Jordan</strong></p>
-                                <div class="ps-review">
-                                    <div class="ps-review__thumbnail"><img src="images/user/1.jpg" alt=""></div>
-                                    <div class="ps-review__content">
-                                        <header>
-                                            <select class="ps-rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                            <p>By<a href=""> Alena Studio</a> - November 25, 2017</p>
-                                        </header>
-                                        <p>Soufflé danish gummi bears tart. Pie wafer icing. Gummies jelly beans powder. Chocolate bar pudding macaroon candy canes chocolate apple pie chocolate cake. Sweet caramels sesame snaps halvah bear claw wafer. Sweet roll soufflé muffin topping muffin brownie. Tart bear claw cake tiramisu chocolate bar gummies dragée lemon drops brownie.</p>
+                        </div>
+                    </form>
+{{--                                          <livewire:favorite-product-show :product="$product">
+  --}}
+                    <!--  -->
+                    <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+                        <div class="flex-m bor9 p-r-10 m-r-11">
+                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                                <i class="zmdi zmdi-favorite"></i>
+                            </a>
+                        </div>
+
+                        <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+
+                        <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bor10 m-t-50 p-t-43 p-b-40">
+            <!-- Tab01 -->
+            <div class="tab01">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item p-b-10">
+                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                    </li>
+
+                    <li class="nav-item p-b-10">
+                        <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
+                    </li>
+
+                    <li class="nav-item p-b-10">
+                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-t-43">
+                    <!-- - -->
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <div class="how-pos2 p-lr-15-md">
+                            <p class="stext-102 cl6">
+                                {!! $product->description !!} </p>
+                        </div>
+                    </div>
+
+                    <!-- - -->
+                    <div class="tab-pane fade" id="information" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+                                <ul class="p-lr-28 p-lr-15-sm">
+                                    <li class="flex-w flex-t p-b-7">
+                                        <span class="stext-102 cl3 size-205">
+                                            Weight
+                                        </span>
+
+                                        <span class="stext-102 cl6 size-206">
+                                            0.79 kg
+                                        </span>
+                                    </li>
+
+                                    <li class="flex-w flex-t p-b-7">
+                                        <span class="stext-102 cl3 size-205">
+                                            Dimensions
+                                        </span>
+
+                                        <span class="stext-102 cl6 size-206">
+                                            110 x 33 x 100 cm
+                                        </span>
+                                    </li>
+
+                                    <li class="flex-w flex-t p-b-7">
+                                        <span class="stext-102 cl3 size-205">
+                                            Materials
+                                        </span>
+
+                                        <span class="stext-102 cl6 size-206">
+                                            60% cotton
+                                        </span>
+                                    </li>
+
+                                    <li class="flex-w flex-t p-b-7">
+                                        <span class="stext-102 cl3 size-205">
+                                            Color
+                                        </span>
+
+                                        <span class="stext-102 cl6 size-206">
+                                            Black, Blue, Grey, Green, Red, White
+                                        </span>
+                                    </li>
+
+                                    <li class="flex-w flex-t p-b-7">
+                                        <span class="stext-102 cl3 size-205">
+                                            Size
+                                        </span>
+
+                                        <span class="stext-102 cl6 size-206">
+                                            XL, L, M, S
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- - -->
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+                                <div class="p-b-30 m-lr-15-sm">
+                                    <!-- Review -->
+                                    <div class="flex-w flex-t p-b-68">
+                                        <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                                            <img src="{{asset('images/avatar-01.jpg')}}" alt="AVATAR">
+                                        </div>
+
+                                        <div class="size-207">
+                                            <div class="flex-w flex-sb-m p-b-17">
+                                                <span class="mtext-107 cl2 p-r-20">
+                                                    Ariana Grande
+                                                </span>
+
+                                                <span class="fs-18 cl11">
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                </span>
+                                            </div>
+
+                                            <p class="stext-102 cl6">
+                                                Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <form class="ps-product__review" action="_action" method="post">
-                                    <h4>ADD YOUR REVIEW</h4>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                            <div class="form-group">
-                                                <label>Name:<span>*</span></label>
-                                                <input class="form-control" type="text" placeholder="">
+
+                                    <!-- Add review -->
+                                    <form class="w-full">
+                                        <h5 class="mtext-108 cl2 p-b-7">
+                                            Add a review
+                                        </h5>
+
+                                        <p class="stext-102 cl6">
+                                            Your email address will not be published. Required fields are marked *
+                                        </p>
+
+                                        <div class="flex-w flex-m p-t-50 p-b-23">
+                                            <span class="stext-102 cl3 m-r-16">
+                                                Your Rating
+                                            </span>
+
+                                            <span class="wrap-rating fs-18 cl11 pointer">
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <input class="dis-none" type="number" name="rating">
+                                            </span>
+                                        </div>
+
+                                        <div class="row p-b-25">
+                                            <div class="col-12 p-b-5">
+                                                <label class="stext-102 cl3" for="review">Your review</label>
+                                                <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Email:<span>*</span></label>
-                                                <input class="form-control" type="email" placeholder="">
+
+                                            <div class="col-sm-6 p-b-5">
+                                                <label class="stext-102 cl3" for="name">Name</label>
+                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
                                             </div>
-                                            <div class="form-group">
-                                                <label>Your rating<span></span></label>
-                                                <select class="ps-rating">
-                                                    <option value="1">1</option>
-                                                    <option value="1">2</option>
-                                                    <option value="1">3</option>
-                                                    <option value="1">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
+
+                                            <div class="col-sm-6 p-b-5">
+                                                <label class="stext-102 cl3" for="email">Email</label>
+                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
                                             </div>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
-                                            <div class="form-group">
-                                                <label>Your Review:</label>
-                                                <textarea class="form-control" rows="6"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="ps-btn ps-btn--sm">Submit<i class="ps-icon-next"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="tab_03">
-                                <p>Add your tag <span> *</span></p>
-                                <form class="ps-product__tags" action="_action" method="post">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="">
-                                        <button class="ps-btn ps-btn--sm">Add Tags</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="tab_04">
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="6" placeholder="Enter your addition here..."></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <button class="ps-btn" type="button">Submit</button>
+
+                                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+                                            Submit
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -170,78 +340,71 @@
                 </div>
             </div>
         </div>
-        <div class="ps-section ps-section--top-sales ps-owl-root pt-40 pb-80">
-            <div class="ps-container">
-                <div class="ps-section__header mb-50">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
-                            <h3 class="ps-section__title" data-mask="Related item">- YOU MIGHT ALSO LIKE</h3>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                            <div class="ps-owl-actions"><a class="ps-prev" href="#"><i class="ps-icon-arrow-right"></i>Prev</a><a
-                                    class="ps-next" href="#">Next<i class="ps-icon-arrow-left"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ps-section__content">
-                    <div class="ps-owl--colection owl-slider" data-owl-auto="true" data-owl-loop="true"
-                         data-owl-speed="5000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false"
-                         data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3"
-                         data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
-                        @foreach($propducts_cate as $key => $pro_c)
-                            @if ($pro_c->id !== $product->id)
-                                @php
-                                    $new_p= App\Models\PriceDiscount::where('product_id',$pro_c->id)->first();
-                                    $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
-                                    $favo= App\Models\favoriteProduct::where('product_id',$pro_c->id)->where('user_id',auth()->id())->first();
-                                @endphp
-                                <div class="ps-shoes--carousel">
-                                    <div class="ps-shoe">
-                                        <div class="ps-shoe__thumbnail">
-                                            @if ( $pro_c->updated_at->format('d') == date('d'))
-                                                <div class="ps-badge"><span>{{__('New')}}</span></div>
-                                            @endif
-                                            @if ($new_p!==null)
-                                                <div class="ps-badge ps-badge--sale ps-badge--2nd">
-                                                    <span>-{{ $formatter->format($new_p->percentage) }}</span></div>
-                                            @endif
-                                            <livewire:favorite-product-home :product="$pro_c"/>
-                                            <img
-                                                src="{{asset('storage/products/'.$pro_c->image)}}" alt=""
-                                                width="200"><a class="ps-shoe__overlay"
-                                                               href="{{route('store.product.show',$product->id)}}"></a>
-                                        </div>
-                                        <div class="ps-shoe__content">
-                                            <div class="ps-shoe__variants">
-                                                <div
-                                                    class="ps-shoe__variant normal">@foreach ($pro_c->product_images as $image)
-                                                        <div class="item"><img src="{{asset('storage/'.$image->path)}}"
-                                                                               alt=""></div>
-                                                    @endforeach</div>
-                                            </div>
-                                            <div class="ps-shoe__detail"><a class="ps-shoe__name"
-                                                                            href="{{route('store.product.show',$product->id)}}">{{ $pro_c->name }}</a>
-                                                <p class="ps-shoe__categories"><a
-                                                        href="{{ route('grid.category',$pro_c->category->id) }}">{{ $pro_c->category->name }}</a>,<a
-                                                        href="#">
-                                                        Nike</a>,<a href="#"> Jordan</a></p><span
-                                                    class="ps-shoe__price"> £
-                                        @if ($new_p !== null)
-                                                        {{$new_p->price}}
-                                                        <del>£ {{$pro_c->price}}</del>
-                                                    @else
-                                                        {{$pro_c->price}}
-                                                    @endif
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
+    </div>
 
-                        @endforeach
+    <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
+        <span class="stext-107 cl6 p-lr-25">
+            SKU: JAK-01
+        </span>
+
+        <span class="stext-107 cl6 p-lr-25">
+            Categories: Jacket, Men
+        </span>
+    </div>
+</section>
+
+
+<!-- Related Products -->
+<section class="sec-relate-product bg0 p-t-45 p-b-105">
+    <div class="container">
+        <div class="p-b-45">
+            <h3 class="ltext-106 cl5 txt-center">
+                Related Products
+            </h3>
+        </div>
+
+        <!-- Slide2 -->
+        <div class="wrap-slick2">
+            <div class="slick2">
+                @foreach($propducts_cate as $key => $pro_c)
+                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="{{asset('storage/products/'.$pro_c->image)}}" alt="IMG-PRODUCT">
+
+                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                {{__('Quick View')}}
+                            </a>
+                        </div>
+
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="{{route('store.product.show',$pro_c->id)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{$pro_c->name}}
+                                </a>
+
+                                <span class="stext-105 cl3">
+                                    ${{$pro_c->price}}
+                                </span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+{{--                                                                              <livewire:favorite-product-home :product="$pro_c"/>
+  --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
+    </div>
+</section>
+
+
 @endsection

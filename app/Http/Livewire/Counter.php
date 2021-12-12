@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Cookie;
 
 class Counter extends Component
 {
-    public $dataOfText, $code;
-    public $quantity = 0;
+    public $dataOfText, $code,$coupon_code;
+    public $quantity = 1;
     public $cart = [];
     protected $listeners = ['cartUpdated' => 'onCartUpdate'];
     public function plus($id)
@@ -72,14 +72,14 @@ class Counter extends Component
 
     public function coupon_check()
     {
-        $coupon = Coupon::where('code', request()->post('code'))->first();
-
+        $coupon = Coupon::where('code',$this->coupon_code)->first();
         if (isset($coupon) || !empty($coupon)) {
-            toast('Successfully !!!', 'success');
+            toast('have discount !!!', 'success');
             return redirect()->back()->with(session()->put('coupon_value',$coupon->discount_value));
         } else {
-            toast('Not Found !!!', 'error');
+            toast('Not have discount !!!', 'error');
             return redirect()->back();
         }
+        $this->coupon_code = '';
     }
 }

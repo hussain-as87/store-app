@@ -25,9 +25,9 @@ class CartController extends Controller
                 $query->where('user_id', $user)->orWhereNull('user_id');
             })
             ->get();
-            $item_count=$cart->count();
+        $item_count = $cart->count();
 
-        return view('cart.index', compact('cart','item_count'));
+        return view('cart.index', compact('cart', 'item_count'));
     }
 
     /**
@@ -49,7 +49,9 @@ class CartController extends Controller
     {
         $request->validate([
             'product_id' => 'required | exists:products,id',
-            'quantity' => 'int|min:1'
+            'quantity' => 'int|min:1',
+            'size' => 'sometimes|max:4',
+            'color' => 'sometimes|string'
         ]);
         /*if he have price*/
         $product = Product::findOrFail($request->post('product_id'));
@@ -66,7 +68,7 @@ class CartController extends Controller
                 'price' => $product->price,
                 'quantity' => $request->post('quantity', 1)]);
         }*/
-        Cart::updateOrCreate(
+        $proc = Cart::updateOrCreate(
             [
                 'id' => $this->getCartId(),
                 'product_id' => $product->id
@@ -74,12 +76,17 @@ class CartController extends Controller
             [
                 'user_id' => auth()->id(),
                 'price' => $product->price,
+                'size' => $request->size,
+                'color' => $request->color,
                 'quantity' => DB::raw("quantity + $quantity")
             ]
         );
-
-        toast('the product ' . $product->name . ' added', 'success');
-        return redirect()->route('cart.index');
+        if ($proc) {
+            return redirect()->route('cart.index');
+        } else {
+            toast('not complete cart !!!', 'waraning');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -124,7 +131,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Cart::where('product_id',$id)->delete();
+        Cart::where('product_id', $id)->delete();
         return redirect()->back();
     }
 

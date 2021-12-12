@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => config('settings.local'),
+    'locale' => config('locales.languages'),
 
     /*
     |--------------------------------------------------------------------------

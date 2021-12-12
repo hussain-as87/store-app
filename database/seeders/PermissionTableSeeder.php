@@ -33,6 +33,10 @@ class PermissionTableSeeder extends Seeder
             'product-edit',
             'product-delete',
             'product-trash',
+            'advert-list',
+            'advert-create',
+            'advert-edit',
+            'advert-delete',
 
         ];
 

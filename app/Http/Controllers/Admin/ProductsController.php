@@ -52,6 +52,8 @@ class ProductsController extends BaseController
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->size = $request->size;
+        $product->color = $request->color;
         $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $image = ImageUpload::upload_image($request->image, $this->product_path);
@@ -82,14 +84,15 @@ class ProductsController extends BaseController
     }
 
     public function update(ProductRequest $request, Product $product)
-    {$new_price=null;
+    {
+        $new_price = null;
         if ($request->post('percentage')) {
             $per = '0.' . request()->percentage;
             $old_price = $per * $request->price;
             $new_price = $request->price - $old_price;
             $dis = PriceDiscount::where('product_id', $product->id)->first();
-
             if ($dis != null) {
+
                 $dis->percentage = $per;
                 $dis->price = $new_price;
                 $dis->product_id = $product->id;
@@ -105,6 +108,8 @@ class ProductsController extends BaseController
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
+            'color' => $request->color,
+            'size' => $request->size,
             'price' => $request->post('percentage') ? $new_price : $request->price,
             'category_id' => $request->category_id,
             'user_id' => auth()->id(),
@@ -220,6 +225,8 @@ class ProductsController extends BaseController
             'image' => 'sometimes|file|image|mimes:png,jpg,jepg',
             'gallery.*' => 'sometimes|file|image',
             'price' => 'required|max:1000000000',
+            'color' => 'sometimes',
+            'size' => 'sometimes|max:4',
             'category_id' => 'required',
             'gallery' => 'sometimes|max:1000000000',
         ]);

@@ -31,9 +31,24 @@
                        value="{!! old('name.'.$key,$category->getTranslation('name',$key)) ?? $category->name !!}"
                        aria-describedby="emailHelp" placeholder="@error('name.'.$key){{$message}} @enderror">
             </div>
+
+              <div class="form-group">
+            <label >{{ __('content') }}({{ __($val['name']) }})</label>
+            <textarea placeholder="@error('content.' . $key){{ $message }} @enderror" name="content[{{ $key }}]" class="form-control"  rows="5">
+                 {!! old('content.' . $key, $category->getTranslation('content', $key)) ?? $category->content !!}</textarea>
+        </div>
         </div>
     @endforeach
     {{--tab end--}}
+
+    <div class="form-group">
+        <label for="photo">{{ __('image') }}</label>
+        <input type="file" name="photo" class="form-control" id="image" value="{{ old('photo') ?? $category->photo }}">
+        @error('photo')
+        <small class="alert-danger">{{ $message }}</small>
+        @enderror
+    </div>
+
     <div class="form-check">
         <input class="form-check-input" type="radio" name="show" id="exampleRadios1" value="1"
             {{ $category->show == 1 ? 'checked' : '' }}>

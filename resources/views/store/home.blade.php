@@ -3,360 +3,251 @@
     {{__('home')}}
 @endsection
 @section('content')
-    <div class="ps-banner">
-        <div class="rev_slider fullscreenbanner" id="home-banner">
-            <ul>
-                <li class="ps-banner" data-index="rs-2972" data-transition="random" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-rotate="0"><img class="rev-slidebg" src="{{asset('images/slider/3.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" data-no-retina>
-                    <div class="tp-caption ps-banner__header" id="layer-1" data-x="left" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['-150','-120','-150','-170']" data-width="['none','none','none','400']" data-type="text" data-responsive_offset="on" data-frames="[{&quot;delay&quot;:1000,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p>March 2002 <br> Nike SB Dunk Low Pro</p>
-                    </div>
-                    <div class="tp-caption ps-banner__title" id="layer21" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['-60','-40','-50','-70']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1200,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p class="text-uppercase">SUBA</p>
-                    </div>
-                    <div class="tp-caption ps-banner__description" id="layer211" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['30','50','50','50']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1200,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p>Supa wanted something that was going to rep his East Coast <br> roots and, more specifically,
-                            his hometown of <br /> New York City in a big way.</p>
-                    </div>
-                    <a class="tp-caption ps-btn" id="layer31" href="#" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['120','140','200','200']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1500,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">Purchase
-                        Now<i class="ps-icon-next"></i></a>
-                </li>
-                <li class="ps-banner ps-banner--white" data-index="rs-100" data-transition="random" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-rotate="0"><img class="rev-slidebg" src="{{asset('images/slider/2.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" data-no-retina>
-                    <div class="tp-caption ps-banner__header" id="layer20" data-x="left" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['-150','-120','-150','-170']" data-width="['none','none','none','400']" data-type="text" data-responsive_offset="on" data-frames="[{&quot;delay&quot;:1000,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p>BEST ITEM <br> THIS SUMMER</p>
-                    </div>
-                    <div class="tp-caption ps-banner__title" id="layer339" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['-60','-40','-50','-70']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1200,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p class="text-uppercase">Recovery</p>
-                    </div>
-                    <div class="tp-caption ps-banner__description" id="layer2-14" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['30','50','50','50']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1200,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        <p>Supa wanted something that was going to rep his East Coast <br> roots and, more specifically,
-                            his hometown of <br /> New York City in a big way.</p>
-                    </div>
-                    <a class="tp-caption ps-btn" id="layer364" href="#" data-x="['left','left','left','left']" data-hoffset="['-60','15','15','15']" data-y="['middle','middle','middle','middle']" data-voffset="['120','140','200','200']" data-type="text" data-responsive_offset="on" data-textAlign="['center','center','center','center']" data-frames="[{&quot;delay&quot;:1500,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;x:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;x:50px;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]">
-                        {{__('Purchase Now')}}<i class="ps-icon-next"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="ps-section--features-product ps-section masonry-root pt-100 pb-100">
-        <div class="ps-container">
-            <div class="ps-section__header mb-50">
-                <h3 class="ps-section__title" data-mask="features">- {{__('Features Products')}}</h3>
-                <ul class="ps-masonry__filter">
-                    <li class="current"><a href="#" data-filter="*">{{__('all')}} <sup>8</sup></a></li>
-                    @foreach ($categories as $cat)
-                        <li><a href="{{ route('grid.category',$cat->id) }}" data-filter=".{{$cat->name}}">{{$cat->name}} <sup>1</sup></a></li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="ps-section__content pb-50">
-                <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
-                    <div class="ps-masonry">
-                        <div class="grid-sizer"></div>
-                        {{--start section--}}
-                        @foreach ($products as $pro)
-                            @php
-                                $new_price= App\Models\PriceDiscount::where('product_id',$pro->id)->first();
-                                $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
-                                $favo= App\Models\favoriteProduct::where('product_id',$pro->id)->where('user_id',auth()->id())->first();
-                            @endphp
-                            <div class="grid-item {{$pro->category->name}}">
-                                <div class="grid-item__content-wrapper">
-                                    <div class="ps-shoe mb-30">
-                                        <div class="ps-shoe__thumbnail">
-                                            @if ( $pro->updated_at->format('d') == date('d'))
-                                                <div class="ps-badge"><span>{{__('New')}}</span></div>
-                                            @endif
-                                            @if ($new_price!==null)
-                                                <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-{{ $formatter->format($new_price->percentage) }}</span></div>
-                                            @endif
-                                            <livewire:favorite-product-home :product="$pro">
-                                            <img src="{{asset('storage/products/'.$pro->image)}}" alt=""><a class="ps-shoe__overlay" href="{{ route('store.product.show',$pro->id) }}"></a>
-                                        </div>
-                                        <div class="ps-shoe__content">
-                                            <div class="ps-shoe__variants">
-                                                <div class="ps-shoe__variant normal">
-                                                    <img src="{{asset('storage/products/'.$pro->image)}}" alt="">
-                                                    @foreach ($pro->product_images as $g)
-                                                        <img src="{{asset('storage/'.$g->path)}}" alt="">
-                                                    @endforeach
-                                                </div>
-
-                                            </div>
-                                            <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$pro->name}}</a>
-                                                <p class="ps-shoe__categories"><a href="#">{{$pro->user->name}}</a>,<a href="{{ route('grid.category',$pro->category->id) }}">
-                                                        {{$pro->category->name}}</a>,<a href="#"> Jordan</a></p>
-                                                @if ($new_price !== null)
-                                                    <span class="ps-shoe__price">
-                                            <del>£{{$pro->price}}</del> £ {{$new_price->price}}</span>
-                                                @else
-                                                    <span class="ps-shoe__price">
-                                            £ {{$pro->price}}</span>
-                                                @endif
-
-                                            </div>
-                                        </div>
-                                    </div>
+    <!-- Slider -->
+    <section class="section-slide">
+        <div class="wrap-slick1">
+            <div class="slick1">
+                @foreach ($advert as $adv)
+                    <div class="item-slick1"
+                         style="background-image: url({{ asset('storage/advertis/' . $adv->photo) }});">
+                        <div class="container h-full">
+                            <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                                <div class="layer-slick1 animated visible-false" data-appear="fadeInDown"
+                                     data-delay="0">
+                            <span class="ltext-101 cl2 respon2">
+                                {{$adv->title}}
+                            </span>
                                 </div>
-                            </div>
-                        @endforeach
-                        {{--end section--}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ps-section--offer">
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('images/banner/home-banner-1.png')}}" alt=""></a></div>
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('images/banner/home-banner-2.png')}}" alt=""></a></div>
-    </div>
-    <div class="ps-section--sale-off ps-section pt-80 pb-40">
-        <div class="ps-container">
-            <div class="ps-section__header mb-50">
-                <h3 class="ps-section__title" data-mask="Sale off">- Hot Deal Today</h3>
-            </div>
-            <div class="ps-section__content">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
-                        <div class="ps-hot-deal">
-                            <h3>Nike DUNK Max 95 OG</h3>
-                            <p class="ps-hot-deal__price">Only: <span>£155</span></p>
-                            <ul class="ps-countdown" data-time="December 13, 2017 15:37:25">
-                                <li><span class="hours"></span>
-                                    <p>Hours</p>
-                                </li>
-                                <li class="divider">:</li>
-                                <li><span class="minutes"></span>
-                                    <p>minutes</p>
-                                </li>
-                                <li class="divider">:</li>
-                                <li><span class="seconds"></span>
-                                    <p>Seconds</p>
-                                </li>
-                            </ul>
-                            <a class="ps-btn" href="#">Order Today<i class="ps-icon-next"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
-                        <div class="ps-hotspot"><a class="point first active" href="javascript:;"><i class="fa fa-plus"></i>
-                                <div class="ps-hotspot__content">
-                                    <p class="heading">JUMP TO HEADER</p>
-                                    <p>Dynamic Fit Collar en la zona del tobillo que une la parte inferior de la pierna
-                                        y el pie sin reducir la libertad de movimiento.</p>
-                                </div>
-                            </a><a class="point second" href="javascript:;"><i class="fa fa-plus"></i>
-                                <div class="ps-hotspot__content">
-                                    <p class="heading">JUMP TO HEADER</p>
-                                    <p>Dynamic Fit Collar en la zona del tobillo que une la parte inferior de la pierna
-                                        y el pie sin reducir la libertad de movimiento.</p>
-                                </div>
-                            </a><a class="point third" href="javascript:;"><i class="fa fa-plus"></i>
-                                <div class="ps-hotspot__content">
-                                    <p class="heading">JUMP TO HEADER</p>
-                                    <p>Dynamic Fit Collar en la zona del tobillo que une la parte inferior de la pierna
-                                        y el pie sin reducir la libertad de movimiento.</p>
-                                </div>
-                            </a><img src="{{asset('images/hot-deal.png')}}" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ps-section ps-section--top-sales ps-owl-root pt-80 pb-80">
-        <div class="ps-container">
-            <div class="ps-section__header mb-50">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
-                        <h3 class="ps-section__title" data-mask="BEST SALE">- {{__('Top Sales')}}</h3>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                        <div class="ps-owl-actions"><a class="ps-prev" href="#"><i class="ps-icon-arrow-right"></i>{{__('Prev')}}</a><a class="ps-next" href="#">{{__('Next')}}<i class="ps-icon-arrow-left"></i></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="ps-section__content">
-                <div class="ps-owl--colection owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
-                    {{--start section--}}
 
-                    @foreach ($top_sales as $pro)
-                        <div class="ps-shoes--carousel">
-                            <div class="ps-shoe">
-                                <div class="ps-shoe__thumbnail">
-                                    @if ($pro->updated_at->format('d') == date('d'))
-                                        <div class="ps-badge"><span>{{__('new')}}</span></div>
-                                    @endif
-                                    <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div>
-                                        <livewire:favorite-product-home :product="$pro">
-
-                                        <img src="{{asset('storage/products/'.$pro->image)}}" alt=""><a class="ps-shoe__overlay" href="{{ route('store.product.show',$pro->id) }}"></a>
-
+                                <div class="layer-slick1 animated visible-false" data-appear="fadeInUp"
+                                     data-delay="800">
+                                    <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                        {{ $adv->content }}
+                                    </h2>
                                 </div>
-                                <div class="ps-shoe__content">
-                                    <div class="ps-shoe__variants">
-                                        <div class="ps-shoe__variant normal">
-                                            @foreach ($pro->product_images as $g)
-                                                <img src="{{asset('storage/'.$g->path)}}" alt="">
-                                            @endforeach
-                                        </div>
-                                        @if(!empty($ra))
-                                            <b class="p-2">( {{ $ra->rating }}<svg class="bg-outline-warning cursor-pointer block w-8 h-8 @if($rating >= 5 ) text-warning @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="15" height="15">
-                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg> )</b>
-                                        @endif
-                                    </div>
-                                    <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{route('store.product.show',$pro->id)}}">{{$pro->name}}</a>
-                                        <p class="ps-shoe__categories"><a href="{{ route('grid.category',$pro->category->id) }}">{{$pro->category->name}}</a>,<a href="#">
-                                                @if ($pro->category->subcategories)
-                                                    {{implode(', ',$pro->category->subcategories->pluck('name')->toArray())}}
-                                                @endif
-                                            </a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
-                                    <del>£220</del> £ {{$pro->price}}</span>
-                                    </div>
+
+                                <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+                                    <a href="{{ route('store.shop') }}"
+                                       class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                        {{ __('Shop Now') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                    {{--end section--}}
-
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-    </div>
-    <div class="ps-home-testimonial bg--parallax pb-80" data-background="{{asset('images/background/parallax.jpg')}}">
+    </section>
+
+    <!-- Banner -->
+    <div class="sec-banner bg0 p-t-80 p-b-50">
         <div class="container">
-            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
-                {{--start section--}}
-                <div class="ps-testimonial">
-                    <div class="ps-testimonial__thumbnail"><img src="{{asset('images/testimonial/1.jpg')}}" alt=""><i class="fa fa-quote-left"></i></div>
-                    <header>
-                        <select class="ps-rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <p>Logan May - CEO & Founder Invision</p>
-                    </header>
-                    <footer>
-                        <p>“Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit
-                            cheesecake. Cookie topping sweet muffin pudding tart bear claw sugar plum croissant. “</p>
-                    </footer>
-                </div>
-                <div class="ps-testimonial">
-                    <div class="ps-testimonial__thumbnail"><img src="{{asset('images/testimonial/2.jpg')}}" alt=""><i class="fa fa-quote-left"></i></div>
-                    <header>
-                        <select class="ps-rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <p>Logan May - CEO & Founder Invision</p>
-                    </header>
-                    <footer>
-                        <p>“Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit
-                            cheesecake. Cookie topping sweet muffin pudding tart bear claw sugar plum croissant. “</p>
-                    </footer>
-                </div>
-                <div class="ps-testimonial">
-                    <div class="ps-testimonial__thumbnail"><img src="{{asset('images/testimonial/3.jpg')}}" alt=""><i class="fa fa-quote-left"></i></div>
-                    <header>
-                        <select class="ps-rating">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <p>Logan May - CEO & Founder Invision</p>
-                    </header>
-                    <footer>
-                        <p>“Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit
-                            cheesecake. Cookie topping sweet muffin pudding tart bear claw sugar plum croissant. “</p>
-                    </footer>
-                </div>
-                {{--end section--}}
+            <div class="row">
+                @foreach ($categories as $category)
+                    <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+                        <!-- Block1 -->
+                        <div class="block1 wrap-pic-w">
+                            <img src="{{ asset('storage/category/'.$category->photo) }}" alt="IMG-BANNER">
+
+                            <a href="{{ route('store.shop') }}"
+                               class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                <div class="block1-txt-child1 flex-col-l">
+                            <span class="block1-name ltext-102 trans-04 p-b-8">
+                                {{ $category->name }}
+                            </span>
+
+                                    <span class="block1-info stext-102 trans-04">
+                                {{ $category->content }}
+                            </span>
+                                </div>
+
+                                <div class="block1-txt-child2 p-b-4 trans-05">
+                                    <div class="block1-link stext-101 cl0 trans-09">
+                                        {{ __('Shop Now') }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-    <div class="ps-section ps-home-blog pt-80 pb-80">
-        <div class="ps-container">
-            <div class="ps-section__header mb-50">
-                <h2 class="ps-section__title" data-mask="News">- {{__('Our Story')}}</h2>
-                <div class="ps-section__action"><a class="ps-morelink text-uppercase" href="#">{{__('View all post')}}<i class="fa fa-long-arrow-right"></i></a></div>
+
+    <!-- Product -->
+    <section class="bg0 p-t-23 p-b-140">
+        <div class="container">
+            <div class="p-b-10">
+                <h3 class="ltext-103 cl5">
+                    {{__('Product Overview')}}
+                </h3>
             </div>
-            <div class="ps-section__content">
-                <div class="row">
-                    {{--start section--}}
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                        <div class="ps-post">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.html"></a><img src="{{asset('images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.html">An Inside
-                                    Look at the Breaking2 Kit</a>
-                                <p class="ps-post__meta"><span>{{__('By')}}:<a class="mr-5" href="blog.html">Alena Studio</a></span>
-                                    -<span class="ml-5">Jun 10, 2017</span></p>
-                                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews.
-                                    Iterative approaches to corporate strategy foster collaborative thinking to
-                                    further…</p><a class="ps-morelink" href="blog-detail.html">{{__('Read more')}}<i class="fa fa-long-arrow-right"></i></a>
+                   <livewire:products-filter :product="$product"/>
+
+
+            <!-- Load more -->
+            {{-- <div class="flex-c-m flex-w w-full p-t-45">
+            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                Load More
+            </a>
+        </div>  --}}
+
+        </div>
+    </section>
+
+<!-- Modal1 -->
+<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+    <div class="overlay-modal1 js-hide-modal1"></div>
+
+    <div class="container">
+        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+                <img src="images/icons/icon-close.png" alt="CLOSE">
+            </button>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-7 p-b-30">
+                    <div class="p-l-25 p-r-30 p-lr-0-lg">
+                        <div class="wrap-slick3 flex-sb flex-w">
+                            <div class="wrap-slick3-dots"></div>
+                            <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+                            <div class="slick3 gallery-lb">
+                                <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                        <div class="ps-post">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.html"></a><img src="{{asset('images/blog/2.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.html">Unpacking
-                                    the Breaking2 Race Strategy</a>
-                                <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.html">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews.
-                                    Iterative approaches to corporate strategy foster collaborative thinking to
-                                    further…</p><a class="ps-morelink" href="blog-detail.html">Read more<i class="fa fa-long-arrow-right"></i></a>
+                </div>
+
+                <div class="col-md-6 col-lg-5 p-b-30">
+                    <div class="p-r-50 p-t-5 p-lr-0-lg">
+                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                            Lightweight Jacket
+                        </h4>
+
+                        <span class="mtext-106 cl2">
+								$58.79
+							</span>
+
+                        <p class="stext-102 cl3 p-t-23">
+                            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                        </p>
+
+                        <!--  -->
+                        <div class="p-t-33">
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Size
+                                </div>
+
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="time">
+                                            <option>Choose an option</option>
+                                            <option>Size S</option>
+                                            <option>Size M</option>
+                                            <option>Size L</option>
+                                            <option>Size XL</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Color
+                                </div>
+
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="time">
+                                            <option>Choose an option</option>
+                                            <option>Red</option>
+                                            <option>Blue</option>
+                                            <option>White</option>
+                                            <option>Grey</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                        </div>
+
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
+                                        </div>
+                                    </div>
+
+                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        Add to cart
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                        <div class="ps-post">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.html"></a><img src="{{asset('images/blog/3.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.html">Nike’s
-                                    Latest Football Cleat Breaks the Mold</a>
-                                <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.html">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews.
-                                    Iterative approaches to corporate strategy foster collaborative thinking to
-                                    further…</p><a class="ps-morelink" href="blog-detail.html">Read more<i class="fa fa-long-arrow-right"></i></a>
+
+                        <!--  -->
+                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+                            <div class="flex-m bor9 p-r-10 m-r-11">
+                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                                    <i class="zmdi zmdi-favorite"></i>
+                                </a>
                             </div>
+
+                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+
+                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+
+                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
                         </div>
                     </div>
-                    {{--end section--}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="ps-home-contact">
-        <div id="contact-map" data-address="New York, NY" data-title="BAKERY LOCATION!" data-zoom="17"></div>
-        <div class="ps-home-contact__form">
-            <header>
-                <h3>{{__('Contact Us')}}</h3>
-                <p>{{__('Learn about our company profile')}}</p>
-            </header>
-            <footer>
-                <form action="{{--{{route('contact.store')}}--}}" method="post">
-                    <div class="form-group">
-                        <label for="name">{{__('name')}}<span>*</span></label>
-                        <input id="name" class="form-control" type="text" name="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">{{__('email')}}<span>*</span></label>
-                        <input id="email" class="form-control" type="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">{{__('Message')}}<span>*</span></label>
-                        <textarea id="message" class="form-control" rows="4" name="message"></textarea>
-                    </div>
-                    <div class="form-group text-center">
-                        <button class="ps-btn">{{__('Send Message')}}<i class="fa fa-angle-right"></i></button>
-                    </div>
-                </form>
-            </footer>
-        </div>
-    </div>
+</div>
 
 @endsection

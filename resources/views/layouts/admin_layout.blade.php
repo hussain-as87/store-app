@@ -29,7 +29,7 @@ $product = new \App\Models\Admin\Product();
         }
 
     </style>
-@livewireStyles
+    @livewireStyles
 
     {{-- @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
 
@@ -121,6 +121,23 @@ $product = new \App\Models\Admin\Product();
                     </div>
                 </div>
             </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#advert" data-toggle="collapse" data-target="#advert" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>{{ __('advert') }}</span>
+                </a>
+                <div id="advert" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded"> @can('product-list')
+                        <a class="collapse-item" href="{{ route('adv.index') }}">{{ __('all') }}</a>@endcan
+                        @can('advert-create')
+                        <a class="collapse-item" href="{{ route('adv.create') }}">{{ __('create') }}</a>@endcan
+                    </div>
+                </div>
+            </li>
+
+
 
 
             @can('user-per')
