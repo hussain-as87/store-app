@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\About;
 use App\Models\Store;
 use Ramsey\Uuid\Uuid;
 use App\Models\Advert;
@@ -105,7 +106,7 @@ class StoreController extends Controller
         }
     }
 
-    public function blog()
+    public function about()
     {
         $user = Auth::id();
         $cart = Cart::with('product')->where('id', $this->getCartId())
@@ -114,8 +115,9 @@ class StoreController extends Controller
             })
             ->get();
         $item_count = $cart->count();
+        $about = About::with('user')->first();
 
-        return view('store.blog', compact('cart', 'item_count'));
+        return view('store.about', compact('cart', 'item_count','about'));
     }
 
     public function contact()

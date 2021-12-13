@@ -167,4 +167,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(favoriteProduct::class);
     }
+    public function about()
+    {
+        return $this->hasOne(About::class);
+    }
 }

@@ -135,10 +135,6 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('store.blog') }}">{{ __('blog') }}</a>
-                        </li>
-
-                        <li>
                             <a href="{{ route('store.about') }}">{{ __('About') }}</a>
                         </li>
 
@@ -263,10 +259,6 @@
 
             <li class="label1" data-label1="hot">
                 <a href="{{ route('cart.index') }}">{{ __('Features') }}</a>
-            </li>
-
-            <li>
-                <a href="{{ route('store.blog') }}">{{ __('blog') }}</a>
             </li>
 
             <li>

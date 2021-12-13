@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Order;
 use App\Exports\UsersExport;
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\admin\CustomLoginController;
 use App\Http\Controllers\Admin\RequestResetPasswordController;
 use App\Http\Controllers\AdvertsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Livewire\Counter;
 
 /*
@@ -97,21 +99,29 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('coupons/create', [CouponController::class, 'create'])->name('coupons.create');
     Route::post('coupons/store', [CouponController::class, 'store'])->name('coupons.store');
     Route::get('coupons/{id}', [CouponController::class, 'destroy'])->name('coupons.destroy');
- });
+
+
+    Route::get('about', [AboutController::class, 'index'])->name('about.index');
+    Route::get('about/edit', [AboutController::class, 'edit'])->name('about.edit');
+    Route::put('about/update', [AboutController::class, 'update'])->name('about.update');
+
+    Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact.index');
+    Route::delete('/contact/{contact}', [ContactController::class, 'destroy'])->name('admin.contact.destroy');
+});
 
 Route::resource('profile-user', ProfileController::class)->only('show', 'edit', 'update');
 Route::get('change-password', [ProfileController::class, 'change_password'])->name('change.password');
 Route::post('change-password', [ProfileController::class, 'reset_password'])->name('reset.password');
 /*home pages (store app) routes ---start---*/
 
-    Route::get('/', [StoreController::class, 'index'])->name('store.home');
-    Route::get('/shop', [StoreController::class, 'shop'])->name('store.shop');
-    Route::get('/blog', [StoreController::class, 'blog'])->name('store.blog');
-    Route::get('/contact', [StoreController::class, 'contact'])->name('store.contact');
-    Route::view('/about',"store.about" )->name('store.about');
-    Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
-    Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
-    Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
+Route::get('/', [StoreController::class, 'index'])->name('store.home');
+Route::get('/shop', [StoreController::class, 'shop'])->name('store.shop');
+Route::get('/about', [StoreController::class, 'about'])->name('store.about');
+Route::get('/contact', [StoreController::class, 'contact'])->name('store.contact');
+Route::post('/contact', [ContactController::class, 'contact_store'])->name('store.contact.store');
+Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
+Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
+Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
 
 
 /*home pages (store app) routes ---end---*/

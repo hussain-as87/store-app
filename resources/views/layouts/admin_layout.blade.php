@@ -194,6 +194,30 @@ $product = new \App\Models\Admin\Product();
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#about" data-toggle="collapse" data-target="#about" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>{{ __('about') }}</span>
+                </a>
+                <div id="about" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded"> {{--  @can('about-list')  --}}
+                        <a class="collapse-item" href="{{ route('about.index') }}">{{ __('all') }}</a>{{--  @endcan  --}}
+                        {{--  @can('about-edit')  --}}
+                        <a class="collapse-item" href="{{ route('about.edit') }}">{{ __('edit') }}</a>{{--  @endcan  --}}
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#contacts" data-toggle="collapse" data-target="#contacts" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>{{ __('contacts') }}</span>
+                </a>
+                <div id="contacts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('admin.contact.index') }}">{{ __('all') }}</a>
+                    </div>
+                </div>
+            </li>
             @endcan
 
             <!-- Divider -->
