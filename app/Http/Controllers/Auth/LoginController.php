@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -21,19 +20,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    protected $maxAttempts = 3;
-    protected $decayMinutes = 2;
-
-    public function redirectTo()
-    {
-        if ($this->guard()->user()->type === 'super_admin') {
-            return '/home';
-        }
-            return RouteServiceProvider::HOME;
-
-
-    }
 
     /**
      * Where to redirect users after login.

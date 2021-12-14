@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +13,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('verified');
         $this->middleware('auth');
     }
 
@@ -25,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::where('id',auth()->id())->first();
-        return view('admin.home',compact('user'));
+        return view('home');
     }
 }

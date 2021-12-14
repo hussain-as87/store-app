@@ -208,3 +208,7 @@ Route::get('/users/import', [ExcelController::class, 'import'])->name('export.us
 
 
 Route::view('test/vue', 'showvue');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

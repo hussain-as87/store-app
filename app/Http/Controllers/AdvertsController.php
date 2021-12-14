@@ -122,7 +122,7 @@ class AdvertsController extends Controller
      */
     public function destroy($id)
     {
-        $advert = Advert::where('id', $id)->first()->destroy();
+        $advert = Advert::where('id', $id)->first()->delete();
         if ($advert) {
             toast('Deleted !!', 'error');
             return redirect()->back();

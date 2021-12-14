@@ -32,13 +32,13 @@ class StoreController extends Controller
             ->get();
         $item_count = $cart->count();
 
-        $advert = Advert::orderByDesc('id')->paginate(5);
+        $advert = Advert::orderByDesc('created_at')->paginate(5);
         /** if i want to bring a relation in another relation With('user.store,gallery') */
-        $categories = Category::paginate(3);
+        $categories = Category::paginate(8);
 
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
-        $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('updated_at')->paginate(10);
+        $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('created_at')->paginate(10);
         return view('store.home', compact('advert', 'product', 'products', 'categories', 'top_sales', 'cart', 'item_count'));
     }
 
