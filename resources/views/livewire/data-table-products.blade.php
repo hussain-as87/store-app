@@ -86,7 +86,7 @@
 
                                 <td><img src="{{ asset('storage/products/' . $prod->image) }}"
                                          alt="{{ $prod->name }}"
-                                         style="width: 50px;border-radius: 37px;height: 50px"/></td>
+                                         style="width: 50px;"/></td>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $prod->name }}</td>
                                 <td>{{ $prod->category->name }}</td>

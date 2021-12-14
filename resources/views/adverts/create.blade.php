@@ -5,7 +5,7 @@
 @section('title')
     {{__('create advert')}}
 @endsection
-@section('name'){{ __('index') }}@endsection
+@section('name'){{ __('advert') }}@endsection
 @section('href'){{ route('adv.index') }}@endsection
 @section('name2'){{ __('products') }}@endsection
 @section('href2'){{ route('products.index') }}@endsection

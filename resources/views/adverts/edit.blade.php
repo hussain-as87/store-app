@@ -7,8 +7,8 @@
 @endsection
 @section('name'){{ __('create') }}@endsection
 @section('href'){{ route('adv.create') }}@endsection
-@section('name2'){{ __('products') }}@endsection
-@section('href2'){{ route('products.index') }}@endsection
+@section('name2'){{ __('advert') }}@endsection
+@section('href2'){{ route('adv.index') }}@endsection
 @section('content')
     <div class="container">
         <form action="{{ route('adv.update', $advert->id) }}" method="post" enctype="multipart/form-data">

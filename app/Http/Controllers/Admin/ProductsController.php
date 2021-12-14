@@ -85,6 +85,7 @@ class ProductsController extends BaseController
 
     public function update(ProductRequest $request, Product $product)
     {
+        $this->getValidation($request);
         $new_price = null;
         if ($request->post('percentage')) {
             $per = '0.' . request()->percentage;
@@ -226,7 +227,7 @@ class ProductsController extends BaseController
             'gallery.*' => 'sometimes|file|image',
             'price' => 'required|max:1000000000',
             'color' => 'sometimes',
-            'size' => 'sometimes|max:4',
+            'size' => 'sometimes',
             'category_id' => 'required',
             'gallery' => 'sometimes|max:1000000000',
         ]);

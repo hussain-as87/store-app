@@ -21,7 +21,7 @@
     @if ($product->image)
         <div class="center">
             <img src="{{ asset('storage/products/' . $product->image) }}"
-                 style="width: 200px;border-radius: 100px;height: 200px">
+                 style="width: 200px;">
         </div>
     @endif
 
@@ -115,7 +115,7 @@
             @foreach ($product->product_images as $img)
                 <div class="col-3">
                     <img src="{{ asset('storage/' . $img->path) }}"
-                         style="width: 100px;border-radius: 50px;height: 100px;" alt="{{ $img->id }}">
+                         style="width: 100px" alt="{{ $img->id }}">
                     <a class="btn btn-danger" href="{{ route('gallery.destroy', $img->id) }}"
                        onclick="confirm('are you sure ?')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

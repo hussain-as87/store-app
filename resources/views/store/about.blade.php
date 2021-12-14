@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('images/bg-02.jpg') }}');">
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" {{--  style="background-image: url('{{ asset('images/bg-04.jpg') }}');"  --}}style="background-color:#8fa8ed">
     <h2 class="ltext-105 cl0 txt-center">
         {{ __('About') }}
     </h2>
