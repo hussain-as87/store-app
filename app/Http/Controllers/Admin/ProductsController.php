@@ -69,7 +69,7 @@ class ProductsController extends BaseController
         $this->SaveTag($request, $product);
         if ($product) {
             toast('Successfully', 'success');
-            return redirect()->back();
+            return redirect()->route('products.index');
         } else {
             toast('Error!!', 'error');
             return redirect()->back();
@@ -128,7 +128,7 @@ class ProductsController extends BaseController
 
         if ($product) {
             toast('Successfully', 'success');
-            return redirect()->back();
+            return redirect()->route('products.index');
         } else {
             toast('Error!!', 'error');
             return redirect()->back();
