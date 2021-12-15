@@ -27,7 +27,7 @@ class CartController extends Controller
             ->get();
         $item_count = $cart->count();
 
-        return view('cart.index', compact('cart', 'item_count'));
+        return view('store.cart.index', compact('cart', 'item_count'));
     }
 
     /**
@@ -138,7 +138,7 @@ class CartController extends Controller
     public function checkout()
     {
         $cart = Cart::with('product')->where('user_id', auth()->id())->get();
-        return view('cart.checkout', compact('cart'));
+        return view('store.cart.checkout', compact('cart'));
     }
 
     protected function getCartId()

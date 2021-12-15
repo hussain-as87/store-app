@@ -11,12 +11,12 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::with('user')->first();
-        return view('about.index', compact('about'));
+        return view('admin.about.index', compact('about'));
     }
     public function edit()
     {
         $about = About::with('user')->where('user_id', 1)->where('id', 1)->first();
-        return view('about.edit', compact('about'));
+        return view('admin.about.edit', compact('about'));
     }
     public function update(Request $request)
     {

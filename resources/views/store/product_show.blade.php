@@ -5,7 +5,7 @@
 @section('content')
 <br />
 <br />
-<!-- breadcrumb -->
+{{--  <!-- breadcrumb -->
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="{{route('store.home')}}" class="stext-109 cl8 hov-cl1 trans-04">
@@ -23,7 +23,7 @@
         </span>
     </div>
 </div>
-
+  --}}
 
 <!-- Product Detail -->
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
@@ -142,8 +142,8 @@
                             </div>
                         </div>
                     </form>
-{{--                                          <livewire:favorite-product-show :product="$product">
-  --}}
+                                         <livewire:favorite-product-show :product="$product">
+
                     <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                         <div class="flex-m bor9 p-r-10 m-r-11">
@@ -394,8 +394,8 @@
                                     <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
                                     <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
                                 </a>
-{{--                                                                              <livewire:favorite-product-home :product="$pro_c"/>
-  --}}
+                                                                            <livewire:favorite-product-home :product="$pro_c"/>
+
                             </div>
                         </div>
                     </div>
@@ -405,6 +405,5 @@
         </div>
     </div>
 </section>
-
 
 @endsection

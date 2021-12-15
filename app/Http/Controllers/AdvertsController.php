@@ -24,7 +24,7 @@ class AdvertsController extends Controller
      */
     public function index()
     {
-        return view('adverts.index');
+        return view('admin.adverts.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class AdvertsController extends Controller
      */
     public function create(Advert $advert)
     {
-        return view('adverts.create',compact('advert'));
+        return view('admin.adverts.create',compact('advert'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AdvertsController extends Controller
     public function edit($id)
     {
         $advert = Advert::where('id', $id)->first();
-        return view('adverts.edit', compact('advert'));
+        return view('admin.adverts.edit', compact('advert'));
     }
 
     /**
