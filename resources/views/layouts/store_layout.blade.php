@@ -118,23 +118,23 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu">
+                            <li class=" {{ Request::segment(1) === null ? 'active-menu' : '' }}">
                                 <a href="{{ route('store.home') }}">{{ __('Home') }}</a>
                             </li>
 
-                            <li>
+                            <li class=" {{ Request::segment(1) === 'shop' ? 'active-menu' : '' }}">
                                 <a href="{{ route('store.shop') }}">{{ __('Shop') }}</a>
                             </li>
 
-                            <li class="label1" data-label1="hot">
+                            <li class="label1  {{ Request::segment(1) === 'cart' ? 'active-menu' : '' }}" data-label1="hot">
                                 <a href="{{ route('cart.index') }}">{{ __('Features') }}</a>
                             </li>
 
-                            <li>
+                            <li class=" {{ Request::segment(1) === 'about' ? 'active-menu' : '' }}">
                                 <a href="{{ route('store.about') }}">{{ __('About') }}</a>
                             </li>
 
-                            <li>
+                            <li class=" {{ Request::segment(1) === 'contact' ? 'active-menu' : '' }}">
                                 <a href="{{ route('store.contact') }}">{{ __('Contact') }}</a>
                             </li>
                         </ul>
