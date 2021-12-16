@@ -47,6 +47,8 @@
         }
 
     </style>
+    @stack('links')
+
     {{-- @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
 
 
@@ -504,16 +506,16 @@
     </div>
 
 
-
+@stack('scripts')
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
     <script>
         $(".js-select2").each(function() {
             $(this).select2({

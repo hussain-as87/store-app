@@ -119,9 +119,8 @@ Route::get('/shop', [StoreController::class, 'shop'])->name('store.shop');
 Route::get('/about', [StoreController::class, 'about'])->name('store.about');
 Route::get('/contact', [StoreController::class, 'contact'])->name('store.contact');
 Route::post('/contact', [ContactController::class, 'contact_store'])->name('store.contact.store');
-Route::get('grid/{category}', [StoreController::class, 'gridCategory'])->name('grid.category');
-Route::get('product/{product}', [StoreController::class, 'productShow'])->name('store.product.show');
-Route::post('product/search', [StoreController::class, 'search'])->name('store.product.search');
+Route::get('product-{id}', [StoreController::class, 'productShow'])->name('store.product.show');
+Route::post('product-search', [StoreController::class, 'search'])->name('store.product.search');
 
 
 /*home pages (store app) routes ---end---*/
@@ -212,3 +211,6 @@ Route::view('test/vue', 'showvue');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+

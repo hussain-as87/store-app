@@ -85,7 +85,7 @@
                             <div class="flex-w flex-t bor12 p-b-13">
                                 <div class="size-208">
                                     <span class="stext-110 cl2">
-                                        {{ __('Qiscount') }}:
+                                        {{ __('discount') }}:
                                     </span>
                                 </div>
 

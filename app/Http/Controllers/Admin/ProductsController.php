@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProductRequest;
+use Throwable;
 use App\ImageUpload;
-use App\Models\Admin\Category;
-use App\Models\Admin\Product;
-use App\Models\Admin\ProductImage;
 use App\Models\Admin\Tag;
-use App\Models\PriceDiscount;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Admin\Product;
+use App\Models\PriceDiscount;
+use App\Models\Admin\Category;
+use App\Models\Admin\ProductImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Throwable;
+use App\Http\Requests\ProductRequest;
 
 class ProductsController extends BaseController
 {
@@ -52,8 +53,8 @@ class ProductsController extends BaseController
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->size = $request->size;
-        $product->color = $request->color;
+        $product->size = json_decode($request->size);
+        $product->color = json_decode($request->color);
         $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $image = ImageUpload::upload_image($request->image, $this->product_path);

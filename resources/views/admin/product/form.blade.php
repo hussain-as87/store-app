@@ -69,21 +69,21 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="size">{{ __('size') }}</label>
-                <select name="size" id="size" class="form-control">
+                <select name="size[]" id="size" class="form-control" multiple>
                     <option>{{__('Choose an option')}}</option>
-                    <option value="S" {{ $product->size === 'S' ? 'selected' : '' }}>{{ __('size') }} S</option>
-                    <option value="M" {{ $product->size === 'M' ? 'selected' : '' }}>{{ __('size') }} M</option>
-                    <option value="L" {{ $product->size === 'L' ? 'selected' : '' }}>{{ __('size') }} L</option>
-                    <option value="XL" {{ $product->size === 'XL' ? 'selected' : '' }}>{{ __('size') }} XL</option>
-                    <option value="XXL" {{ $product->size === 'XXL' ? 'selected' : '' }}>{{ __('size') }} XXL</option>
-                    <option value="XXXL" {{ $product->size === 'XXXL' ? 'selected' : '' }}>{{ __('size') }} XXXL</option>
+                    <option value="S" {{ $product->size == 'S' ? 'selected' : '' }}>{{ __('size') }} S</option>
+                    <option value="M" {{ $product->size =='M' ? 'selected' : '' }}>{{ __('size') }} M</option>
+                    <option value="L" {{ $product->size =='L' ? 'selected' : '' }}>{{ __('size') }} L</option>
+                    <option value="XL" {{ $product->size == 'XL' ? 'selected' : '' }}>{{ __('size') }} XL</option>
+                    <option value="XXL" {{ $product->size == 'XXL' ? 'selected' : '' }}>{{ __('size') }} XXL</option>
+                    <option value="XXXL" {{ $product->size == 'XXXL' ? 'selected' : '' }}>{{ __('size') }} XXXL</option>
                 </select>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="color">{{ __('color') }}
                     </label>
-                    <select name="color" id="color" class="form-control">
+                    <select name="color" id="color" class="form-control" multiple>
                         <option>{{__('Choose an option')}}</option>
                         <option value="red" {{ $product->color === 'red' ? 'selected' : '' }}>{{__('red')}} </option>
                         <option value="yellow" {{ $product->color === 'yellow' ? 'selected' : '' }}>{{__('yellow')}} </option>

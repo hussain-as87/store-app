@@ -1,11 +1,18 @@
 @extends('layouts.store_layout')
 @section('title')
-    {{$product->name}}
+{{$product->name}}
 @endsection
 @section('content')
+@push('links')
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->
+@endpush
 <br />
 <br />
-{{--  <!-- breadcrumb -->
+
+
+<!-- breadcrumb -->
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="{{route('store.home')}}" class="stext-109 cl8 hov-cl1 trans-04">
@@ -19,11 +26,11 @@
         </a>
 
         <span class="stext-109 cl4">
-           {{$product->name}}
+            {{$product->name}}
         </span>
     </div>
 </div>
-  --}}
+
 
 <!-- Product Detail -->
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
@@ -40,22 +47,24 @@
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="{{asset('storage/products/'.$product->image)}}" alt="IMG-PRODUCT">
 
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="#">
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('storage/products/'.$product->image)}}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
+
                             @foreach ($product->product_images as $image)
                             <div class="item-slick3" data-thumb="{{asset('storage/'.$image->path)}}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="{{asset('storage/'.$image->path)}}" alt="IMG-PRODUCT">
 
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="#">
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('storage/'.$image->path)}}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
                             @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -64,31 +73,31 @@
             <div class="col-md-6 col-lg-5 p-b-30">
                 <div class="p-r-50 p-t-5 p-lr-0-lg">
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                        {{$product->name}}
+                        {{ $product->name }}
                     </h4>
 
                     <span class="mtext-106 cl2">
-                        ${{$product->price}}
+                        ${{ $product->price }}
                     </span>
 
                     <p class="stext-102 cl3 p-t-23">
-                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
                     </p>
                     <form action="{{route('cart.store')}}" method="post" id="appCart">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$product->id}}">
 
+
                         <!--  -->
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Size
+                                    {{ __('Size') }}
                                 </div>
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" name="size">
-                                            <option>Choose an option</option>
+                                            <option>{{ __('Choose an option') }}</option>
                                             <option value="s">{{ __('size') }} S</option>
                                             <option value="m">{{ __('size') }} M</option>
                                             <option value="l">{{ __('size') }} L</option>
@@ -109,12 +118,12 @@
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" name="color">
-                                            <option>Choose an option</option>
-                                            <option value="red">Red</option>
-                                            <option value="yellow">Yellow</option>
-                                            <option value="blue">Blue</option>
-                                            <option value="white">White</option>
-                                            <option value="grey">Grey</option>
+                                            <option>{{ __('Choose an option') }}</option>
+                                            <option value="red">{{ __('Red') }}</option>
+                                            <option value="yellow">{{ __('Yellow') }}</option>
+                                            <option value="blue">{{ __('Blue') }}</option>
+                                            <option value="white">{{ __('White') }}</option>
+                                            <option value="grey">{{ __('Grey') }}</option>
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
@@ -128,7 +137,7 @@
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
 
-                                        <input class="mtext-104 cl3 txt-center num-product" name="quantity" type="number" value="1">
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1">
 
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
@@ -142,15 +151,13 @@
                             </div>
                         </div>
                     </form>
-                                         <livewire:favorite-product-show :product="$product">
 
                     <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                        <div class="flex-m bor9 p-r-10 m-r-11">
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-                                <i class="zmdi zmdi-favorite"></i>
-                            </a>
-                        </div>
+
+                        <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Favorite">
+                            <livewire:favorite-product-home :product="$product" />
+                        </a>
 
                         <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
                             <i class="fa fa-facebook"></i>
@@ -178,7 +185,8 @@
                     </li>
 
                     <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
+                        <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional
+                            information</a>
                     </li>
 
                     <li class="nav-item p-b-10">
@@ -192,7 +200,8 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel">
                         <div class="how-pos2 p-lr-15-md">
                             <p class="stext-102 cl6">
-                                {!! $product->description !!} </p>
+                                {!! $product->description !!}
+                            </p>
                         </div>
                     </div>
 
@@ -263,7 +272,7 @@
                                     <!-- Review -->
                                     <div class="flex-w flex-t p-b-68">
                                         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                            <img src="{{asset('images/avatar-01.jpg')}}" alt="AVATAR">
+                                            <img src="images/avatar-01.jpg" alt="AVATAR">
                                         </div>
 
                                         <div class="size-207">
@@ -282,7 +291,8 @@
                                             </div>
 
                                             <p class="stext-102 cl6">
-                                                Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
+                                                Quod autem in homine praestantissimum atque optimum est, id
+                                                deseruit. Apud ceteros autem philosophos
                                             </p>
                                         </div>
                                     </div>
@@ -290,7 +300,7 @@
                                     <!-- Add review -->
                                     <form class="w-full">
                                         <h5 class="mtext-108 cl2 p-b-7">
-                                            Add a review
+                                            {{ __('Add a review') }}
                                         </h5>
 
                                         <p class="stext-102 cl6">
@@ -330,7 +340,7 @@
                                         </div>
 
                                         <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                            Submit
+                                            {{ __('Submit') }}
                                         </button>
                                     </form>
                                 </div>
@@ -348,10 +358,11 @@
         </span>
 
         <span class="stext-107 cl6 p-lr-25">
-            Categories: Jacket, Men
+            {{ __('categories') }}: {{ $product->category->name }}
         </span>
     </div>
 </section>
+
 
 
 <!-- Related Products -->
@@ -359,7 +370,7 @@
     <div class="container">
         <div class="p-b-45">
             <h3 class="ltext-106 cl5 txt-center">
-                Related Products
+                {{ __('Related Products') }}
             </h3>
         </div>
 
@@ -390,11 +401,8 @@
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                </a>
-                                                                            <livewire:favorite-product-home :product="$pro_c"/>
+
+                                <livewire:favorite-product-home :product="$pro_c" />
 
                             </div>
                         </div>
@@ -405,5 +413,66 @@
         </div>
     </div>
 </section>
+@push('scripts')
+<!--===============================================================================================-->
+<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
 
+<!--===============================================================================================-->
+<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/slick/slick.min.js')}}"></script>
+<script src="{{asset('js/slick-custom.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
+<script>
+    $('.parallax100').parallax100();
+
+</script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+<script>
+    $('.gallery-lb').each(function() { // the containers for all your galleries
+        $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image'
+            , gallery: {
+                enabled: true
+            }
+            , mainClass: 'mfp-fade'
+        });
+    });
+
+</script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+<script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script>
+    $('.js-pscroll').each(function() {
+        $(this).css('position', 'relative');
+        $(this).css('overflow', 'hidden');
+        var ps = new PerfectScrollbar(this, {
+            wheelSpeed: 1
+            , scrollingThreshold: 1000
+            , wheelPropagation: false
+        , });
+
+        $(window).on('resize', function() {
+            ps.update();
+        })
+    });
+
+</script>
+<!--===============================================================================================-->
+<script src="{{asset('js/main.js')}}"></script>
+
+@endpush
 @endsection

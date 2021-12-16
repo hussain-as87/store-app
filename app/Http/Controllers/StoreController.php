@@ -36,15 +36,17 @@ class StoreController extends Controller
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::paginate(8);
 
-        $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
+        $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('created_at')->paginate(10);
         return view('store.home', compact('advert', 'product', 'products', 'categories', 'top_sales', 'cart', 'item_count'));
     }
 
 
-    public function productShow(Product $product)
+    public function productShow($id)
     {
+        $product = Product::with('category.subcategories', 'product_images', 'user')->findOrFail($id);
+
         $user = Auth::id();
         $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
@@ -52,7 +54,7 @@ class StoreController extends Controller
             })
             ->get();
 
-        $new_price = PriceDiscount::where('product_id', $product->id)->first();
+        $new_price = PriceDiscount::where('product_id', $id)->first();
 
         $item_count = $cart->count();
 
@@ -60,7 +62,7 @@ class StoreController extends Controller
 
         $favorite = favoriteProduct::where('product_id', $product->id)->where('user_id', auth()->id())->first();
 
-        return view('store', compact('propducts_cate', 'product', 'cart', 'item_count', 'new_price', 'favorite'));
+        return view('store.product_show', compact('propducts_cate', 'product', 'cart', 'item_count', 'new_price', 'favorite'));
     }
 
 
@@ -93,7 +95,7 @@ class StoreController extends Controller
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::all();
-        $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
+        $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->search($value)
             ->orderByDesc('updated_at')->paginate(10);
@@ -117,7 +119,7 @@ class StoreController extends Controller
         $item_count = $cart->count();
         $about = About::with('user')->first();
 
-        return view('store.about', compact('cart', 'item_count','about'));
+        return view('store.about', compact('cart', 'item_count', 'about'));
     }
 
     public function contact()
