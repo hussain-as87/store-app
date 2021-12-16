@@ -22,12 +22,12 @@
                         style="border-radius: 50px"/></a>
                 </h3>
 
-                <h2><span>email : </span>{{ $profile->user->email }}</h2>
-                <h3><span>first name : </span>{{ $profile->first_name }}</h3>
-                <h3><span>last name : </span>{{ $profile->last_name }}</h3>
-                <h3><span>country : </span>{{ $profile->country }}</h3>
-                <h3><span>phone : </span>{{ $profile->phone ? '+ ' . $profile->phone : '' }}</h3>
-                <h3><span>address : </span>{{ $profile->address }}</h3>
+                <h2><span>{{__('email')}} : </span>{{ $profile->user->email }}</h2>
+                <h3><span>{{__('first name')}} : </span>{{ $profile->first_name }}</h3>
+                <h3><span>{{__('last name')}} : </span>{{ $profile->last_name }}</h3>
+                <h3><span>{{__('country')}} : </span>{{ $profile->country }}</h3>
+                <h3><span>{{__('phone')}} : </span>{{ $profile->phone ? '+ ' . $profile->phone : '' }}</h3>
+                <h3><span>{{__('address')}} : </span>{{ $profile->address }}</h3>
                 <hr />
 
             </div>

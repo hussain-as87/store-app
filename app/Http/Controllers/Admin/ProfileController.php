@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\Profile;
+use App\Models\SocialMedia;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class ProfileController extends BaseController
     public function show()
     {
         $profile = auth()->user()->profile;
-        return view('admin.profile.show', compact('profile'));
+        $social = auth()->user()->social;
+        return view('admin.profile.show', compact('profile', 'social'));
     }
 
     /**
@@ -34,7 +36,8 @@ class ProfileController extends BaseController
     public function edit()
     {
         $profile = auth()->user()->profile;
-        return view('admin.profile.edit', compact('profile'));
+        $social = auth()->user()->social;
+        return view('admin.profile.edit', compact('profile', 'social'));
     }
 
     /**
@@ -64,6 +67,13 @@ class ProfileController extends BaseController
                 $profile->avatar = $path;
             }
             $profile->update();
+            /*social media update*/
+            $socail = SocialMedia::where('user_id',auth()->id())->first();
+            $data['facebook'] = $request->facebook;
+            $data['google'] = $request->google;
+            $data['twitter'] = $request->twitter;
+            $socail->update($data);
+
             DB::commit();
         } catch (\Throwable $exception) {
             DB::rollBack();
@@ -82,6 +92,9 @@ class ProfileController extends BaseController
             'phone' => 'sometimes|max:12',
             'avatar' => 'image',
             'country' => 'sometimes',
+            'facebook' => 'sometimes',
+            'google' => 'sometimes',
+            'twitter' => 'sometimes',
         ]);
     }
 

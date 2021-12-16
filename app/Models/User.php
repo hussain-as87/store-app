@@ -30,6 +30,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
     use SearchableTrait;
+
     protected $searchable = [
         /**
          * Columns and their priority in search results.
@@ -127,6 +128,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -146,10 +148,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class, 'receiver');
     }
+
     public function sentMessages()
     {
         return $this->hasMany(Message::class, 'sender');
     }
+
     /* public function hasPermission($name)
     {
         DB::table('users_permissions')
@@ -167,8 +171,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(favoriteProduct::class);
     }
+
     public function about()
     {
         return $this->hasOne(About::class);
+    }
+
+    public function social()
+    {
+        return $this->hasOne(SocialMedia::class)->withDefault();
     }
 }

@@ -13,7 +13,7 @@
     <div class="container">
         <form action="{{ route('adv.update', $advert->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
-            @include('adverts.form')
+            @include('admin.adverts.form')
             <a class="btn badge-warning" href="{{ route('adv.index') }}">{{ __('Go Back') }}</a>
             <button class="btn btn-primary">{{ __('edit') }}</button>
         </form>

@@ -3,7 +3,9 @@
 {{__('contact')}}
 @endsection
 @section('content')
-
+<br>
+<br>
+<br>
 <!-- Product -->
 <div class="bg0 m-t-23 p-b-140">
     <div class="container">

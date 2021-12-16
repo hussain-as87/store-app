@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\About;
+use App\Models\SocialMedia;
 use App\Models\Store;
 use Ramsey\Uuid\Uuid;
 use App\Models\Advert;
@@ -28,15 +29,15 @@ class StoreController extends Controller
         $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
                 $query->where('user_id', $user)->orWhereNull('user_id');
-            })
-            ->get();
+            })->orderByDesc('created_at')
+            ->paginate(5);
         $item_count = $cart->count();
 
         $advert = Advert::orderByDesc('created_at')->paginate(5);
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::paginate(8);
 
-        $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
+        $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('created_at')->paginate(10);
         return view('store.home', compact('advert', 'product', 'products', 'categories', 'top_sales', 'cart', 'item_count'));
@@ -45,8 +46,8 @@ class StoreController extends Controller
 
     public function productShow($id)
     {
-        $product = Product::with('category.subcategories', 'product_images', 'user')->findOrFail($id);
-
+        $product = Product::with('category.subcategories', 'product_images', 'user.social')->findOrFail($id);
+        $social = SocialMedia::where('user_id', $product->user_id)->first();
         $user = Auth::id();
         $cart = Cart::with('product')->where('id', $this->getCartId())
             ->when($user, function ($query, $user) {
@@ -55,14 +56,11 @@ class StoreController extends Controller
             ->get();
 
         $new_price = PriceDiscount::where('product_id', $id)->first();
-
         $item_count = $cart->count();
-
         $propducts_cate = Product::where('category_id', $product->category_id)->orderByDesc('updated_at')->get();
-
         $favorite = favoriteProduct::where('product_id', $product->id)->where('user_id', auth()->id())->first();
 
-        return view('store.product_show', compact('propducts_cate', 'product', 'cart', 'item_count', 'new_price', 'favorite'));
+        return view('store.product_show', compact('propducts_cate', 'product', 'cart', 'item_count', 'new_price', 'favorite', 'social'));
     }
 
 
@@ -95,7 +93,7 @@ class StoreController extends Controller
 
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::all();
-        $top_sales = Product::/*withoutGlobalScope('ordered')->*/TopSales(10);
+        $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->search($value)
             ->orderByDesc('updated_at')->paginate(10);

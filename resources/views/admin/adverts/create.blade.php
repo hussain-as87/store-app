@@ -12,7 +12,7 @@
 @section('content')
     <div class="container">
         <form action="{{route('adv.store')}}" method="post" enctype="multipart/form-data">
-            @include('adverts.form')
+            @include('admin.adverts.form')
             <a class="btn badge-warning" href="{{route('adv.index')}}">{{__('Go Back')}}</a>
             <button type="submit" class="btn btn-primary">{{__('Submit')}}</button>
         </form>
