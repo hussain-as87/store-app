@@ -25,7 +25,6 @@
                                 <p>{{__('order by')}}
                                     <select
                                         wire:model="orderBy"
-                                        name="perPage"
                                         id="sort_by"
                                         class="custom-select custom-select-sm form-control form-control-sm">
                                         <option value="id">{{__('id')}}</option>

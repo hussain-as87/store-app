@@ -16,8 +16,10 @@ class CreateSocialMediaTable extends Migration
         Schema::create('social_media', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('google')->nullable();
+            $table->text('pinterest')->nullable();
             $table->text('twitter')->nullable();
             $table->text('facebook')->nullable();
+            $table->text('instagram')->nullable();
             $table->primary('user_id');
             $table->timestamps();
         });

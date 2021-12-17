@@ -53,8 +53,8 @@ class ProductsController extends BaseController
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->size = json_decode($request->size);
-        $product->color = json_decode($request->color);
+        $product->size = implode(',',$request->size);
+        $product->color = implode(',',$request->color);
         $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $image = ImageUpload::upload_image($request->image, $this->product_path);

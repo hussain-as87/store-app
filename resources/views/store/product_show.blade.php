@@ -100,12 +100,12 @@
                                         <div class="rs1-select2 bor8 bg0">
                                             <select class="js-select2" name="size">
                                                 <option>{{ __('Choose an option') }}</option>
-                                                <option value="s">{{ __('size') }} S</option>
-                                                <option value="m">{{ __('size') }} M</option>
-                                                <option value="l">{{ __('size') }} L</option>
-                                                <option value="xl">{{ __('size') }} XL</option>
-                                                <option value="xxl">{{ __('size') }} XXL</option>
-                                                <option value="xxxl">{{ __('size') }} XXXL</option>
+                                                <option value="S">{{ __('size') }} S</option>
+                                                <option value="M">{{ __('size') }} M</option>
+                                                <option value="L">{{ __('size') }} L</option>
+                                                <option value="Xl">{{ __('size') }} XL</option>
+                                                <option value="XXL">{{ __('size') }} XXL</option>
+                                                <option value="XXXL">{{ __('size') }} XXXL</option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
@@ -164,23 +164,32 @@
                                 <livewire:favorite-product-home :product="$product"/>
                             </a>
 
-                            <a href="{{$social->facebook}}"
+                           @if($social->facebook != null) <a href="{{$social->facebook}}"
                                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
                                data-tooltip="Facebook">
                                 <i class="fa fa-facebook"></i>
-                            </a>
+                            </a>@endif
+                           @if($social->instagram != null) <a href="{{$social->instagram}}"
+                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                               data-tooltip="instagram">
+                                <i class="fa fa-instagram"></i>
+                            </a>@endif
 
-                            <a href="{{$social->twitter}}"
+                           @if($social->twitter != null) <a href="{{$social->twitter}}"
                                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
                                data-tooltip="Twitter">
                                 <i class="fa fa-twitter"></i>
-                            </a>
+                            </a>@endif
 
-                            <a href="{{$social->google}}"
+                            @if($social->google != null)<a href="{{$social->google}}"
                                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
                                data-tooltip="Google Plus">
                                 <i class="fa fa-google-plus"></i>
-                            </a>
+                            </a>@endif
+
+                            @if($social->pinterest != null)<a href="{{$social->pinterest}}" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                                <i class="fa fa-pinterest-p"></i>
+                            </a>@endif
                         </div>
                     </div>
                 </div>
@@ -197,8 +206,7 @@
                         </li>
 
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">{{__('Additional')}}
-                                information</a>
+                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">{{__('Additional information')}}</a>
                         </li>
 
                         <li class="nav-item p-b-10">
@@ -222,15 +230,15 @@
                             <div class="row">
                                 <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                     <ul class="p-lr-28 p-lr-15-sm">
-                                        <li class="flex-w flex-t p-b-7">
+<!--                                        <li class="flex-w flex-t p-b-7">
                                         <span class="stext-102 cl3 size-205">
-                                            Weight
+                                            {{__('Weight')}}
                                         </span>
 
                                             <span class="stext-102 cl6 size-206">
                                             0.79 kg
                                         </span>
-                                        </li>
+                                        </li>-->
 
                                         <li class="flex-w flex-t p-b-7">
                                         <span class="stext-102 cl3 size-205">
@@ -258,7 +266,9 @@
                                         </span>
 
                                             <span class="stext-102 cl6 size-206">
-                                            {{__('Black, Blue, Grey, Green, Red, White')}}
+                                                @php
+                                                    $array = array($product->color);
+                                                    print_r(array_values($array));                                                @endphp
                                         </span>
                                         </li>
 
@@ -268,7 +278,7 @@
                                         </span>
 
                                             <span class="stext-102 cl6 size-206">
-                                            XL, L, M, S
+                                            {{implode(', ', $product->pluck('size')->toArray())}}
                                         </span>
                                         </li>
                                     </ul>
@@ -336,7 +346,8 @@
 
                                             <div class="row p-b-25">
                                                 <div class="col-12 p-b-5">
-                                                    <label class="stext-102 cl3" for="review">{{__('Your review')}}</label>
+                                                    <label class="stext-102 cl3"
+                                                           for="review">{{__('Your review')}}</label>
                                                     <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
                                                               id="review" name="review"></textarea>
                                                 </div>
@@ -400,8 +411,8 @@
                                 <div class="block2-pic hov-img0">
                                     <img src="{{asset('storage/products/'.$pro_c->image)}}" alt="IMG-PRODUCT">
 
-                                    <a href="#"
-                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                    <a href="{{route('store.product.show',$pro_c->id)}}"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                                         {{__('Quick View')}}
                                     </a>
                                 </div>
@@ -436,10 +447,6 @@
         <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
         <!--===============================================================================================-->
         <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-        <!--===============================================================================================-->
-        <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-        <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-        <!--===============================================================================================-->
 
         <!--===============================================================================================-->
         <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
@@ -468,30 +475,7 @@
             });
 
         </script>
-        <!--===============================================================================================-->
-        <script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
-        <!--===============================================================================================-->
-        <!--===============================================================================================-->
-        <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-        <script>
-            $('.js-pscroll').each(function () {
-                $(this).css('position', 'relative');
-                $(this).css('overflow', 'hidden');
-                var ps = new PerfectScrollbar(this, {
-                    wheelSpeed: 1
-                    , scrollingThreshold: 1000
-                    , wheelPropagation: false
-                    ,
-                });
 
-                $(window).on('resize', function () {
-                    ps.update();
-                })
-            });
-
-        </script>
-        <!--===============================================================================================-->
-        <script src="{{asset('js/main.js')}}"></script>
 
     @endpush
 @endsection

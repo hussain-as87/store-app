@@ -36,7 +36,7 @@ class StoreController extends Controller
         $advert = Advert::orderByDesc('created_at')->paginate(5);
         /** if i want to bring a relation in another relation With('user.store,gallery') */
         $categories = Category::paginate(8);
-
+        $social = SocialMedia::where('user_id', $product->user_id)->first();
         $top_sales = Product::/*withoutGlobalScope('ordered')->*/ TopSales(10);
         //$expensive_sales=Product::highPrice(120,500)->get();
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc('created_at')->paginate(10);

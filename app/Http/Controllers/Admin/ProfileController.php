@@ -70,8 +70,10 @@ class ProfileController extends BaseController
             /*social media update*/
             $socail = SocialMedia::where('user_id',auth()->id())->first();
             $data['facebook'] = $request->facebook;
+            $data['instagram'] = $request->instagram;
             $data['google'] = $request->google;
             $data['twitter'] = $request->twitter;
+            $data['pinterest'] = $request->pinterest;
             $socail->update($data);
 
             DB::commit();
@@ -93,7 +95,9 @@ class ProfileController extends BaseController
             'avatar' => 'image',
             'country' => 'sometimes',
             'facebook' => 'sometimes',
+            'instagram' => 'sometimes',
             'google' => 'sometimes',
+            'pinterest' => 'sometimes',
             'twitter' => 'sometimes',
         ]);
     }

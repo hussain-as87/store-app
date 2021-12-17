@@ -79,6 +79,14 @@
                                    placeholder="@error('facebook'){{ $message }} @enderror">
                         </div>
                         <div class="col-4 form-group">
+                            <label for="instagram">{{ __('instagram') }}</label>
+                            <input type="url" name="facebook"
+                                   class="form-control @error('instagram') is-invalid alert-danger @enderror"
+                                   id="instagram"
+                                   value="{{ old('instagram') ?? $social->instagram }}" aria-describedby="emailHelp"
+                                   placeholder="@error('instagram'){{ $message }} @enderror">
+                        </div>
+                        <div class="col-4 form-group">
                             <label for="twitter">{{ __('twitter') }}</label>
                             <input type="url" name="twitter"
                                    class="form-control @error('twitter') is-invalid alert-danger @enderror"
@@ -93,6 +101,13 @@
                                    id="google"
                                    value="{{ old('google') ?? $social->google }}" aria-describedby="emailHelp"
                                    placeholder="@error('google'){{ $message }} @enderror">
+                        </div>    <div class="col-4 form-group">
+                            <label for="pinterest">{{ __('pinterest') }}</label>
+                            <input type="url" name="pinterest"
+                                   class="form-control @error('pinterest') is-invalid alert-danger @enderror"
+                                   id="pinterest"
+                                   value="{{ old('pinterest') ?? $social->pinterest }}" aria-describedby="emailHelp"
+                                   placeholder="@error('pinterest'){{ $message }} @enderror">
                         </div>
                     </div>
                     <button class="btn btn-primary">{{ __('edit') }}</button>
