@@ -17,14 +17,14 @@
                     <div class="messages-box">
                         <div class="list-group rounded-0">
 
-                            <livewire:side-bar :receiver="$receiver"  />
+                            <livewire:side-bar :receiver="$receiver"/>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Chat Box-->
             <div class="col-7 px-0">
-                <livewire:chat :receiver="$receiver" />
+                <livewire:chat :receiver="$receiver"/>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
         });
 
         var channel = pusher.subscribe('private-chat');
-        channel.bind('new-message', function(msg) {
+        channel.bind('new-message', function (msg) {
             addmessage(msg);
         });
     </script>

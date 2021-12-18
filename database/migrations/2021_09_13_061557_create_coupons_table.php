@@ -17,7 +17,7 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->text('code');
             $table->text('discount_value');
-            $table->enum('is_active',[0,1]);
+            $table->enum('is_active', [0, 1]);
             $table->timestamps();
         });
     }

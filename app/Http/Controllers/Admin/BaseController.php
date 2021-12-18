@@ -11,8 +11,9 @@ class BaseController extends Controller
 {
     public function __construct()
     {
-/*         $this->middleware('usertype:admin,super_admin');
- */        $this->middleware('verified');
+        /*         $this->middleware('usertype:admin,super_admin');
+         */
+        $this->middleware('verified');
         $this->middleware('auth');
 
     }

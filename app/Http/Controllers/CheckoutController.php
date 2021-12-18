@@ -59,7 +59,7 @@ class CheckoutController extends Controller
                  ]);*/
                 $total += $item->price * $item->quantity;
             }
-            Order::where('user_id',auth()->id())->delete();
+            Order::where('user_id', auth()->id())->delete();
             $user->carts()->delete();
 
             Cookie::queue(Cookie::make('cart_id', '', -60));
@@ -75,7 +75,6 @@ class CheckoutController extends Controller
             throw $exception;
         }
     }
-
 
 
     protected function paypal(Order $order, $total)
@@ -143,8 +142,6 @@ class CheckoutController extends Controller
         } catch (\Throwable $exception) {
             return $exception->getMessage();
         }
-
-
 
 
         /*  public function payments(Request $request,Order $order)

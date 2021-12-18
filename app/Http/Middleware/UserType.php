@@ -15,11 +15,11 @@ class UserType
      * @param \Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next,...$type)
+    public function handle(Request $request, Closure $next, ...$type)
     {
         $user = Auth::user();
-        if (!in_array($user->type , $type)) {
-            toast('You are not '.implode(' or ',$type).' !!!','warring');
+        if (!in_array($user->type, $type)) {
+            toast('You are not ' . implode(' or ', $type) . ' !!!', 'warring');
             return redirect('/');
         }
         return $next($request);

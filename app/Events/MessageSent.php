@@ -14,7 +14,9 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class MessageSent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     protected $message;
+
     /**
      * Create a new event instance.
      *
@@ -34,10 +36,12 @@ class MessageSent implements ShouldBroadcast
     {
         return new PrivateChannel('chat');
     }
+
     public function broadcastAs()
     {
         return 'new-message';
     }
+
     public function broadcastWith()
     {
         return [

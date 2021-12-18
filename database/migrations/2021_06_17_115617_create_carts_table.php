@@ -20,10 +20,10 @@ class CreateCartsTable extends Migration
             $table->unsignedSmallInteger('quantity')->default(0);
             $table->double('price');
             $table->string('color')->nullable();
-            $table->enum('size',['S','M','L','XL','XXL','XXXL'])->nullable();
-            $table->primary(['id','product_id']);
-            $table->foreign('user_id')->references( 'id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('product_id')->references( 'id')->on('products')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->enum('size', ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'])->nullable();
+            $table->primary(['id', 'product_id']);
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

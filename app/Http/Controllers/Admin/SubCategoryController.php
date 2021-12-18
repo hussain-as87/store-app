@@ -46,7 +46,7 @@ class SubCategoryController extends Controller
         return view('admin.subcategory.edit', compact('category', 'subcategory'));
     }
 
-    public function update(SubCategory $subcategory,Request $request)
+    public function update(SubCategory $subcategory, Request $request)
     {
         $this->getValidate($request);
         $subcategory->update([
@@ -69,6 +69,7 @@ class SubCategoryController extends Controller
         toast('Delete!', 'error');
         return redirect()->back();
     }
+
     public function trash(SubCategory $subcategory)
     {
         $subcategories = SubCategory::onlyTrashed()->orderByDesc('id')->paginate(5);

@@ -16,12 +16,11 @@ class ProductsFilter extends Component
     public $orderBy = 'id';
 
 
-
     public function render()
     {
         $products = Product::with('category.subcategories', 'product_images', 'user')->orderByDesc($this->orderBy)->search($this->search)
             /* ->Where('color', $this->color_chose ? $this->color_chose : null)->whereBetween('price', $this->price_range)
- */            ->paginate(10);
+ */ ->paginate(10);
         $categories = Category::paginate(8);
 
         return view('livewire.products-filter', compact('products', 'categories'));

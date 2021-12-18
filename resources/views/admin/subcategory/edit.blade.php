@@ -14,6 +14,9 @@
         <form action="{{route('subcategories.update',$subcategory->id)}}" method="post">
             @method('PUT')
             @include('admin.subcategory.form')
+            <br/>
+            <a class="btn badge-warning" href="{{route('categories.show',$subcategory->category_id)}}">{{__('Go Back')}}
+                <i class="fas fa-arrow-left"></i></a>
             <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>

@@ -18,12 +18,13 @@ class RequestResetPasswordController extends Controller
     {
         return view('admin.password-reset.index');
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'mobile' => 'required|exists:users,mobile'
         ]);
-        $mobile  = $request->post('mobile');
+        $mobile = $request->post('mobile');
         $mobile = ltrim($mobile, '+970');
         $user = User::where('mobile', $mobile)->first();
         $code = Str::random(8);
@@ -37,11 +38,13 @@ class RequestResetPasswordController extends Controller
         // $user->notify(new ResetPasswordCodeNotification($mobile));
         return redirect()->route('request.password.code', $mobile);
     }
+
     public function code()
     {
         $mobile = request('mobile');
         return view('admin.password-reset.code', compact('mobile'));
     }
+
     public function check(Request $request)
     {
         $request->validate([
@@ -69,7 +72,6 @@ class RequestResetPasswordController extends Controller
         dd($route);
         return redirect()->to($route);
     }
-
 
 
     public function reset(Request $request, User $user)

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
-            SettingSedder::class,
+            SettingSeder::class,
             CreateCategoriesAndProductsSeeder::class,
         ]);
     }

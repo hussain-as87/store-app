@@ -15,17 +15,19 @@ class RatingProducts extends Component
     protected $rules = [
         'rating' => ['required', 'in:1,2,3,4,5']
     ];
+
     public function render()
     {
         $ra = Rating::where('product_id', $this->product->id)->where('user_id', auth()->id())->with('user')->first();
-        return view('livewire.rating-products',compact('ra'));
+        return view('livewire.rating-products', compact('ra'));
     }
+
     public function mount()
     {
         if (auth()->user()) {
             $rating = Rating::where('user_id', auth()->id())->where('product_id', $this->product->id)->first();
             if (!empty($rating)) {
-                $this->rating  = $rating->rating;
+                $this->rating = $rating->rating;
                 $this->currentId = $rating->id;
             }
         }
@@ -40,7 +42,7 @@ class RatingProducts extends Component
         }
         if ($this->currentId) {
             $this->currentId = '';
-            $this->rating  = '';
+            $this->rating = '';
         }
         return redirect(request()->header('Referer'));
     }

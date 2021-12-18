@@ -537,13 +537,13 @@
             , dropdownParent: $(this).next('.dropDownSelect2')
         });
     });
-        $(".js-select3").each(function () {
+    $(".js-select3").each(function () {
         $(this).select3({
             minimumResultsForSearch: 20
             , dropdownParent: $(this).next('.dropDownSelect3')
         });
     });
-        $(".js-select4").each(function () {
+    $(".js-select4").each(function () {
         $(this).select4({
             minimumResultsForSearch: 20
             , dropdownParent: $(this).next('.dropDownSelect4')

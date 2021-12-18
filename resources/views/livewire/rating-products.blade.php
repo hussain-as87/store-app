@@ -1,21 +1,21 @@
 @if($hideForm != true)
-@if($ra != null)
-   <div class="ps-product__rating">
-        <form wire:click="rate()">
-            <select class="ps-rating" name="rating" wire:model="rating" id="star">
-                <option value="1" {{ $ra->rating ? 'selected' : '' }}>1</option>
-                <option value="2" {{ $ra->rating ? 'selected' : '' }}>2</option>
-                <option value="3" {{ $ra->rating ? 'selected' : '' }}>3</option>
-                <option value="4" {{ $ra->rating ? 'selected' : '' }}>4</option>
-                <option value="5" {{ $ra->rating ? 'selected' : '' }}>5</option>
-            </select>
-        </form>
-        @if(!empty($ra))
-            <label for="star" href="">(Rate {{ $ra->rating }})</label>
-        @endif
-    </div>
-@else
-div class="ps-product__rating">
+    @if($ra != null)
+        <div class="ps-product__rating">
+            <form wire:click="rate()">
+                <select class="ps-rating" name="rating" wire:model="rating" id="star">
+                    <option value="1" {{ $ra->rating ? 'selected' : '' }}>1</option>
+                    <option value="2" {{ $ra->rating ? 'selected' : '' }}>2</option>
+                    <option value="3" {{ $ra->rating ? 'selected' : '' }}>3</option>
+                    <option value="4" {{ $ra->rating ? 'selected' : '' }}>4</option>
+                    <option value="5" {{ $ra->rating ? 'selected' : '' }}>5</option>
+                </select>
+            </form>
+            @if(!empty($ra))
+                <label for="star" href="">(Rate {{ $ra->rating }})</label>
+            @endif
+        </div>
+    @else
+        div class="ps-product__rating">
         <form wire:click="rate()">
             <select class="ps-rating" name="rating" wire:model="rating" id="star">
                 <option value="1">1</option>
@@ -25,8 +25,8 @@ div class="ps-product__rating">
                 <option value="5">5</option>
             </select>
         </form>
-    </div>
-@endif
+        </div>
+    @endif
 
 @endif
 

@@ -58,7 +58,8 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
             ->greeting('welcome to you ms ' . $notifiable->name)
             ->line('new order has been created.(' . $this->order->id . ')')
             ->action('Notification Action', url(route('order.index')))
-            ->line('Thank you for using our application!')/*->view()*/;
+            ->line('Thank you for using our application!')/*->view()*/
+        ;
         return $message;
     }
 
@@ -84,7 +85,7 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
     /**
      * Get the Vonage / SMS representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return NexmoMessage
      */
     public function toNexmo($notifiable)
@@ -102,7 +103,7 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
     /**
      * Get the Vonage / Shortcode representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toShortcode($notifiable)
@@ -114,6 +115,7 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
             ],
         ];
     }
+
     public function toArray($notifiable)
     {
         return [

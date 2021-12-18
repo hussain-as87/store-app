@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory, HasTranslations, SoftDeletes ,SearchableTrait;
+    use HasFactory, HasTranslations, SoftDeletes, SearchableTrait;
 
 
     protected $searchable = [
@@ -31,11 +31,11 @@ class Product extends Model
             'products.id' => 10,
             'products.name' => 10,
             'products.description' => 10,
-        ] ,
-          'joins' => [
-              'categories' => ['categories.id','products.category_id'],
-              'users' => ['users.id','products.category_id'],
-          ],
+        ],
+        'joins' => [
+            'categories' => ['categories.id', 'products.category_id'],
+            'users' => ['users.id', 'products.category_id'],
+        ],
     ];
     public $translatable = ['name', 'description'];
     protected $guarded = [];

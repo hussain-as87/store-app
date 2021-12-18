@@ -23,6 +23,7 @@ class UserController extends Controller
             'destroy',
         ]]);
     }
+
     function login(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -176,18 +177,19 @@ class UserController extends Controller
             'message' => __('user is deleted !')
         ]);
     }
+
     public function editProfile(Request $request)
     {
         $user = auth()->user()->currentAccessToken()->tokenable->id;
         $profile = Profile::where('user_id', $user)->first();
         if ($profile != null) {
             $request->validate([
-                'first_name'=>'sometimes',
-                'last_name'=>'sometimes',
-                'avatar'=>'sometimes|file|image',
-                'address'=>'sometimes',
-                'phone'=>'sometimes',
-                'country'=>'sometimes',
+                'first_name' => 'sometimes',
+                'last_name' => 'sometimes',
+                'avatar' => 'sometimes|file|image',
+                'address' => 'sometimes',
+                'phone' => 'sometimes',
+                'country' => 'sometimes',
             ]);
             $profile->update([
                 'first_name' => $request->first_name,

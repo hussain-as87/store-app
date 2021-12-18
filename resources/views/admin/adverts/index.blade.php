@@ -1,9 +1,9 @@
 @extends('layouts.admin_layout')
 @section('header_page')
-{{ __('advert') }}
+    {{ __('advert') }}
 @endsection
 @section('title')
-{{ __('advert') }}
+    {{ __('advert') }}
 @endsection
 @section('name'){{ __('products') }}@endsection
 @section('href'){{ route('products.index') }}@endsection
@@ -12,5 +12,5 @@
 @section('href2'){{ route('adv.create') }}@endsection
 @endcan
 @section('content')
-<livewire:advert-data-table>
-    @endsection
+    <livewire:advert-data-table>
+@endsection

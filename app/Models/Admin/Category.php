@@ -14,7 +14,7 @@ class Category extends Model
     use HasFactory, SearchableTrait, HasTranslations, SoftDeletes;
 
     protected $guarded = [];
-    public $translatable = ['name','content'];
+    public $translatable = ['name', 'content'];
 
     protected $searchable = [
         /**

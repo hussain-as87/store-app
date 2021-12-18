@@ -14,8 +14,9 @@
         <form action="{{ route('products.update', $product->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @include('admin.product.form')
-            <a class="btn badge-warning" href="{{ route('products.index') }}">{{ __('Go Back') }}</a>
-            <button class="btn btn-primary">{{ __('edit') }}</button>
+            <a class="btn badge-warning" href="{{ route('products.index') }}">{{__('Go Back')}} <i
+                    class="fas fa-arrow-left"></i></a>
+            <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 @endsection

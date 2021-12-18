@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         $order = Order::with('products')->where('user_id', auth()->id())->get();
-        return $order/*view('order.index',compact('order'))*/;
+        return $order/*view('order.index',compact('order'))*/ ;
     }
 
     /**
@@ -98,7 +98,6 @@ class OrderController extends Controller
     }
 
 
-
     public function callback()
     {
         $id = request()->query('id');
@@ -111,7 +110,7 @@ class OrderController extends Controller
 
         $order_id = session()->get('pay_order_id');
         session()->forget('pay_order_id');
-        $order  = Order::findOrFail($order_id);
+        $order = Order::findOrFail($order_id);
         $capture = Http::baseUrl('https://api.moyasar.com/v1/')
             ->withBasicAuth(config('services.moyasar.key'), '')
             ->get('payments/{$id}/capture')

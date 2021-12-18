@@ -17,7 +17,7 @@
                     <div class="messages-box">
                         <div class="list-group rounded-0">
 
-                            <livewire:side-bar />
+                            <livewire:side-bar/>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
         });
 
         var channel = pusher.subscribe('private-chat');
-        channel.bind('new-message', function(msg) {
+        channel.bind('new-message', function (msg) {
             addmessage(msg);
         });
     </script>

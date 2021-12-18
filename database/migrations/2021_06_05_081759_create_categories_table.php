@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->json('name');
-            $table->enum('show',[0,1])->default(0);
+            $table->enum('show', [0, 1])->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

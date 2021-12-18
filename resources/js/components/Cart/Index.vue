@@ -197,10 +197,10 @@ export default {
     },
     methods: {
         quantityPlus: function () {
-            this.quantity ++;
+            this.quantity++;
         },
         quantityMinus: function () {
-            this.quantity --;
+            this.quantity--;
         }
     }
 }

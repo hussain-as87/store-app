@@ -55,7 +55,8 @@
                             <h3 class="mt-40"> Addition information</h3>
                             <div class="form-group form-group--inline textarea">
                                 <label>Order Notes</label>
-                                <textarea class="form-control" rows="5" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                <textarea class="form-control" rows="5"
+                                          placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
                                     </thead>
                                     <tbody>
                                     @php
-                                    $total=0;
+                                        $total=0;
                                     @endphp
                                     @foreach ($cart as $item)
                                         <tr>
@@ -82,7 +83,7 @@
                                             <td>{{$item->quantity * $item->price}}</td>
                                         </tr>
                                         @php
-                                        $total += $item->quantity * $item->price
+                                            $total += $item->quantity * $item->price
                                         @endphp
                                     @endforeach
                                     <tr>
@@ -98,7 +99,8 @@
                                     <div class="ps-radio">
                                         <input class="form-control" type="radio" id="rdo01" name="payment" checked>
                                         <label for="rdo01">Cheque Payment</label>
-                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State
+                                            / County, Store Postcode.</p>
                                     </div>
                                 </div>
                                 <div class="form-group paypal">
@@ -111,13 +113,15 @@
                                         <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
                                         <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
                                     </ul>
-                                    <button class="ps-btn ps-btn--fullwidth" type="submit">{{__('Place Order')}}<i class="ps-icon-next"></i></button>
+                                    <button class="ps-btn ps-btn--fullwidth" type="submit">{{__('Place Order')}}<i
+                                            class="ps-icon-next"></i></button>
                                 </div>
                             </footer>
                         </div>
                         <div class="ps-shipping">
                             <h3>FREE SHIPPING</h3>
-                            <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
+                            <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on
+                                every order, every time.</p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +141,7 @@
                     </form>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-                    <p>...and receive  <span>$20</span>  coupon for first shopping.</p>
+                    <p>...and receive <span>$20</span> coupon for first shopping.</p>
                 </div>
             </div>
         </div>

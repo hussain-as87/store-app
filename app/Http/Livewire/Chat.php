@@ -24,8 +24,6 @@ class Chat extends Component
     ];
 
 
-
-
     public function loadMore()
     {
         $this->limitPerPage = $this->limitPerPage + 2;

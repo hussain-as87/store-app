@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('product/update', [ProductController::class, 'update'])->name('api.product.update');
     Route::delete('product/destroy', [ProductController::class, 'destroy'])->name('api.product.destroy');
 
- Route::apiResource('users', UserController::class)->names([
+    Route::apiResource('users', UserController::class)->names([
         'index' => 'api.users.index',
         'store' => 'api.users.store',
     ])->except('show', 'update', 'destroy');
@@ -57,17 +57,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('users/profile', [UserController::class, 'editProfile'])->name('api.users.profile');
 
 
-    Route::post('favorite_product',[FavoriteProductControoler::class, 'store'])->name('api.favorite.store');
-    Route::delete('favorite_product',[FavoriteProductControoler::class, 'destroy'])->name('api.favorite.destroy');
+    Route::post('favorite_product', [FavoriteProductControoler::class, 'store'])->name('api.favorite.store');
+    Route::delete('favorite_product', [FavoriteProductControoler::class, 'destroy'])->name('api.favorite.destroy');
 
-    Route::post('rating_product',[RatingProductControoler::class, 'store'])->name('api.rating.store');
-    Route::delete('rating_product',[RatingProductControoler::class, 'destroy'])->name('api.rating.destroy');
+    Route::post('rating_product', [RatingProductControoler::class, 'store'])->name('api.rating.store');
+    Route::delete('rating_product', [RatingProductControoler::class, 'destroy'])->name('api.rating.destroy');
 
-    Route::get('cart',[CartController::class, 'index'])->name('api.cart.index');
-    Route::post('cart',[CartController::class, 'store'])->name('api.cart.store');
-    Route::delete('cart',[CartController::class, 'destroy'])->name('api.cart.destroy');
+    Route::get('cart', [CartController::class, 'index'])->name('api.cart.index');
+    Route::post('cart', [CartController::class, 'store'])->name('api.cart.store');
+    Route::delete('cart', [CartController::class, 'destroy'])->name('api.cart.destroy');
 
-    Route::get('order_products',[OrderProductController::class, 'index'])->name('api.order_products.index');
-    Route::post('order_products',[OrderProductController::class, 'store'])->name('api.order_products.store');
-    Route::delete('order_products',[OrderProductController::class, 'destroy'])->name('api.order_products.destroy');
+    Route::get('order_products', [OrderProductController::class, 'index'])->name('api.order_products.index');
+    Route::post('order_products', [OrderProductController::class, 'store'])->name('api.order_products.store');
+    Route::delete('order_products', [OrderProductController::class, 'destroy'])->name('api.order_products.destroy');
 });

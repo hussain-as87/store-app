@@ -10,5 +10,5 @@
 @section('name2'){{ __('create') }}@endsection
 @section('href2'){{ route('categories.create') }}@endsection
 @section('content')
-   <livewire:data-tablecategories :category="$category">
+    <livewire:data-tablecategories :category="$category">
 @endsection

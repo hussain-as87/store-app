@@ -10,8 +10,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-3">
                             <div class="dataTables_length" id="dataTable_length"><label>{{__('show')}} <select
-                                        wire:model="perPage"
-                                        name="perPage"
+                                        wire:model="perPage" name="perPage"
                                         class="custom-select custom-select-sm form-control form-control-sm">
                                         <option value="10">10</option>
                                         <option value="25">25</option>
@@ -23,11 +22,8 @@
                         <div class="col-sm-12 col-md-3">
                             <div class="dataTables_length" id="sort_by">
                                 <p>{{__('order by')}}
-                                    <select
-                                        wire:model="orderBy"
-                                        name="perPage"
-                                        id="sort_by"
-                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                    <select wire:model="orderBy" name="perPage" id="sort_by"
+                                            class="custom-select custom-select-sm form-control form-control-sm">
                                         <option value="id">{{__('id')}}</option>
                                         <option value="name">{{__('name')}}</option>
                                         <option value="created_at">{{__('created at')}}</option>
@@ -38,11 +34,8 @@
                         <div class="col-sm-12 col-md-3">
                             <div class="dataTables_filter" id="sort">
                                 <p>{{__('sort type')}}
-                                    <select
-                                        id="sort"
-                                        wire:model="orderAsc"
-                                        name="perPage"
-                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                    <select id="sort" wire:model="orderAsc" name="perPage"
+                                            class="custom-select custom-select-sm form-control form-control-sm">
                                         <option value="1">{{__('Ascending')}}</option>
                                         <option value="0">{{__('Descending')}}</option>
                                     </select>
@@ -53,11 +46,9 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <div id="dataTable_filter" class="dataTables_filter"><label>{{__('search')}}:<input
-                                        type="search"
-                                        wire:model.debounce.300ms="search"
+                                        type="search" wire:model.debounce.300ms="search"
                                         class="form-control form-control-sm" style="width:739px"
-                                        placeholder="{{__('Search Here')}}"
-                                        aria-controls="dataTable"></label>
+                                        placeholder="{{__('Search Here')}}" aria-controls="dataTable"></label>
                             </div>
                         </div>
                     </div>
@@ -90,13 +81,16 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-info"
-                                       href="{{ route('users.show', $user->id) }}">{{ __('show') }}</a>
+                                    <a class="btn btn-info btn-circle" href="{{ route('users.show', $user->id) }}"> <i
+                                            class="fa fa-book" data-tooltip="{{ __('show') }}"></i></a>
                                     @can('user-per')
-                                        <a class="btn btn-primary"
-                                           href="{{ route('users.edit', $user->id) }}">{{ __('edit') }}</a>
+                                        <a class="btn btn-primary btn-circle"
+                                           href="{{ route('users.edit', $user->id) }}">{{ __('edit') }} <i
+                                                class="fa fa-edit" data-tooltip="{{ __('edit') }}"></i></a>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                                        {!! Form::submit(__('delete'), ['class' => 'btn btn-danger']) !!}
+                                        <button type="submit" class="btn btn-danger btn-circle"><i class="fas fa-trash"
+                                                                                                   data-tooltip="{{ __('delete') }}"></i>
+                                        </button>
                                         {!! Form::close() !!}
 
                                     @endcan

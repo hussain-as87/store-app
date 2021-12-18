@@ -31,6 +31,6 @@ class ConfiermMetting implements ShouldQueue
      */
     public function handle()
     {
-    Order::where('created_at','<=',now()->subDays(7))->delete();
+        Order::where('created_at', '<=', now()->subDays(7))->delete();
     }
 }

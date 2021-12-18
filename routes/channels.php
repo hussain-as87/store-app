@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Broadcast;
 /*if auth user id == user in channel*/
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+    return (int)$user->id === (int)$id;
 });
 
 
 Broadcast::channel('orders', function ($user/* ,$id */) {
     /*     $order=\App\Models\Order::findOrFail($id); */
-    return true/* $user->type == 'super_admin' */ /* || (int) $user->id === (int) $id */;
+    return true/* $user->type == 'super_admin' */ /* || (int) $user->id === (int) $id */ ;
 });
 
 

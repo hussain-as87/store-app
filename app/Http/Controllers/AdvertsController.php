@@ -17,6 +17,7 @@ class AdvertsController extends Controller
         $this->middleware('permission:advert-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:advert-delete', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,13 +35,13 @@ class AdvertsController extends Controller
      */
     public function create(Advert $advert)
     {
-        return view('admin.adverts.create',compact('advert'));
+        return view('admin.adverts.create', compact('advert'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -59,22 +60,22 @@ class AdvertsController extends Controller
             $data['photo'] = $photo;
         }
 
-       $advert = Advert::create($data);
+        $advert = Advert::create($data);
 
-       if ($advert) {
-        toast('Successfully Saved !!', 'success');
-        return redirect()->back();
-    } else {
-        toast('Error !!', 'error');
-        return redirect()->back();
+        if ($advert) {
+            toast('Successfully Saved !!', 'success');
+            return redirect()->back();
+        } else {
+            toast('Error !!', 'error');
+            return redirect()->back();
+        }
     }
-}
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,11 +87,11 @@ class AdvertsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|max:100',
@@ -104,7 +105,7 @@ class AdvertsController extends Controller
             $photo = ImageUpload::upload_image($request->photo, 'public/advertis');
             $data['photo'] = $photo;
         }
-        $ad = Advert::where('id',$id)->update($data);
+        $ad = Advert::where('id', $id)->update($data);
         if ($ad) {
             toast('Successfully Updated !!', 'success');
             return redirect()->back();
@@ -117,7 +118,7 @@ class AdvertsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

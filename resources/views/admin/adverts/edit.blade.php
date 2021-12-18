@@ -14,7 +14,8 @@
         <form action="{{ route('adv.update', $advert->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @include('admin.adverts.form')
-            <a class="btn badge-warning" href="{{ route('adv.index') }}">{{ __('Go Back') }}</a>
+            <a class="btn badge-warning" href="{{ route('adv.index') }}">{{__('Go Back')}} <i
+                    class="fas fa-arrow-left"></i></a>
             <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>

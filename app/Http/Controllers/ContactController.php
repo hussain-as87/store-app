@@ -24,11 +24,13 @@ class ContactController extends Controller
             return redirect()->back();
         }
     }
+
     public function index()
     {
         $contacts = Contact::orderByDesc('id')->paginate(20);
         return view('admin.contact.index', compact('contacts'));
     }
+
     public function destroy(Contact $contact)
     {
         $proc = $contact->delete();

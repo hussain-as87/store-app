@@ -10,7 +10,7 @@ class OrderProduct extends Pivot
 {
     use HasFactory;
 
-    protected $table='order_products';
+    protected $table = 'order_products';
     protected $guarded = [];
 
     public function order()

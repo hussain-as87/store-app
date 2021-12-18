@@ -12,18 +12,22 @@ class AboutController extends Controller
     {
         /* $this->authorizeResource(Product::class, 'product'); */
         $this->middleware('permission:about-list', ['only' => ['index']]);
-/*         $this->middleware('permission:about-edit', ['only' => ['edit', 'update']]);
- */    }
+        /*         $this->middleware('permission:about-edit', ['only' => ['edit', 'update']]);
+         */
+    }
+
     public function index()
     {
         $about = About::with('user')->first();
         return view('admin.about.index', compact('about'));
     }
+
     public function edit()
     {
         $about = About::with('user')->where('user_id', 1)->where('id', 1)->first();
         return view('admin.about.edit', compact('about'));
     }
+
     public function update(Request $request)
     {
         $request->validate([

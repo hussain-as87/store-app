@@ -17,7 +17,7 @@ class DataTableProducts extends Component
     {
         return view('livewire.data-table-products',
             ['product' => Product::with('user.store', 'category')
-                ->search( $this->search)
+                ->search($this->search)
                 ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
                 ->paginate($this->perPage)
             ]);

@@ -18,10 +18,12 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'sender');
     }
+
     public function receiverUser()
     {
         return $this->belongsTo(User::class, 'receiver');
     }
+
     public function readAt()
     {
         $this->forceFill([

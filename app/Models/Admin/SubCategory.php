@@ -9,7 +9,8 @@ use Spatie\Translatable\HasTranslations;
 
 class SubCategory extends Model
 {
-    use HasFactory ,HasTranslations ,SoftDeletes;
+    use HasFactory, HasTranslations, SoftDeletes;
+
     public $translatable = ['name'];
     protected $guarded = [];
 
@@ -17,6 +18,7 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id')->withDefault(['name' => 'no Category']);
     }
+
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);

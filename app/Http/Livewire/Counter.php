@@ -14,20 +14,23 @@ use Illuminate\Support\Facades\Cookie;
 
 class Counter extends Component
 {
-    public $dataOfText, $code,$coupon_code;
+    public $dataOfText, $code, $coupon_code;
     public $quantity = 1;
     public $cart = [];
     protected $listeners = ['cartUpdated' => 'onCartUpdate'];
+
     public function plus($id)
     {
         $this->quantity++;
         DB::update('update carts set quantity = quantity+1 where product_id = ?', [$id]);
     }
+
     public function minus($id)
     {
         $this->quantity--;
         DB::update('update carts set quantity = quantity-1 where product_id = ?', [$id]);
     }
+
     public function mount()
     {
         $this->cart
@@ -37,12 +40,14 @@ class Counter extends Component
             })
             ->get();
     }
+
     public function onCartUpdate()
     {
 
         // $this->cartItems = \Cart::session(auth()->id())->getContent()->toArray();
         $this->mount();
     }
+
     public function render(Request $request)
     {
         $user = Auth::id();
@@ -54,6 +59,7 @@ class Counter extends Component
         $coupon = Coupon::where('code', $request->code)->first();
         return view('livewire.counter', compact('cart', 'coupon'));
     }
+
     protected function getCartId()
     {
         $id = \request()->cookie('cart_id');
@@ -64,6 +70,7 @@ class Counter extends Component
         }/*get cart id from cookie*/
         return $id;
     }
+
     public function destroy($id)
     {
         Cart::where('product_id', $id)->delete();
@@ -72,10 +79,10 @@ class Counter extends Component
 
     public function coupon_check()
     {
-        $coupon = Coupon::where('code',$this->coupon_code)->first();
+        $coupon = Coupon::where('code', $this->coupon_code)->first();
         if (isset($coupon) || !empty($coupon)) {
             toast('have discount !!!', 'success');
-            return redirect()->back()->with(session()->put('coupon_value',$coupon->discount_value));
+            return redirect()->back()->with(session()->put('coupon_value', $coupon->discount_value));
         } else {
             toast('Not have discount !!!', 'error');
             return redirect()->back();

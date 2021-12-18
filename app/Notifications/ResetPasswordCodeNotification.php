@@ -11,7 +11,9 @@ use Illuminate\Notifications\Notification;
 class ResetPasswordCodeNotification extends Notification
 {
     use Queueable;
+
     public $code;
+
     /**
      * Create a new notification instance.
      *
@@ -25,7 +27,7 @@ class ResetPasswordCodeNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -39,10 +41,11 @@ class ResetPasswordCodeNotification extends Notification
         return (new NexmoMessage())
             ->content('your password reset the code confirm is ' . $code);
     }
+
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)

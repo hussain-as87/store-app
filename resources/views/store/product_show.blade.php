@@ -164,30 +164,31 @@
                                 <livewire:favorite-product-home :product="$product"/>
                             </a>
 
-                           @if($social->facebook != null) <a href="{{$social->facebook}}"
-                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Facebook">
+                            @if($social->facebook != null) <a href="{{$social->facebook}}"
+                                                              class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                                                              data-tooltip="Facebook">
                                 <i class="fa fa-facebook"></i>
                             </a>@endif
-                           @if($social->instagram != null) <a href="{{$social->instagram}}"
-                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="instagram">
+                            @if($social->instagram != null) <a href="{{$social->instagram}}"
+                                                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                                                               data-tooltip="instagram">
                                 <i class="fa fa-instagram"></i>
                             </a>@endif
 
-                           @if($social->twitter != null) <a href="{{$social->twitter}}"
-                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Twitter">
+                            @if($social->twitter != null) <a href="{{$social->twitter}}"
+                                                             class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                                                             data-tooltip="Twitter">
                                 <i class="fa fa-twitter"></i>
                             </a>@endif
 
                             @if($social->google != null)<a href="{{$social->google}}"
-                               class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Google Plus">
+                                                           class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                                                           data-tooltip="Google Plus">
                                 <i class="fa fa-google-plus"></i>
                             </a>@endif
 
-                            @if($social->pinterest != null)<a href="{{$social->pinterest}}" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            @if($social->pinterest != null)<a href="{{$social->pinterest}}"
+                                                              class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                                 <i class="fa fa-pinterest-p"></i>
                             </a>@endif
                         </div>
@@ -206,7 +207,8 @@
                         </li>
 
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">{{__('Additional information')}}</a>
+                            <a class="nav-link" data-toggle="tab" href="#information"
+                               role="tab">{{__('Additional information')}}</a>
                         </li>
 
                         <li class="nav-item p-b-10">
@@ -230,7 +232,7 @@
                             <div class="row">
                                 <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                     <ul class="p-lr-28 p-lr-15-sm">
-<!--                                        <li class="flex-w flex-t p-b-7">
+                                    <!--                                        <li class="flex-w flex-t p-b-7">
                                         <span class="stext-102 cl3 size-205">
                                             {{__('Weight')}}
                                         </span>

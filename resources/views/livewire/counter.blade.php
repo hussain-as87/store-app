@@ -17,32 +17,37 @@
                                 </tr>
                                 {{--cart--}}
                                 @php
-                                $total=0;
+                                    $total=0;
                                 @endphp
                                 @foreach ($cart as $item)
-                                <tr class="table_row">
-                                    <td class="column-1">
-                                        <button type="submit" class="how-itemcart1" style="border:none" wire:click="destroy({{ $item->product_id }})">
-                                            <img src="{{asset('storage/products/'.$item->product->image)}}" alt="IMG">
-                                        </button>
-                                    </td>
-                                    <td class="column-2">{{ $item->product->name }}</td>
-                                    <td class="column-3">$ {{ $item->price }}</td>
-                                    <td class="column-4">
-                                        <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" wire:click="minus({{ $item->product_id  }})">
-                                                <i class="fs-16 zmdi zmdi-minus"></i>
-                                            </div>
+                                    <tr class="table_row">
+                                        <td class="column-1">
+                                            <button type="submit" class="how-itemcart1" style="border:none"
+                                                    wire:click="destroy({{ $item->product_id }})">
+                                                <img src="{{asset('storage/products/'.$item->product->image)}}"
+                                                     alt="IMG">
+                                            </button>
+                                        </td>
+                                        <td class="column-2">{{ $item->product->name }}</td>
+                                        <td class="column-3">$ {{ $item->price }}</td>
+                                        <td class="column-4">
+                                            <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                                <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+                                                     wire:click="minus({{ $item->product_id  }})">
+                                                    <i class="fs-16 zmdi zmdi-minus"></i>
+                                                </div>
 
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" value="{{ $item->quantity }}">
+                                                <input class="mtext-104 cl3 txt-center num-product" type="number"
+                                                       value="{{ $item->quantity }}">
 
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" wire:click="plus({{ $item->product_id  }})">
-                                                <i class="fs-16 zmdi zmdi-plus"></i>
+                                                <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
+                                                     wire:click="plus({{ $item->product_id  }})">
+                                                    <i class="fs-16 zmdi zmdi-plus"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="column-5">$ {{$item['price'] * $item['quantity'] }}</td>
-                                </tr>
+                                        </td>
+                                        <td class="column-5">$ {{$item['price'] * $item['quantity'] }}</td>
+                                    </tr>
                                 @endforeach
                             </table>
                         </div>
@@ -54,10 +59,13 @@
 
                         <h4 class="mtext-109 cl2 p-b-5">
                             {{ __('Cart Totals') }}
-                        </h4> <div class="flex-w flex-t p-t-0 p-b-40">
+                        </h4>
+                        <div class="flex-w flex-t p-t-0 p-b-40">
                             <form wire:submit.prevent="coupon_check()" method="POST">
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" wire:model="coupon_code" placeholder="{{ __('cupon code') }}">
-                                <button type="submit" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
+                                       wire:model="coupon_code" placeholder="{{ __('cupon code') }}">
+                                <button type="submit"
+                                        class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                     {{ __('Apply coupon') }}
                                 </button>
                             </form>
@@ -65,9 +73,9 @@
                         <form action="{{route('checkout.store')}}" method="post">
                             @csrf
                             @foreach ($cart as $item)
-                            @php
-                            $total += $item['price'] * $item['quantity'];
-                            @endphp
+                                @php
+                                    $total += $item['price'] * $item['quantity'];
+                                @endphp
                             @endforeach
                             <div class="flex-w flex-t bor12 p-b-13">
                                 <div class="size-208">
@@ -92,10 +100,10 @@
                                 <div class="size-209">
                                     <span class="mtext-110 cl2">
                                         @php
-                                        $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
+                                            $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
                                         @endphp
                                         @if(session('coupon_value'))
-                                        {{$formatter->format(session('coupon_value')) }}
+                                            {{$formatter->format(session('coupon_value')) }}
                                         @endif
                                     </span>
                                 </div>
@@ -155,19 +163,20 @@
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2">
                                         @if(session('coupon_value'))
-                                        @php
-                                        $total2 = session('coupon_value')*$total;
-                                        $final_total=$total-$total2;
-                                        @endphp
-                                        {{$final_total}} $
+                                            @php
+                                                $total2 = session('coupon_value')*$total;
+                                                $final_total=$total-$total2;
+                                            @endphp
+                                            {{$final_total}} $
                                         @else
-                                        {{$total}} $
+                                            {{$total}} $
                                         @endif
                                     </span>
                                 </div>
                             </div>
 
-                            <button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                            <button type="submit"
+                                    class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                                 {{ __('Proceed to Checkout') }}
                             </button>
                         </form>

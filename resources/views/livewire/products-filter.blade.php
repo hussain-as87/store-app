@@ -1,4 +1,4 @@
-<div class="bg0 m-t-23 p-b-140" >
+<div class="bg0 m-t-23 p-b-140">
     <div class="container">
 
         <div class="flex-w flex-sb-m p-b-52">
@@ -207,38 +207,38 @@
                                                 </ul>-->
                     </div>
 
-<!--                    <div class="filter-col4 p-b-27">
-                        <div class="mtext-102 cl2 p-b-15">
-                            Tags
-                        </div>
+                    <!--                    <div class="filter-col4 p-b-27">
+                                            <div class="mtext-102 cl2 p-b-15">
+                                                Tags
+                                            </div>
 
-                        <div class="flex-w p-t-4 m-r&#45;&#45;5">
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Fashion
-                            </a>
+                                            <div class="flex-w p-t-4 m-r&#45;&#45;5">
+                                                <a href="#"
+                                                   class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                                    Fashion
+                                                </a>
 
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Lifestyle
-                            </a>
+                                                <a href="#"
+                                                   class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                                    Lifestyle
+                                                </a>
 
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Denim
-                            </a>
+                                                <a href="#"
+                                                   class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                                    Denim
+                                                </a>
 
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Streetstyle
-                            </a>
+                                                <a href="#"
+                                                   class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                                    Streetstyle
+                                                </a>
 
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Crafts
-                            </a>
-                        </div>
-                    </div>-->
+                                                <a href="#"
+                                                   class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                                    Crafts
+                                                </a>
+                                            </div>
+                                        </div>-->
                 </div>
             </div>
         </div>

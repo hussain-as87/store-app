@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $primaryKey='user_id';
+
+    protected $primaryKey = 'user_id';
 
     protected $guarded = [];
 

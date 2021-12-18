@@ -15,11 +15,12 @@
         <div class="row justify-content-center">
             <div class="card-body">
                 <h3>
-                    <a href="{{ route('profile-user.edit', auth()->id()) }}"><img src="@if ($profile->avatar) {{ asset('storage/' . $profile->avatar) }}
-                    @else
-                        https://ui-avatars.com/api/?name={{ auth()->user()->name }} @endif"
-                        width="100" height="100"
-                        style="border-radius: 50px"/></a>
+                    <a href="{{ route('profile-user.edit', auth()->id()) }}"><img
+                            src="@if ($profile->avatar) {{ asset('storage/' . $profile->avatar) }}
+                            @else
+                                https://ui-avatars.com/api/?name={{ auth()->user()->name }} @endif"
+                            width="100" height="100"
+                            style="border-radius: 50px"/></a>
                 </h3>
 
                 <h2><span>{{__('email')}} : </span>{{ $profile->user->email }}</h2>
@@ -28,7 +29,7 @@
                 <h3><span>{{__('country')}} : </span>{{ $profile->country }}</h3>
                 <h3><span>{{__('phone')}} : </span>{{ $profile->phone ? '+ ' . $profile->phone : '' }}</h3>
                 <h3><span>{{__('address')}} : </span>{{ $profile->address }}</h3>
-                <hr />
+                <hr/>
 
             </div>
         </div>

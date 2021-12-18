@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Advert extends Model
 {
-    use HasFactory, SearchableTrait , HasTranslations;
+    use HasFactory, SearchableTrait, HasTranslations;
+
     protected $guarded = [];
     public $translatable = ['title', 'content'];
 

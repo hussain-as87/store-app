@@ -11,7 +11,7 @@ class SideBar extends Component
     public function render()
     {
         $messages = Message::with('senderUser', 'receiverUser.profile')
-            ->where('sender','=!', auth()->id())
+            ->where('sender', '=!', auth()->id())
             ->orwhere('receiver', auth()->id())
             ->orderBy('created_at')
             ->select('sender', 'receiver')->distinct()

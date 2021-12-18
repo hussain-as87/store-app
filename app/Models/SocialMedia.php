@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SocialMedia extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $primaryKey='user_id';
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    protected $guarded = [];
+    protected $primaryKey = 'user_id';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 /* use Laravel\Passport\Passport;
- */use Illuminate\Support\Facades\App;
+ */
+
+use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Schema;
@@ -29,12 +31,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-/*         Passport::hashClientSecrets();
-        Passport::tokensExpireIn(now()->addDays(15));
-        Passport::refreshTokensExpireIn(now()->addDays(30));
-        Passport::personalAccessTokensExpireIn(now()->addMonths(6));
+        /*         Passport::hashClientSecrets();
+                Passport::tokensExpireIn(now()->addDays(15));
+                Passport::refreshTokensExpireIn(now()->addDays(30));
+                Passport::personalAccessTokensExpireIn(now()->addMonths(6));
 
- */
+         */
         $locale = config('locales.fallback_locale');
         App::setLocale($locale);
         Lang::setLocale($locale);

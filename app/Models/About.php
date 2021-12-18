@@ -38,6 +38,7 @@ class About extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);

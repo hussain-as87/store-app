@@ -21,7 +21,7 @@ class RatingProductControoler extends Controller
 
         $rate = Rating::where('product_id', $request->product_id)->where('user_id', $user)->first();
         if ($rate == null) {
-           $store= Rating::create([
+            $store = Rating::create([
                 'user_id' => $user,
                 'product_id' => $request->product_id,
                 'rating' => $request->rating,
@@ -38,6 +38,7 @@ class RatingProductControoler extends Controller
             ]);
         }
     }
+
     public function destroy(Request $request)
     {
         $user = auth()->user()->currentAccessToken()->tokenable->id;

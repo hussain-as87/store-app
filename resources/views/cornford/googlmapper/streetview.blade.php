@@ -8,7 +8,7 @@
 
         var mapOptions = {
             @if ($options['center'])
-                center: position,
+            center: position,
             @endif
             zoom: {!! $options['zoom'] !!},
             mapTypeId: google.maps.MapTypeId.{!! $options['type'] !!},
@@ -32,7 +32,7 @@
 
     @if (!$options['async'])
 
-        google.maps.event.addDomListener(window, 'load', initialize_{!! $id !!});
+    google.maps.event.addDomListener(window, 'load', initialize_{!! $id !!});
 
     @endif
 

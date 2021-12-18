@@ -13,8 +13,9 @@
     <div class="container">
         <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
             @include('admin.product.form')
-            <a class="btn badge-warning" href="{{route('products.index')}}">{{__('Go Back')}}</a>
-            <button type="submit" class="btn btn-primary">{{__('Submit')}}</button>
+            <a class="btn badge-warning" href="{{route('products.index')}}">{{__('Go Back')}} <i
+                    class="fas fa-arrow-left"></i></a>
+            <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 @endsection

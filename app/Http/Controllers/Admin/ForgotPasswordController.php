@@ -49,10 +49,12 @@ class ForgotPasswordController extends Controller
         toast(__('We have e-mailed your password reset link!'), 'success');
         return redirect()->route('reset.password.token');
     }
+
     public function token_code()
     {
         return view('admin.password-reset.code');
     }
+
     /**
      * Write code on Method
      *

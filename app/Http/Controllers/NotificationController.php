@@ -22,7 +22,7 @@ class NotificationController extends Controller
     {
         $user = Auth::user();
 
-        $notification= $user->notifications()->findOrFail($id);
+        $notification = $user->notifications()->findOrFail($id);
         $notification->markAsRead();
         return redirect($notification->data['action']);
     }

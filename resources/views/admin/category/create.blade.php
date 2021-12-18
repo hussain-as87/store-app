@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 @section('header_page')
     {{__('create category')}}
-    @endsection
+@endsection
 @section('title')
     {{__('create category')}}
 @endsection
@@ -13,7 +13,9 @@
     <div class="container">
         <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
             @include('admin.category.form')
-            <a class="btn badge-warning" href="{{route('categories.index')}}">{{__('Go Back')}}</a>
+            <br/>
+            <a class="btn badge-warning" href="{{route('categories.index')}}">{{__('Go Back')}} <i
+                    class="fas fa-arrow-left"></i></a>
             <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
 @endsection

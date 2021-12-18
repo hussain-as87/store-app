@@ -104,10 +104,10 @@
 			</span>
         </div>
     </div>
-{{--
-    <div id="app-v">
-        <cart-index/>
-    </div> --}}
-    <livewire:counter />
+    {{--
+        <div id="app-v">
+            <cart-index/>
+        </div> --}}
+    <livewire:counter/>
 
 @endsection

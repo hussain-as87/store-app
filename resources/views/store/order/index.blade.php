@@ -21,7 +21,8 @@
                     @endphp
                     @foreach ($order as $item)
                         <tr>
-                            <td><a class="ps-product__preview" href="{{--{{route('store.product.show',$item->product_id)}}--}}"><img
+                            <td><a class="ps-product__preview"
+                                   href="{{--{{route('store.product.show',$item->product_id)}}--}}"><img
                                         class="mr-15"
                                         src="{{--{{asset('storage/products/'.$item->product->image)}}--}}"
                                         alt="" width="200"> air jordan One

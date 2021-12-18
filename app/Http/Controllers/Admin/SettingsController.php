@@ -15,6 +15,7 @@ class SettingsController extends Controller
         $this->middleware('permission:settings-list', ['only' => ['index']]);
         $this->middleware('permission:settings-edit', ['only' => ['edit', 'update']]);
     }
+
     public function index()
     {
         $settings = Setting::all();

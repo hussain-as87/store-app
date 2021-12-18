@@ -15,12 +15,12 @@ class CreateOrderProductsTable extends Migration
     {
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders','id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('product_id')->constrained('products','id');
+            $table->foreignId('order_id')->constrained('orders', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained('products', 'id');
             $table->unsignedSmallInteger('quantity');
             $table->double('price');
             $table->string('color')->nullable();
-            $table->enum('size',['S','M','L','XL','XXL','XXXL'])->nullable();
+            $table->enum('size', ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'])->nullable();
             $table->timestamps();
         });
     }

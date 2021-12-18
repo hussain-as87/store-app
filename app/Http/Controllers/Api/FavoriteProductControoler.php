@@ -20,7 +20,7 @@ class FavoriteProductControoler extends Controller
         $favorite = favoriteProduct::where('product_id', $request->product_id)->where('user_id', $user)->first();
 
         if ($favorite == null) {
-            $store=favoriteProduct::create(['user_id' => $user, 'product_id' => $request->product_id]);
+            $store = favoriteProduct::create(['user_id' => $user, 'product_id' => $request->product_id]);
             return new JsonResponse([
                 'status' => '201',
                 'message' => $store
@@ -32,6 +32,7 @@ class FavoriteProductControoler extends Controller
             ]);
         }
     }
+
     public function destroy(Request $request)
     {
         $user = auth()->user()->currentAccessToken()->tokenable->id;

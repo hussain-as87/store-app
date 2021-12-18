@@ -19,6 +19,7 @@ class CategoriesController extends BaseController
         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
         $this->middleware('permission:category-trash', ['only' => ['trash', 'restore', 'forceDelete']]);
     }
+
     public function index(Category $category)
     {
 
@@ -43,7 +44,7 @@ class CategoriesController extends BaseController
 
         $this->getValidate($request);
 
-        $data['name'] =  $request->name;
+        $data['name'] = $request->name;
         $data['content'] = $request->content;
         $data['show'] = $request->show;
 
@@ -73,7 +74,7 @@ class CategoriesController extends BaseController
 
         $this->getValidate($request);
 
-        $data['name'] =  $request->name;
+        $data['name'] = $request->name;
         $data['content'] = $request->content;
         $data['show'] = $request->show;
 

@@ -41,7 +41,7 @@ class CreateAdminUserSeeder extends Seeder
             'id' => 1,
             'user_id' => $user->id,
             'story' => [
-                        "en" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non
+                "en" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non
                                  auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt
                                  augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                  Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi
@@ -57,10 +57,10 @@ class CreateAdminUserSeeder extends Seeder
                                  maximus enim ligula ac ligula.
                                  Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
                                  on (+1) 96 716 6879",
-                        "ar" => "بلبيلبيلبيل"
-                            ],
-             'service' => [
-                           "en" => " Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed
+                "ar" => "بلبيلبيلبيل"
+            ],
+            'service' => [
+                "en" => " Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed
                                      consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
                                      turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida.
                                      Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit
@@ -73,10 +73,10 @@ class CreateAdminUserSeeder extends Seeder
                                      It
                                      seemed obvious to them after a while.
                                       Steve Job’s",
-                            "ar" => "بلبيلبيلبيل"
-                            ],
-                            'story_image' =>'about-01.jpg',
-                            'service_image' =>'about-02.jpg',
+                "ar" => "بلبيلبيلبيل"
+            ],
+            'story_image' => 'about-01.jpg',
+            'service_image' => 'about-02.jpg',
 
         ]);
     }

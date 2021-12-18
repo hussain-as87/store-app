@@ -17,7 +17,7 @@ class CreatePriceDiscountsTable extends Migration
             $table->id();
             $table->float('percentage');
             $table->float('price');
-            $table->foreignId('product_id')->constrained('products','id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('product_id')->constrained('products', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

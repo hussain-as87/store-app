@@ -68,7 +68,7 @@ class ProfileController extends BaseController
             }
             $profile->update();
             /*social media update*/
-            $socail = SocialMedia::where('user_id',auth()->id())->first();
+            $socail = SocialMedia::where('user_id', auth()->id())->first();
             $data['facebook'] = $request->facebook;
             $data['instagram'] = $request->instagram;
             $data['google'] = $request->google;
