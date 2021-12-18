@@ -15,7 +15,7 @@
             @method('PUT')
             @include('admin.adverts.form')
             <a class="btn badge-warning" href="{{ route('adv.index') }}">{{ __('Go Back') }}</a>
-            <button class="btn btn-primary">{{ __('edit') }}</button>
+            <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 @endsection

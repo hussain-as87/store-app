@@ -14,7 +14,7 @@
         <form action="{{route('adv.store')}}" method="post" enctype="multipart/form-data">
             @include('admin.adverts.form')
             <a class="btn badge-warning" href="{{route('adv.index')}}">{{__('Go Back')}}</a>
-            <button type="submit" class="btn btn-primary">{{__('Submit')}}</button>
+            <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 @endsection

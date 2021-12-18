@@ -110,7 +110,7 @@
                                    placeholder="@error('pinterest'){{ $message }} @enderror">
                         </div>
                     </div>
-                    <button class="btn btn-primary">{{ __('edit') }}</button>
+                   <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
                     <a href="{{ route('profile-user.show', auth()->id()) }}"
                        class="btn badge-warning">{{ __('show profile') }}</a>
                 </form>

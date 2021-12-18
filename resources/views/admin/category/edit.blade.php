@@ -15,7 +15,7 @@
             @method('PUT')
             @include('admin.category.form')
             <a class="btn badge-warning" href="{{route('categories.index')}}">{{__('Go Back')}}</a>
-            <button class="btn btn-primary">{{__('edit')}}</button>
+           <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 

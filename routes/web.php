@@ -3,7 +3,7 @@
 use App\Models\User;
 use App\Models\Order;
 use App\Exports\UsersExport;
-use App\Http\Controllers\AboutController;
+use App\Http\Livewire\Counter;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\Cookie;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Http\Controllers\CartController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\AdvertsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\Admin\RoleController;
@@ -26,14 +29,12 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\admin\CustomLoginController;
 use App\Http\Controllers\Admin\RequestResetPasswordController;
-use App\Http\Controllers\AdvertsController;
-use App\Http\Controllers\ContactController;
-use App\Http\Livewire\Counter;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('about', [AboutController::class, 'index'])->name('about.index');
     Route::get('about/edit', [AboutController::class, 'edit'])->name('about.edit');
     Route::put('about/update', [AboutController::class, 'update'])->name('about.update');
+
+    Route::prefix('settings')->group(function () {
+        Route::get('/', [SettingsController::class, 'index'])->name('settings.index');
+        Route::get('/{id}', [SettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('/{id}', [SettingsController::class, 'update'])->name('settings.update');
+    });
+
 
     Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact.index');
     Route::delete('/contact/{contact}', [ContactController::class, 'destroy'])->name('admin.contact.destroy');

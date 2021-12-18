@@ -266,9 +266,7 @@
                                         </span>
 
                                             <span class="stext-102 cl6 size-206">
-                                                @php
-                                                    $array = array($product->color);
-                                                    print_r(array_values($array));                                                @endphp
+
                                         </span>
                                         </li>
 
@@ -276,16 +274,13 @@
                                         <span class="stext-102 cl3 size-205">
                                             {{__('Size')}}
                                         </span>
-
                                             <span class="stext-102 cl6 size-206">
-                                            {{implode(', ', $product->pluck('size')->toArray())}}
                                         </span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                         <!-- - -->
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
                             <div class="row">

@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
+    public function __construct()
+    {
+        /* $this->authorizeResource(Product::class, 'product'); */
+        $this->middleware('permission:about-list', ['only' => ['index']]);
+/*         $this->middleware('permission:about-edit', ['only' => ['edit', 'update']]);
+ */    }
     public function index()
     {
         $about = About::with('user')->first();

@@ -18,7 +18,7 @@
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
                                 <br>
-                                <button type="submit" class="btn btn-dark from-control">{{ __('confirm') }}</button>
+                                <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
                             </form>
                         </div>
                     </div>

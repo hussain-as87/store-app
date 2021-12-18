@@ -48,7 +48,7 @@
                         </span>
 
                         <p class="stext-115 cl6 size-213 p-t-18">
-                            {{ __('Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US') }}
+                            {{ __(config('settings.address')) }}
                         </p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         </span>
 
                         <p class="stext-115 cl1 size-213 p-t-18">
-                            +970566170044
+                           {{config('settings.mobile')}}
                         </p>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         </span>
 
                         <p class="stext-115 cl1 size-213 p-t-18">
-                            adda5mad@gmail.com
+                           {{config('settings.email')}}
                         </p>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 return [
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => config('settings.language'),
 
     'languages' => [
 

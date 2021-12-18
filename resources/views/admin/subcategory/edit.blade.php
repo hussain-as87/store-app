@@ -14,7 +14,7 @@
         <form action="{{route('subcategories.update',$subcategory->id)}}" method="post">
             @method('PUT')
             @include('admin.subcategory.form')
-            <button class="btn btn-primary">{{__('edit')}}</button>
+            <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
         </form>
     </div>
 

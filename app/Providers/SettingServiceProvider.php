@@ -5,10 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Cache\Factory;
 use App\Models\Admin\Setting;
-
 class SettingServiceProvider extends ServiceProvider
 {
-    /**
+  /**
      * Register services.
      *
      * @return void
@@ -25,7 +24,7 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot(Factory $cache, Setting $settings)
     {
-        $settings = $cache->remember('settings', 60, function () use ($settings) {
+        $settings = $cache->remember('settings', 60, function() use ($settings){
             // Laravel >= 5.2, use 'lists' instead of 'pluck' for Laravel <= 5.1
             return $settings->pluck('value', 'name')->all();
         });

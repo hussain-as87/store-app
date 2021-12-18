@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">{{ __('submit') }}</button>
+                   <button type="submit" class="btn btn-success ">{{ __('Submit') }} <i class="fas fa-check"></i></button>
                 </div>
             </div>
             {!! Form::close() !!}

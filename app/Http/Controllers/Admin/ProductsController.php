@@ -53,8 +53,7 @@ class ProductsController extends BaseController
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->size = implode(',',$request->size);
-        $product->color = implode(',',$request->color);
+        $product->additional_information = $request->additional_information;
         $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $image = ImageUpload::upload_image($request->image, $this->product_path);
@@ -110,8 +109,7 @@ class ProductsController extends BaseController
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
-            'color' => $request->color,
-            'size' => $request->size,
+            'additional_information' => $request->additional_information,
             'price' => $request->post('percentage') ? $new_price : $request->price,
             'category_id' => $request->category_id,
             'user_id' => auth()->id(),

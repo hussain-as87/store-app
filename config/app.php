@@ -177,13 +177,13 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        App\Providers\SettingServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Epmnzava\PaypalLaravel\PaypalLaravelServiceProvider::class
+        Epmnzava\PaypalLaravel\PaypalLaravelServiceProvider::class,
+        App\Providers\SettingServiceProvider::class,
 
     ],
 
