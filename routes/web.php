@@ -99,6 +99,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('coupons', [CouponController::class, 'index'])->name('coupons.index');
     Route::get('coupons/create', [CouponController::class, 'create'])->name('coupons.create');
     Route::post('coupons/store', [CouponController::class, 'store'])->name('coupons.store');
+    Route::get('coupons/{id}/edit', [CouponController::class, 'edit'])->name('coupons.edit');
+    Route::put('coupons/{id}', [CouponController::class, 'update'])->name('coupons.update');
     Route::get('coupons/{id}', [CouponController::class, 'destroy'])->name('coupons.destroy');
 
 

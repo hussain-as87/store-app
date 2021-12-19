@@ -9,9 +9,17 @@ use Illuminate\Http\Request;
 
 class CouponController extends BaseController
 {
+    public function __construct()
+    {
+        /* $this->authorizeResource(Product::class, 'product'); */
+        $this->middleware('permission:coupon-list|coupon-create|coupon-edit|coupon-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:coupon-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:coupon-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:coupon-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
-        $coupon = Coupon::orderByDesc('updated_at', 'desc')->paginate(20);
+        $coupon = Coupon::orderByDesc('created_at', 'desc')->paginate(20);
         return view('admin.coupon_code.index', compact('coupon'));
     }
 
@@ -50,13 +58,22 @@ class CouponController extends BaseController
         }
     }
 
-    public function coupon_check()
+    public function edit($id)
     {
-        $coupon = Coupon::where('code', request()->post('code'))->first();
+        $coupon = Coupon::findOrFail($id);
+        return view('admin.coupon_code.edit', compact('coupon'));
+    }
 
-        if (isset($coupon) || !empty($coupon)) {
-            toast('Successfully !!!', 'success');
-            return redirect()->back()->with('coupon');
+    public function update($id, Request $request)
+    {
+        $request->validate(['is_active' => 'required']);
+
+        $coupon = Coupon::findOrFail($id);
+
+        if ($coupon != null) {
+            $coupon->update(['is_active' => $request->is_active]);
+            toast('Successfully Save !!!', 'success');
+            return redirect(route('coupons.index'));
         } else {
             toast('Not Found !!!', 'error');
             return redirect()->back();

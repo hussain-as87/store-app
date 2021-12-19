@@ -22,6 +22,7 @@ class PermissionTableSeeder extends Seeder
             'role-delete',
             'coupon-list',
             'coupon-create',
+            'coupon-edit',
             'coupon-delete',
             'category-list',
             'category-create',

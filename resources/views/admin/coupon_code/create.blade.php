@@ -39,8 +39,8 @@
                 <select name="is_active" id="is_active"
                         class="form-control mb-4 @error('discount_value')  alert-danger @enderror">
                     <option value="">{{ __('choose option') }}</option>
-                    <option value="1">{{ __('active') }}</option>
-                    <option value="0">{{ __('inactive') }}</option>
+                    <option value="1" >{{ __('active') }}</option>
+                    <option value="0" >{{ __('inactive') }}</option>
                 </select></div>
 
             <a class="btn badge-warning" href="{{route('coupons.index')}}">{{__('Go Back')}} <i

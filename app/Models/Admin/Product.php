@@ -37,6 +37,7 @@ class Product extends Model
             'users' => ['users.id', 'products.category_id'],
         ],
     ];
+    protected $cast = ['additional_information' => 'array'];
     public $translatable = ['name', 'description'];
     protected $guarded = [];
     //const CREATED_AT = 'created_on';
@@ -136,5 +137,4 @@ class Product extends Model
     {
         return $this->hasMany(favoriteProduct::class);
     }
-
 }

@@ -14,7 +14,7 @@ class AddColorSizeToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->json('additional_information')->nullable()->after('price');
+            $table->text('additional_information')->nullable()->after('price');
 
         });
     }
