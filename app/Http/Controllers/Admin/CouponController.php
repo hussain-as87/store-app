@@ -58,11 +58,7 @@ class CouponController extends BaseController
         }
     }
 
-    public function edit($id)
-    {
-        $coupon = Coupon::findOrFail($id);
-        return view('admin.coupon_code.edit', compact('coupon'));
-    }
+
 
     public function update($id, Request $request)
     {
