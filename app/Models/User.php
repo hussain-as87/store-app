@@ -181,4 +181,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(SocialMedia::class)->withDefault();
     }
+    public function adverts()
+    {
+        return $this->hasMany(Advert::class)->withDefault();
+    }
 }

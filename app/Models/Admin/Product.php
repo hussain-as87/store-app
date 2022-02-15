@@ -37,7 +37,7 @@ class Product extends Model
             'users' => ['users.id', 'products.category_id'],
         ],
     ];
-    protected $cast = ['additional_information' => 'array'];
+    protected $cast = ['color' => 'array', 'size' => 'array'];
     public $translatable = ['name', 'description'];
     protected $guarded = [];
     //const CREATED_AT = 'created_on';

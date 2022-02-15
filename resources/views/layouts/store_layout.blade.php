@@ -22,7 +22,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="" {{asset('vendor/select2/select2.min.css')}}"">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
     <!--===============================================================================================-->
@@ -439,7 +439,7 @@
                 </p>
 
                 <div class="p-t-27">
-                    <a href="{{ config('settings.facebook') }}" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                    <a href="{{ config('settings.facebook') }}" class="fs-18 cl7 hov-cl1 trans-0f4 m-r-16">
                         <i class="fa fa-facebook"></i>
                     </a>
 

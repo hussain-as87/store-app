@@ -20,7 +20,6 @@ class CreateAboutsTable extends Migration
             $table->text('story_image');
             $table->text('service');
             $table->text('service_image');
-            $table->timestamps();
         });
     }
 

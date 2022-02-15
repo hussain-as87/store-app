@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\About;
+use App\Models\SocialMedia;
 use App\Models\Admin\Profile;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -33,6 +34,7 @@ class CreateAdminUserSeeder extends Seeder
             'address' => 'Gaza',
             'country' => 'palestine',
         ]);
+        SocialMedia::create(['user_id'=>$user->id]);
         $roles = Role::create(['name' => 'Super-Admin']);
         $permission = Permission::pluck('id', 'id')->all();
         $roles->syncPermissions($permission);
