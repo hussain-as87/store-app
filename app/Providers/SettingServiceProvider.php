@@ -25,7 +25,7 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot(Factory $cache, Setting $settings)
     {
-        $settings = $cache->remember('settings', 60, function () use ($settings) {
+         $settings = $cache->remember('settings', 60, function () use ($settings) {
             // Laravel >= 5.2, use 'lists' instead of 'pluck' for Laravel <= 5.1
             return $settings->pluck('value', 'name')->all();
         });

@@ -45,4 +45,9 @@ class Advert extends Model
     {
         return $this->getTranslation('title', 'ar');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

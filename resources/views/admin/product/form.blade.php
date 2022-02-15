@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="size">{{ __('size') }}</label>
-                <select name="additional_information[size][]" id="size" class="form-control" multiple>
+                <select name="size[]" id="size" class="form-control" multiple>
                     <option value="S">{{ __('size') }}S</option>
                     <option value="M">{{ __('size') }}M</option>
                     <option value="L">{{ __('size') }}L</option>
@@ -93,7 +93,7 @@
                 <div class="form-group">
                     <label for="color">{{ __('color') }}
                     </label>
-                    <select name="additional_information[color][]" id="color" class="form-control" multiple>
+                    <select name="color[]" id="color" class="form-control" multiple>
                         <option value="red">{{__('Red')}} </option>
                         <option value="yellow">{{__('Yellow')}} </option>
                         <option value="blue">{{__('Blue')}} </option>

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class About extends Model
 {
     use HasFactory, SearchableTrait, HasTranslations;
-
+    public $timestamps = false;
     protected $guarded = [];
     public $translatable = ['story', 'service'];
 

@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\Profile;
 use App\Models\User;
+use App\Models\Admin\Profile;
 use Illuminate\Database\Seeder;
+use Database\Seeders\AboutSeeder;
+use Database\Seeders\AdvertSeeder;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
             CreateAdminUserSeeder::class,
             SettingSeder::class,
             CreateCategoriesAndProductsSeeder::class,
+            //AboutSeeder::class,
+            AdvertSeeder::class
         ]);
     }
 }

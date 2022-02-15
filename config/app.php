@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => config('settings.app_name')/* env('APP_NAME', 'Laravel') */,
+    'name' => config('settings.app_name','Store App')/* env('APP_NAME', 'Laravel') */,
 
     /*
     |--------------------------------------------------------------------------

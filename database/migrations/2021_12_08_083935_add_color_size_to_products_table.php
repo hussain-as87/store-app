@@ -14,8 +14,24 @@ class AddColorSizeToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->text('additional_information')->nullable()->after('price');
+            $table->text('color', [
+                'red',
+                'yellow',
+                'blue',
+                'white',
+                'grey',
+                'green',
+                'black'
+            ])->nullable()->after('price');
 
+            $table->text('size', [
+                'S',
+                'M',
+                'L',
+                'XL',
+                'XXL',
+                'XXXL'
+            ])->nullable()->after('price');
         });
     }
 
@@ -27,8 +43,7 @@ class AddColorSizeToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('color');
-            $table->dropColumn('size');
+            $table->dropColumn(['color', 'size']);
         });
     }
 }
