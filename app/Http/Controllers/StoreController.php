@@ -47,6 +47,7 @@ class StoreController extends Controller
     public function productShow($id)
     {
         $product = Product::with('category.subcategories', 'product_images', 'user.social')->findOrFail($id);
+        
         $social = SocialMedia::where('user_id', $product->user_id)->first();
         $user = Auth::id();
         $cart = Cart::with('product')->where('id', $this->getCartId())
