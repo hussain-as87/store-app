@@ -252,7 +252,7 @@
                                         </span>
 
                                         <span class="stext-102 cl6 size-206">
-                                            {{  implode(" ",  $product->pluck('color')->toArray()) }}
+                                            {{  implode(',',  $product->pluck('color')->toArray()) }}
                                         </span>
                                     </li>
 
@@ -261,7 +261,7 @@
                                             {{__('Size')}}
                                         </span>
                                         <span class="stext-102 cl6 size-206">
-                                            {{  implode(" ", $product->pluck('size')->toArray()) }}
+                                            {{  implode(',', $product->pluck('size')->toArray()) }}
                                         </span>
                                     </li>
                                 </ul>
