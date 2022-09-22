@@ -398,7 +398,7 @@
 
                 <ul>
                     <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        <a href="{{ route('cart.index') }}" class="stext-107 cl7 hov-cl1 trans-04">
                             {{__('Order Status')}}
                         </a>
                     </li>
@@ -421,7 +421,7 @@
                         </a>
                     </li>
                     <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        <a href="{{ route('store.contact') }}" class="stext-107 cl7 hov-cl1 trans-04">
                             {{__('Contact Us')}}
                         </a>
                     </li>

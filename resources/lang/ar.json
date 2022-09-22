@@ -416,6 +416,7 @@
     "order by": "فرز حسب",
     "id": "الرقم",
     "sort type": "نوع الفرز",
+    "discount": "خصم",
     "Ascending": "تصاعديا",
     "create coupon": "انشاء كود خصم",
     "discount value": "قيمة الخصم",
